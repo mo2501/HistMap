@@ -1,0 +1,86 @@
+{% include 'HistoryBundle:History:header.html.twig' %}
+
+
+<div class="wrapper-suggestions">
+    {% for key, suggestion in suggestions %}
+        <form enctype="multipart/form-data" method="post" class="suggestion-line">
+            <div class="suggestion-part user-part">
+                <h3>
+                    Suggestion
+                </h3>
+                <b>Personne :</b> {{ suggestion.getPersonName() }}<br>
+                <b>Wiki :</b> {{ suggestion.getWiki() }}<br>
+                <b>Lieu :</b> {{ suggestion.getPlaceName() }}<br>
+                <b>Année :</b> {{ suggestion.getDate() }}<br>
+                <b>Événement :</b> {{ suggestion.getEventName() }}<br>
+            </div><!--
+            --><div class="suggestion-part corrected-part">
+                <h3>
+                    Correction
+                </h3>
+                <b>Personne :</b> <input type="text" name="person_name" value="{{ suggestion.getPersonName() }}">
+                - <input type="radio" name="new_person" checked="checked" value="true" id="new_person"><label for="new_person">Nouvelle personne</label>
+                <br>
+                <br>
+                <b>Photo :</b> <input type="file" name="person_picture">
+                <b>Sexe :</b> <input type="radio" id="homme" name="gender" value="1" checked="checked"><label for="homme">Homme</label> <input type="radio" id="femme" name="gender" value="2"><label for="femme">Femme</label><br>
+                <b>Wiki :</b> <input type="text" name="wiki" value="{{ suggestion.getWiki() }}">
+                <a href="{{ suggestion.getWiki() }}" target="_blank" class="btn btn-info">
+                    Ouvrir le wiki
+                </a><br>
+                <hr>
+                <select name="person_id">
+                    {% for personne in personnes %}
+                        <option value="{{ personne.getId() }}">
+                            {{ personne.getNom() }}
+                        </option>
+                    {% endfor %}
+                </select> - <input type="radio" name="new_person" value="false" id="old_person"><label for="old_person">Personne existante</label><br>
+                <hr>
+                <b>Lieu :</b> <input type="text" name="place_name" class="place-name" value="{{ suggestion.getPlaceName() }}">
+                <input type="button" class="localize-place-suggestions" value="Localiser">
+                <input type="text" class="lat" name="place_lat">
+                <input type="text" class="lng" name="place_lng">
+                - <input type="radio" name="new_place" checked="checked"  value="true" id="new_place"><label for="new_place">Nouveau lieu</label>
+                <br>
+                
+                <hr>
+                <select name="place_id">
+                    {% for place in places %}
+                        <option value="{{ place.getId() }}">
+                            {{ place.getNom() }}
+                        </option>
+                    {% endfor %}
+                </select> - <input type="radio" name="new_place" value="false" id="old_place"><label for="old_place">Lieu existant</label><br>
+                
+                <hr>
+                <b>Année :</b> <input type="text" name="date" value="{{ suggestion.getDate() }}"><br>
+                <b>Événement :</b> <input type="text" name="event_name" value="{{ suggestion.getEventName() }}"><br>
+                <b>Type d'événement</b>
+                <select name="event_type">
+                    {% for key, type in eventTypes %}
+                        <option value="{{ type.getId() }}">
+                            {{ type.getNom() }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div><!--
+            --><div class="suggestion-part wiki-part">
+                <input type="hidden" name="suggestion_id" value="{{ suggestion.getId() }}">
+                <button type="submit" name="suggestion_action" value="validate" class="btn btn-success">
+                    Valider la suggestion
+                </button>
+                <button type="submit" name="suggestion_action" value="delete" class="btn btn-warning">
+                    Supprimer la suggestion
+                </button>
+            </div>
+        </form>
+    {% endfor %}
+    {% if suggestions is empty %}
+        <div class="suggestion-line">
+            Aucune suggestion
+        </div>
+    {% endif %}
+</div>
+
+{% include 'HistoryBundle:History:footer.html.twig' %}

@@ -1,0 +1,5510 @@
+@charset "UTF-8";
+/*
+-----------------
+Variable
+-----------------
+*/
+/*
+-----------------
+-----------------
+CLASS
+-----------------
+-----------------
+*/
+/* line 59, ../../../src/CF/CoreBundle/Resources/css/partials/var.scss */
+.clear:after, #part2 ul li:after, #part4 ul:after, #part5 .content:after, #commander .bloc-bottom:after, #propos-content ul:after, #formulaire-style .question:after, #homepage_2 #block_howto ul:after, #homepage_2 #block_howto .block_step:after {
+  clear: both;
+  content: "";
+  display: block;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 60, ../../../src/CF/CoreBundle/Resources/css/partials/var.scss */
+.vam:after {
+  display: inline-block;
+  vertical-align: middle;
+  content: "";
+  height: 100%;
+  width: 0;
+  line-height: 1;
+  font-size: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 61, ../../../src/CF/CoreBundle/Resources/css/partials/var.scss */
+.transition, #navigation ul li a, #navigation-menu, .btn, .btn-green, .btn-orange, .btn-black, .btn-red, .link-text, .link-text-grey, .question-general .question-link .input, #referal .link,
+.content-social-media .link, #referal .link .text-hover input,
+.content-social-media .link .text-hover input, #cookie-popup, #same-address [type="checkbox"]:not(:checked) + label:before,
+#same-address [type="checkbox"]:checked + label:before,
+#same-address [type="checkbox"]:not(:checked) + label:after,
+#same-address [type="checkbox"]:checked + label:after, #footer .link ul li a, .header_account .right_actions a, #commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked) + label:before, #commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked) + label:after,
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label:before,
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label:after, #formulaire-style [type="radio"]:not(:checked) + label:after,
+#formulaire-style [type="radio"]:checked + label:after,
+#formulaire-style [type="checkbox"]:not(:checked) + label:after,
+#formulaire-style [type="checkbox"]:checked + label:after {
+  transition: All 0.5s ease;
+  -webkit-transition: All 0.5s ease;
+  -moz-transition: All 0.5s ease;
+  -o-transition: All 0.5s ease;
+}
+
+/* line 62, ../../../src/CF/CoreBundle/Resources/css/partials/var.scss */
+.alignVerticalAbsolute, #footer .link ul li:not(:last-child):after, #part1 .content, #part2 ul li .content, #part5 .left, #commander .bloc-comment .label, #formulaire-style .question .select-content:after, #homepage_2 #block_top .content, #homepage_2 #block_howto .block_step .content, #homepage_2 #block_styliste .left {
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+/* line 63, ../../../src/CF/CoreBundle/Resources/css/partials/var.scss */
+.alignHorizonAbsolute {
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+}
+
+/* line 64, ../../../src/CF/CoreBundle/Resources/css/partials/var.scss */
+.no-margin {
+  margin: 0 !important;
+}
+
+/*
+-----------------
+-----------------
+MIXIN
+-----------------
+-----------------
+*/
+/* line 1, ../../../src/CF/CoreBundle/Resources/css/partials/reset.scss */
+a, article, b, body, div, h1, h2, h3, h4, h5, h6, img, input, label, select, option, button, li,
+nav, ol, p, section, span, textarea, ul, aside, header, footer, form, table, thead, tr, td, tbody {
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/partials/reset.scss */
+ul, p {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/partials/reset.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/partials/reset.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: "sofia_proextra_light";
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/partials/reset.scss */
+html {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/partials/reset.scss */
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "sofia_prolight";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: #555;
+}
+
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/reset.scss */
+input, textarea, select {
+  outline: none;
+  font-family: "sofia_prolight";
+}
+
+/* line 9, ../../../src/CF/CoreBundle/Resources/css/partials/reset.scss */
+body {
+  padding-top: 90px;
+  background: #f8f8f8;
+}
+
+/*
+-----------------
+Font SOFIA PRO LIGHT
+-----------------
+*/
+@font-face {
+  font-family: 'sofia_prolight';
+  src: url("/public/font/SofiaProLight-webfont.eot");
+  src: url("/public/font/SofiaProLight-webfont.eot?#iefix") format("embedded-opentype"), url("/public/font/SofiaProLight-webfont.woff2") format("woff2"), url("/public/font/SofiaProLight-webfont.woff") format("woff"), url("/public/font/SofiaProLight-webfont.ttf") format("truetype"), url("/public/font/SofiaProLight-webfont.svg#sofia_prolight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+-----------------
+Font SOFIA PRO EXTRA LIGHT
+-----------------
+*/
+@font-face {
+  font-family: 'sofia_proextra_light';
+  src: url("/public/font/sofia_pro_extra_light-webfont.eot");
+  src: url("/public/font/sofia_pro_extra_light-webfont.eot?#iefix") format("embedded-opentype"), url("/public/font/sofia_pro_extra_light-webfont.woff2") format("woff2"), url("/public/font/sofia_pro_extra_light-webfont.woff") format("woff"), url("/public/font/sofia_pro_extra_light-webfont.ttf") format("truetype"), url("/public/font/sofia_pro_extra_light-webfont.svg#sofia_proextra_light") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+-----------------
+Font Always Forever Regular
+-----------------
+*/
+@font-face {
+  font-family: 'alwaysforeverregular';
+  src: url("/public/font/always_forever-webfont.eot");
+  src: url("/public/font/always_forever-webfont.eot?#iefix") format("embedded-opentype"), url("/public/font/always_forever-webfont.woff2") format("woff2"), url("/public/font/always_forever-webfont.woff") format("woff"), url("/public/font/always_forever-webfont.ttf") format("truetype"), url("/public/font/always_forever-webfont.svg#alwaysforeverregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LibreBaskerville-Regular';
+  src: url("/public/font/LibreBaskerville-Regular.eot?#iefix") format("embedded-opentype"), url("/public/font/LibreBaskerville-Regular.otf") format("opentype"), url("/public/font/LibreBaskerville-Regular.woff") format("woff"), url("/public/font/LibreBaskerville-Regular.ttf") format("truetype"), url("/public/font/LibreBaskerville-Regular.svg#LibreBaskerville-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+-----------------
+Navigation
+-----------------
+*/
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 90px;
+  background: #fcfcfc;
+  border-bottom: 1px solid #ddd;
+  color: #6D737F;
+}
+/* line 10, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line {
+  height: 45px;
+}
+/* line 12, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-top {
+  background: #b2dfdb;
+  border-bottom: 1px solid #8ed0ca;
+}
+/* line 14, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-top .logo a {
+  display: block;
+  height: 45px;
+}
+@media (max-width: 768px) {
+  /* line 14, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+  #navigation .line-top .logo a {
+    display: inline-block;
+  }
+}
+/* line 17, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-top .logo img {
+  width: 100%;
+  height: auto;
+  width: 120px;
+  margin-top: 9px;
+}
+@media (max-width: 768px) {
+  /* line 13, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+  #navigation .line-top .logo {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+/* line 20, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-top .assurance {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+  margin-left: 15px;
+  line-height: 45px;
+}
+@media (max-width: 768px) {
+  /* line 20, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+  #navigation .line-top .assurance {
+    display: none;
+  }
+}
+/* line 22, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-top .assurance i {
+  margin-right: 2px;
+}
+@media (max-width: 768px) {
+  /* line 26, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+  #navigation .line-bottom {
+    display: none;
+  }
+}
+/* line 28, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation ul {
+  list-style-type: none;
+  white-space: nowrap;
+  height: 45px;
+}
+/* line 29, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation ul li {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+/* line 30, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation ul li.name {
+  display: inline-block;
+}
+/* line 31, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation ul li a {
+  display: block;
+  font-size: 16px;
+  position: relative;
+  padding: 0 10px;
+  color: inherit;
+}
+/* line 32, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation ul li a.logout {
+  margin-left: 5px;
+  border-left: 1px solid #ddd;
+  padding-left: 15px;
+}
+/* line 33, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation ul li a:hover {
+  color: #000;
+}
+/* line 38, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-mobile {
+  display: none;
+  text-align: center;
+}
+/* line 39, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-mobile ul {
+  line-height: 45px;
+}
+/* line 40, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-mobile ul li {
+  padding: 0;
+  height: 45px;
+  display: block;
+  float: left;
+}
+/* line 42, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation .line-mobile .border {
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+@media (max-width: 768px) {
+  /* line 38, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+  #navigation .line-mobile {
+    display: block;
+  }
+}
+
+/* line 48, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation-menu {
+  position: fixed;
+  z-index: 19;
+  padding-top: 90px;
+  -ms-overflow-y: auto;
+  overflow-y: auto;
+  background: #fcfcfc;
+  right: -240px;
+  top: 0;
+  width: 240px;
+  height: 100%;
+  border-left: 1px solid #eee;
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 50, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation-menu.open {
+  right: 0;
+  opacity: 1;
+  visibility: visible;
+}
+/* line 51, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation-menu ul {
+  list-style-type: none;
+}
+/* line 52, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation-menu ul li {
+  height: 50px;
+  line-height: 50px;
+}
+/* line 53, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation-menu ul li a {
+  display: block;
+  height: 100%;
+  font-size: 16px;
+  color: #6D737F;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  padding-left: 20px;
+}
+/* line 54, ../../../src/CF/CoreBundle/Resources/css/partials/navigation.scss */
+#navigation-menu ul li a:hover {
+  background: #000;
+  color: #fff;
+}
+
+/*
+-----------------
+Button
+-----------------
+*/
+/* line 12, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn {
+  display: inline-block;
+  font-size: 16px;
+  background: #F0415B;
+  color: #fff;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn:hover {
+  background: #8d0b1e;
+}
+@media (max-width: 768px) {
+  /* line 12, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+  .btn {
+    margin: 0 auto;
+  }
+}
+/* line 13, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn .fa {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+/* line 18, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn-green {
+  display: inline-block;
+  font-size: 16px;
+  background: #3FC380;
+  color: #fff;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn-green:hover {
+  background: #195034;
+}
+@media (max-width: 768px) {
+  /* line 18, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+  .btn-green {
+    margin: 0 auto;
+  }
+}
+
+/* line 19, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn-orange {
+  display: inline-block;
+  font-size: 16px;
+  background: #ef6c00;
+  color: #fff;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn-orange:hover {
+  background: #562700;
+}
+@media (max-width: 768px) {
+  /* line 19, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+  .btn-orange {
+    margin: 0 auto;
+  }
+}
+
+/* line 20, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn-black {
+  display: inline-block;
+  font-size: 16px;
+  background: #383838;
+  color: #fff;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn-black:hover {
+  background: black;
+}
+@media (max-width: 768px) {
+  /* line 20, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+  .btn-black {
+    margin: 0 auto;
+  }
+}
+
+/* line 21, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn-red {
+  display: inline-block;
+  font-size: 16px;
+  background: #D64541;
+  color: #fff;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+.btn-red:hover {
+  background: #681916;
+}
+@media (max-width: 768px) {
+  /* line 21, ../../../src/CF/CoreBundle/Resources/css/partials/btn.scss */
+  .btn-red {
+    margin: 0 auto;
+  }
+}
+
+/*
+-----------------
+Formulaire type - 1
+-----------------
+*/
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .bloc-shadow {
+  padding: 20px 0;
+}
+/* line 10, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .title-form-1 {
+  font-size: 26px;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}
+@media (max-width: 768px) {
+  /* line 10, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+  .form-1 .title-form-1 {
+    font-size: 20px;
+  }
+}
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-inline {
+  margin-bottom: 0 !important;
+}
+/* line 17, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-inline .row-form {
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
+  border-left: 1px solid #ddd;
+}
+/* line 18, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-inline .row-form:first-child {
+  border-left: 0px solid #ddd;
+}
+/* line 19, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-inline .row-form.w-100p {
+  display: block;
+}
+@media (max-width: 768px) {
+  /* line 21, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+  .form-1 .row-inline .row-form.w-100p-sm {
+    display: block;
+    border-left: none;
+  }
+}
+/* line 26, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 20px;
+  position: relative;
+}
+/* line 27, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: -1px;
+  left: 0;
+  border-top: 1px solid #ddd;
+}
+/* line 29, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form.error .label-form-1 {
+  color: #ef6c00;
+}
+/* line 32, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form.error-field-open .error-field {
+  display: block;
+  font-size: 14px;
+}
+/* line 34, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form .facultatif {
+  font-size: 14px;
+  font-style: italic;
+}
+/* line 35, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form .label-form-1,
+.form-1 .row-form .textarea-form-1,
+.form-1 .row-form .input-form-1 {
+  display: block;
+  width: 100%;
+}
+/* line 38, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form .input-form-1 {
+  padding: 5px 0 0 0;
+  border: none;
+  text-align: left;
+  background: #fff;
+}
+/* line 41, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form .textarea-form-1 {
+  resize: none;
+  padding: 10px 0;
+  border: none;
+}
+/* line 42, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .row-form .error-field {
+  display: none;
+  margin-top: 2px;
+  color: #ef6c00;
+}
+/* line 45, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .btn {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+/* line 47, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .loader {
+  color: #F0415B;
+  font-size: 22px;
+  margin-left: 0px;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0;
+}
+/* line 48, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .loader.open {
+  margin-left: 10px;
+  opacity: 1;
+}
+/* line 50, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .text {
+  padding: 20px 20px 0;
+  position: relative;
+}
+/* line 51, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .text a {
+  display: inline-block;
+}
+/* line 53, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .text.success .icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background: #77CC7D;
+  visibility: visible;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+/* line 54, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .text.success .icon .fa {
+  color: #fff;
+  font-size: 16px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+}
+/* line 57, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .text .icon {
+  display: none;
+  visibility: hidden;
+}
+/* line 60, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .show-password {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  line-height: 40px;
+  background: #DDD;
+  color: #555;
+  right: 0;
+  top: 0;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 62, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .show-password.open .fa-eye {
+  opacity: 0;
+  margin-top: -10px;
+}
+/* line 63, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .show-password.open .fa-eye-slash {
+  opacity: 1;
+  margin-top: 0;
+}
+/* line 65, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .show-password .fa {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+}
+/* line 66, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .show-password .fa-eye {
+  opacity: 1;
+  margin-top: 0;
+}
+/* line 67, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 .show-password .fa-eye-slash {
+  opacity: 0;
+  margin-top: 10px;
+}
+/* line 71, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 input:required,
+.form-1 input:invalid {
+  background-color: #FFF !important;
+  box-shadow: 0 0 0 50px white inset !important;
+  -webkit-box-shadow: 0 0 0 50px white inset !important;
+}
+/* line 77, ../../../src/CF/CoreBundle/Resources/css/partials/form.scss */
+.form-1 input:-webkit-autofill {
+  background-color: #FFF !important;
+  box-shadow: 0 0 0 50px white inset !important;
+  -webkit-box-shadow: 0 0 0 50px white inset !important;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.twitter-background {
+  background: #00aced;
+}
+
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.facebook-background {
+  background: #3b5998;
+}
+
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.pinterest-background {
+  background: #cb2027;
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.instagram-background {
+  background: #517fa4;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.email-background {
+  background: #776F6B;
+}
+
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.copier-background {
+  background: #68AFAA;
+}
+
+/*
+-----------------
+Accessibility
+-----------------
+*/
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/*
+-----------------
+Center bloc
+-----------------
+*/
+/* line 33, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+[class*='ctr-'] {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* line 34, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.ctr-1200 {
+  max-width: 1200px;
+}
+
+/* line 35, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.ctr-980 {
+  max-width: 980px;
+}
+
+/* line 36, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.ctr-600 {
+  max-width: 600px;
+}
+
+/* line 37, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.ctr-780 {
+  max-width: 780px;
+}
+
+/* line 38, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.ctr-480 {
+  max-width: 480px;
+}
+
+/* line 39, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.margin {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 992px) {
+  /* line 42, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  [class*='ctr-'] {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* line 43, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .ctr-780-md {
+    max-width: 780px;
+  }
+
+  /* line 44, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .ctr-480-md {
+    max-width: 480px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 48, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .ctr-480-sm {
+    max-width: 480px;
+  }
+}
+/*
+-----------------
+Row
+-----------------
+*/
+/* line 56, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.row, .form-1 .row-inline {
+  position: relative;
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 20px;
+}
+@media (max-width: 992px) {
+  /* line 56, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .row, .form-1 .row-inline {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 56, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .row, .form-1 .row-inline {
+    margin-bottom: 0;
+  }
+}
+
+/*
+-----------------
+Hide
+-----------------
+*/
+@media (max-width: 992px) {
+  /* line 67, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .hidden-md {
+    display: none;
+    visibility: hidden;
+  }
+}
+@media (max-width: 768px) {
+  /* line 70, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .hidden-sm {
+    display: none;
+    visibility: hidden;
+  }
+}
+/* line 73, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.inline {
+  display: inline-block !important;
+}
+
+/*
+-----------------
+Width
+-----------------
+*/
+/* line 81, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-40 {
+  max-width: 40px;
+  width: 100%;
+}
+
+/* line 82, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-80 {
+  max-width: 80px;
+  width: 100%;
+}
+
+/* line 83, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-100 {
+  max-width: 100px;
+  width: 100%;
+}
+
+/* line 84, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-120 {
+  max-width: 120px;
+  width: 100%;
+}
+
+/* line 85, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-140 {
+  max-width: 140px;
+  width: 100%;
+}
+
+/* line 86, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-160 {
+  max-width: 160px;
+  width: 100%;
+}
+
+/* line 87, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-180 {
+  max-width: 180px;
+  width: 100%;
+}
+
+/* line 88, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-200 {
+  max-width: 200px;
+  width: 100%;
+}
+
+/* line 89, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-220 {
+  max-width: 220px;
+  width: 100%;
+}
+
+/* line 90, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-240 {
+  max-width: 240px;
+  width: 100%;
+}
+
+/* line 91, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-260 {
+  max-width: 260px;
+  width: 100%;
+}
+
+/* line 92, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-300 {
+  max-width: 300px;
+  width: 100%;
+}
+
+/* line 93, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-360 {
+  max-width: 360px;
+  width: 100%;
+}
+
+/* line 95, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-25p {
+  width: 25%;
+}
+
+/* line 96, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-33p {
+  width: 33.3333333333%;
+}
+
+/* line 97, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-50p {
+  width: 50%;
+}
+
+/* line 98, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.w-100p {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  /* line 101, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .w-33p-sm {
+    width: 33.3333333333%;
+  }
+
+  /* line 102, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .w-50p-sm {
+    width: 50%;
+  }
+
+  /* line 103, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .w-100p-sm {
+    width: 100%;
+    display: block;
+  }
+}
+/* line 106, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-40 {
+  min-height: 40px;
+  width: 100%;
+}
+
+/* line 107, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-80 {
+  min-height: 80px;
+  width: 100%;
+}
+
+/* line 108, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-100 {
+  min-height: 100px;
+  width: 100%;
+}
+
+/* line 109, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-120 {
+  min-height: 120px;
+  width: 100%;
+}
+
+/* line 110, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-140 {
+  min-height: 140px;
+  width: 100%;
+}
+
+/* line 111, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-160 {
+  min-height: 160px;
+  width: 100%;
+}
+
+/* line 112, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-180 {
+  min-height: 180px;
+  width: 100%;
+}
+
+/* line 113, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-200 {
+  min-height: 200px;
+  width: 100%;
+}
+
+/* line 114, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-220 {
+  min-height: 220px;
+  width: 100%;
+}
+
+/* line 115, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-240 {
+  min-height: 240px;
+  width: 100%;
+}
+
+/* line 116, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-260 {
+  min-height: 260px;
+  width: 100%;
+}
+
+/* line 117, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-300 {
+  min-height: 300px;
+  width: 100%;
+}
+
+/* line 118, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.h-360 {
+  min-height: 360px;
+  width: 100%;
+}
+
+/*
+-----------------
+Columns
+-----------------
+*/
+/* line 126, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+[class*='col-'] {
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
+}
+
+/* line 127, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+[class*='col-'] + [class*='col-'] {
+  padding-left: 20px;
+}
+
+@media (max-width: 992px) {
+  /* line 129, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  [class*='col-'] + [class*='col-'] {
+    padding-left: 10px;
+  }
+}
+/*
+-----------------
+Columns width
+-----------------
+*/
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-0-lg {
+  width: 0%;
+  display: none;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-0-lg {
+  padding-left: 0% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-1-lg {
+  width: 8.33333%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-1-lg {
+  padding-left: 8.33333% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-2-lg {
+  width: 16.66667%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-2-lg {
+  padding-left: 16.66667% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-3-lg {
+  width: 25.0%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-3-lg {
+  padding-left: 25.0% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-4-lg {
+  width: 33.33333%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-4-lg {
+  padding-left: 33.33333% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-5-lg {
+  width: 41.66667%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-5-lg {
+  padding-left: 41.66667% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-6-lg {
+  width: 50.0%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-6-lg {
+  padding-left: 50.0% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-7-lg {
+  width: 58.33333%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-7-lg {
+  padding-left: 58.33333% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-8-lg {
+  width: 66.66667%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-8-lg {
+  padding-left: 66.66667% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-9-lg {
+  width: 75.0%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-9-lg {
+  padding-left: 75.0% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-10-lg {
+  width: 83.33333%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-10-lg {
+  padding-left: 83.33333% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-11-lg {
+  width: 91.66667%;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-11-lg {
+  padding-left: 91.66667% !important;
+}
+
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-12-lg {
+  width: 100.0%;
+  display: block;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* line 143, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.col-offset-12-lg {
+  padding-left: 100.0% !important;
+}
+
+@media (max-width: 992px) {
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-0-md {
+    width: 0%;
+    display: none;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-0-md {
+    padding-left: 0% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-1-md {
+    width: 8.33333%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-1-md {
+    padding-left: 8.33333% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-2-md {
+    width: 16.66667%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-2-md {
+    padding-left: 16.66667% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-3-md {
+    width: 25.0%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-3-md {
+    padding-left: 25.0% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-4-md {
+    width: 33.33333%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-4-md {
+    padding-left: 33.33333% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-5-md {
+    width: 41.66667%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-5-md {
+    padding-left: 41.66667% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-6-md {
+    width: 50.0%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-6-md {
+    padding-left: 50.0% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-7-md {
+    width: 58.33333%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-7-md {
+    padding-left: 58.33333% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-8-md {
+    width: 66.66667%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-8-md {
+    padding-left: 66.66667% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-9-md {
+    width: 75.0%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-9-md {
+    padding-left: 75.0% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-10-md {
+    width: 83.33333%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-10-md {
+    padding-left: 83.33333% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-11-md {
+    width: 91.66667%;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-11-md {
+    padding-left: 91.66667% !important;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-12-md {
+    width: 100.0%;
+    display: block;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-12-md {
+    padding-left: 100.0% !important;
+  }
+}
+@media (max-width: 768px) {
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-0-sm {
+    width: 0%;
+    display: none;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-0-sm {
+    padding-left: 0% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-1-sm {
+    width: 8.33333%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-1-sm {
+    padding-left: 8.33333% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-2-sm {
+    width: 16.66667%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-2-sm {
+    padding-left: 16.66667% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-3-sm {
+    width: 25.0%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-3-sm {
+    padding-left: 25.0% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-4-sm {
+    width: 33.33333%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-4-sm {
+    padding-left: 33.33333% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-5-sm {
+    width: 41.66667%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-5-sm {
+    padding-left: 41.66667% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-6-sm {
+    width: 50.0%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-6-sm {
+    padding-left: 50.0% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-7-sm {
+    width: 58.33333%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-7-sm {
+    padding-left: 58.33333% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-8-sm {
+    width: 66.66667%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-8-sm {
+    padding-left: 66.66667% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-9-sm {
+    width: 75.0%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-9-sm {
+    padding-left: 75.0% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-10-sm {
+    width: 83.33333%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-10-sm {
+    padding-left: 83.33333% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-11-sm {
+    width: 91.66667%;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-11-sm {
+    padding-left: 91.66667% !important;
+  }
+
+  /* line 158, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-12-sm {
+    width: 100.0%;
+    display: block;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* line 162, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-12-sm {
+    padding-left: 100.0% !important;
+  }
+}
+@media (max-width: 480px) {
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-0-xs {
+    width: 0%;
+    display: none;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-0-xs {
+    padding-left: 0% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-1-xs {
+    width: 8.33333%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-1-xs {
+    padding-left: 8.33333% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-2-xs {
+    width: 16.66667%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-2-xs {
+    padding-left: 16.66667% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-3-xs {
+    width: 25.0%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-3-xs {
+    padding-left: 25.0% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-4-xs {
+    width: 33.33333%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-4-xs {
+    padding-left: 33.33333% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-5-xs {
+    width: 41.66667%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-5-xs {
+    padding-left: 41.66667% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-6-xs {
+    width: 50.0%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-6-xs {
+    padding-left: 50.0% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-7-xs {
+    width: 58.33333%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-7-xs {
+    padding-left: 58.33333% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-8-xs {
+    width: 66.66667%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-8-xs {
+    padding-left: 66.66667% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-9-xs {
+    width: 75.0%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-9-xs {
+    padding-left: 75.0% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-10-xs {
+    width: 83.33333%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-10-xs {
+    padding-left: 83.33333% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-11-xs {
+    width: 91.66667%;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-11-xs {
+    padding-left: 91.66667% !important;
+  }
+
+  /* line 168, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-12-xs {
+    width: 100.0%;
+    display: block;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .col-offset-12-xs {
+    padding-left: 100.0% !important;
+  }
+}
+/*
+-----------------
+Text align
+-----------------
+*/
+/* line 183, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.text-align-left {
+  text-align: left;
+}
+
+/* line 184, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.text-align-center {
+  text-align: center;
+}
+
+/* line 185, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.text-align-right {
+  text-align: right;
+}
+
+/* line 187, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.fl-left {
+  float: left;
+}
+
+/* line 188, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.fl-right {
+  float: right;
+}
+
+/*
+-----------------
+Button and Link
+-----------------
+*/
+/* line 196, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.link-text {
+  color: #F0415B;
+  text-decoration: underline;
+}
+/* line 197, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.link-text:hover {
+  color: #8d0b1e;
+}
+/* line 198, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.link-text-grey {
+  color: #828ca4;
+  font-size: 14px;
+  text-decoration: underline;
+}
+/* line 199, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.link-text-grey:hover {
+  color: #3b4252;
+}
+
+/*
+-----------------
+Separator
+-----------------
+*/
+/* line 208, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+[class*='hr-'] {
+  width: 100%;
+  height: 0;
+  margin: 0 auto;
+  background: none;
+  border: none;
+}
+
+/* line 209, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.hr-dot {
+  border-top: 1px dotted #ddd;
+}
+
+/* line 210, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.hr-line {
+  border-top: 1px solid  #ddd;
+}
+
+/* line 211, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.hr-square {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #828CA4;
+  margin: 0 auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+/*
+-----------------
+Header categorie
+-----------------
+*/
+/* line 220, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.header-categorie {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 40px 0;
+  margin-bottom: 20px;
+}
+/* line 221, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.header-categorie .header-title {
+  color: #4F9893;
+  font-size: 24px;
+  font-family: 'sofia_proextra_light';
+}
+/* line 222, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.header-categorie h2 {
+  font-weight: normal;
+  color: #383838;
+  font-size: 18px;
+}
+/* line 223, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.header-categorie .text {
+  font-weight: normal;
+  display: block;
+  padding-top: 10px;
+}
+/* line 224, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.header-categorie ul {
+  padding-left: 40px;
+  padding-top: 20px;
+  color: #383838;
+  font-size: 18px;
+  padding-bottom: 20px;
+}
+/* line 225, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.header-categorie .btn {
+  margin-top: 20px;
+}
+@media (max-width: 992px) {
+  /* line 220, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .header-categorie {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 220, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .header-categorie {
+    padding: 20px 10px;
+  }
+}
+
+/*
+-----------------
+Icon set
+-----------------
+*/
+/* line 236, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.icon-set {
+  background: url("/public/images/clicandfit-icon-set.png") no-repeat;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* line 237, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.icon-adr-livraison {
+  background-position: -160px 0;
+}
+
+/* line 238, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.icon-adr-facture {
+  background-position: -40px 0;
+}
+
+/* line 239, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.icon-tools {
+  background-position: -80px 0;
+}
+
+/* line 240, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.icon-lock {
+  background-position: -120px 0;
+}
+
+/* line 241, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.icon-profil {
+  background-position: -200px 0;
+}
+
+/* line 242, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.icon-gift {
+  background-position: -240px 0;
+}
+
+/* line 243, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.icon-msg {
+  background-position: -280px 0;
+}
+
+/*
+-----------------
+Bloc
+-----------------
+*/
+/* line 250, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-page {
+  background: #F8F8F8;
+  padding: 40px;
+}
+@media (max-width: 768px) {
+  /* line 250, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .bloc-page {
+    padding: 10px 5px;
+  }
+}
+
+/* line 253, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-shadow {
+  box-shadow: 0px 2px 4px rgba(50, 50, 50, 0.1);
+  height: 100%;
+  padding: 40px;
+  background: #ffffff;
+  -webkit-box-sizing: initial !important;
+}
+/* line 254, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-shadow .title-bloc-shadow {
+  padding-bottom: 20px;
+  font-size: 20px;
+  color: #383838;
+}
+/* line 255, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-shadow .title-bloc-shadow .icon-set {
+  margin-right: 10px;
+}
+/* line 257, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-shadow hr {
+  padding-bottom: 20px;
+}
+/* line 258, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-shadow .text-bloc-shadow {
+  padding-bottom: 20px;
+}
+/* line 259, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-shadow .link-text {
+  display: block;
+}
+@media (max-width: 768px) {
+  /* line 253, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .bloc-shadow {
+    margin-bottom: 10px;
+    padding: 20px;
+    -webkit-box-sizing: border-box !important;
+  }
+}
+
+/* line 266, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-validation .icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+/* line 267, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-validation .icon.rond {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  border-radius: 100%;
+}
+/* line 268, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-validation .icon.success {
+  background: #3FC380;
+}
+/* line 269, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-validation .icon.error {
+  background: #ef6c00;
+}
+/* line 270, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-validation .icon .fa {
+  color: #ffffff;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+@media (max-width: 768px) {
+  /* line 266, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .bloc-validation .icon {
+    display: block;
+    margin: 0 auto 10px;
+  }
+}
+/* line 273, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.bloc-validation .msg {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  /* line 273, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  .bloc-validation .msg {
+    text-align: center;
+    display: block;
+  }
+}
+
+/*
+-----------------
+Input / Textarea
+-----------------
+*/
+/* line 283, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+input,
+textarea {
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/*
+-----------------
+Form
+-----------------
+*/
+/* line 290, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.question-general {
+  position: relative;
+}
+
+/* line 291, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.question-general .question-link {
+  display: block;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+/* line 292, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.question-general .question-link .label {
+  display: block;
+}
+
+/* line 293, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.question-general .question-link .content-input {
+  display: block;
+  float: left;
+  position: relative;
+}
+
+/* line 294, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.question-general .question-link .input {
+  height: 40px;
+  display: block;
+  padding: 10px;
+  margin-top: 5px;
+  text-align: left;
+  width: 100%;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+/* line 295, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.question-general .question-link .input:focus {
+  border: 1px solid #B2DFDB;
+}
+
+/* line 296, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.question-general .question-link.error .label {
+  color: #a41c19;
+}
+
+/* line 297, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.question-general .question-link.error .input {
+  border: 1px solid #a41c19;
+}
+
+/* line 304, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.anchor {
+  display: block;
+  height: 90px;
+  margin-top: -90px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* line 309, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.img-full {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 315, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal p,
+.content-social-media p {
+  margin-bottom: 20px;
+}
+/* line 316, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .row, #referal .form-1 .row-inline, .form-1 #referal .row-inline,
+.content-social-media .row,
+.content-social-media .form-1 .row-inline,
+.form-1 .content-social-media .row-inline {
+  height: auto;
+}
+/* line 317, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link,
+.content-social-media .link {
+  position: relative;
+  display: block;
+  height: 45px;
+  color: #fff;
+  line-height: 45px;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 319, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link .social,
+.content-social-media .link .social {
+  display: block;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  -ms-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+  font-size: 18px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 320, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link .text,
+.content-social-media .link .text {
+  padding: 0 10px 0 60px;
+  display: block;
+  width: 100%;
+}
+/* line 321, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link .text-hover,
+.content-social-media .link .text-hover {
+  opacity: 0;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: #FCFCFC;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  color: #6D737F;
+  width: 260px;
+  visibility: visible;
+}
+/* line 323, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link .text-hover:before, #referal .link .text-hover:after,
+.content-social-media .link .text-hover:before,
+.content-social-media .link .text-hover:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: -10px;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+/* line 324, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link .text-hover:before,
+.content-social-media .link .text-hover:before {
+  border-bottom: 10px solid #FCFCFC;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  z-index: 2;
+  top: -9px;
+}
+/* line 325, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link .text-hover:after,
+.content-social-media .link .text-hover:after {
+  border-bottom: 10px solid #ddd;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+/* line 326, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link .text-hover input,
+.content-social-media .link .text-hover input {
+  height: 40px;
+  display: block;
+  padding: 10px;
+  white-space: nowrap;
+  width: 100%;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 14px;
+}
+/* line 328, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link.open .text-hover,
+.content-social-media .link.open .text-hover {
+  opacity: 1;
+  visibility: visible;
+}
+/* line 330, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link.facebook .social, #referal .link.facebook:hover,
+.content-social-media .link.facebook .social,
+.content-social-media .link.facebook:hover {
+  background: #2d4373;
+}
+/* line 334, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link.instagram .social, #referal .link.instagram:hover,
+.content-social-media .link.instagram .social,
+.content-social-media .link.instagram:hover {
+  background: #406582;
+}
+/* line 338, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link.pinterest .social, #referal .link.pinterest:hover,
+.content-social-media .link.pinterest .social,
+.content-social-media .link.pinterest:hover {
+  background: #9f191f;
+}
+/* line 342, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link.twitter .social, #referal .link.twitter:hover,
+.content-social-media .link.twitter .social,
+.content-social-media .link.twitter:hover {
+  background: #0087ba;
+}
+/* line 346, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link.email .social, #referal .link.email:hover,
+.content-social-media .link.email .social,
+.content-social-media .link.email:hover {
+  background: #5c5653;
+}
+/* line 350, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#referal .link.copier .social, #referal .link.copier:hover,
+.content-social-media .link.copier .social,
+.content-social-media .link.copier:hover {
+  background: #4f9590;
+}
+@media (max-width: 768px) {
+  /* line 317, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  #referal .link,
+  .content-social-media .link {
+    margin-bottom: 10px;
+    min-width: 200px;
+  }
+}
+
+/*
+-----------------
+Cookie
+-----------------
+*/
+/* line 362, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#cookie-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  padding: 5px 0;
+  width: 100%;
+  background: #949494;
+  color: #fff;
+  font-size: 14px;
+  z-index: 3;
+}
+/* line 364, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#cookie-popup.hide {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+/* line 365, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#cookie-popup .cookie-text {
+  display: inline-block;
+}
+/* line 366, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#cookie-popup .cookie-btn {
+  display: inline-block;
+  color: #949494;
+  padding: 4px 8px;
+  background: #B2DFDB;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  /* line 366, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  #cookie-popup .cookie-btn {
+    margin-top: 4px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 362, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  #cookie-popup {
+    text-align: left;
+  }
+}
+
+/*
+-----------------
+Smartsup
+-----------------
+*/
+@media (max-width: 992px) {
+  /* line 379, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+  #chat-application {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+  }
+}
+/*
+-----------------
+Tunnel commande
+-----------------
+*/
+/* line 390, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#bloc-tunnel-commande {
+  padding: 20px 0 40px;
+  text-align: center;
+}
+/* line 392, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#bloc-tunnel-commande.step-1-color .step-1 {
+  color: #f0415b;
+}
+/* line 395, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#bloc-tunnel-commande.step-2-color .step-1,
+#bloc-tunnel-commande.step-2-color .step-2 {
+  color: #f0415b;
+}
+/* line 398, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#bloc-tunnel-commande .fa {
+  margin: 0 15px;
+}
+/* line 399, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#bloc-tunnel-commande .step {
+  display: inline-block;
+}
+/* line 400, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+#bloc-tunnel-commande .color {
+  color: #f0415b;
+}
+
+/* line 406, ../../../src/CF/CoreBundle/Resources/css/partials/guideline.scss */
+.small-font {
+  font-size: 14px;
+}
+
+/* line 1, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#same-address {
+  display: block;
+  cursor: pointer;
+}
+
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#same-address [type="checkbox"]:not(:checked),
+#same-address [type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+  display: none;
+}
+
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#same-address [type="checkbox"]:not(:checked) + label,
+#same-address [type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#same-address [type="checkbox"]:not(:checked) + label:before,
+#same-address [type="checkbox"]:checked + label:before,
+#same-address [type="checkbox"]:not(:checked) + label:after,
+#same-address [type="checkbox"]:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  border-radius: 100%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* line 10, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#same-address [type="checkbox"]:not(:checked) + label:after,
+#same-address [type="checkbox"]:checked + label:after {
+  background: #b2dfdb;
+}
+
+/* line 12, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#same-address [type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* line 13, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#same-address [type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+  color: #3FC380;
+}
+
+/* line 15, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#adresse-content .btn {
+  margin-bottom: 10px;
+  margin-left: 0;
+}
+
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#invoice-address.bloc-shadow,
+#delivery-address.bloc-shadow {
+  padding-bottom: 0;
+}
+
+/* line 19, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#invoice-address {
+  display: none;
+}
+/* line 20, ../../../src/CF/CoreBundle/Resources/css/modules/adresse.scss */
+#invoice-address.open {
+  display: block;
+}
+
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/cgv.scss */
+#cf_core_cgv .content h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 16px 0;
+  line-height: 1em;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/cgv.scss */
+#cf_core_cgv .content h3 {
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 14px 0;
+  line-height: 1em;
+}
+
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/modules/cgv.scss */
+#cf_core_cgv .content h4 {
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 8px 0;
+  line-height: 1em;
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/cgv.scss */
+#cf_core_cgv .content a {
+  color: #4F9893;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/cgv.scss */
+#cf_core_cgv .content ul {
+  padding-left: 20px;
+}
+
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/cgv.scss */
+#cf_core_cgv .content ul li {
+  list-style: circle;
+}
+
+@media (max-width: 992px) {
+  /* line 12, ../../../src/CF/CoreBundle/Resources/css/modules/cgv.scss */
+  #basic-content {
+    padding: 40px 0;
+  }
+}
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/compte.scss */
+body {
+  background: #F8F8F8;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/compte.scss */
+#account-content {
+  color: #383838;
+}
+
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+#contact-content #contact-aide {
+  padding: 0 40px;
+}
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+#contact-content #contact-aide .title {
+  font-size: 20px;
+  padding-bottom: 25px;
+  color: #000;
+}
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+#contact-content #contact-aide .question-liste {
+  padding-left: 40px;
+  list-style-type: circle;
+}
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+#contact-content #contact-aide .question-liste li {
+  padding-bottom: 15px;
+}
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+#contact-content #contact-aide .question-liste li a {
+  color: #383838;
+}
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+#contact-content #contact-aide .question-liste li a:hover {
+  color: #f0415b;
+  text-decoration: underline;
+}
+/* line 11, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+#contact-content #contact-aide .hr-dot {
+  margin: 20px auto;
+}
+@media (max-width: 768px) {
+  /* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+  #contact-content #contact-aide {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  /* line 15, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+  #contact-content #contact-aide .title {
+    text-align: center;
+  }
+  /* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+  #contact-content #contact-aide .question-liste {
+    padding-left: 20px;
+  }
+  /* line 17, ../../../src/CF/CoreBundle/Resources/css/modules/contact.scss */
+  #contact-content #contact-aide .hr-dot {
+    display: none;
+  }
+}
+
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/error.scss */
+#error-404 .bloc-shadow {
+  margin-bottom: 20px;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/error.scss */
+#error-404 .bloc-design .link-text {
+  display: inline-block;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content #questions {
+  text-align: left;
+  padding-bottom: 40px;
+}
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content #questions .question-categorie {
+  display: block;
+  width: 100%;
+  padding: 40px 0 5px;
+  font-size: 24px;
+  font-weight: normal;
+  color: #000;
+}
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content #questions .question-categorie:first-child {
+  padding-top: 0;
+}
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content #questions .question a {
+  color: #383838;
+}
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content #questions .question a:hover {
+  color: #f0415b;
+}
+
+/* line 14, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content #questions #contact-us {
+  padding-top: 40px;
+}
+
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content .bloc-shadow {
+  margin-bottom: 20px;
+}
+
+/* line 17, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content .link-text {
+  display: inline-block;
+  margin-top: 0;
+}
+
+/* line 18, ../../../src/CF/CoreBundle/Resources/css/modules/faq.scss */
+#faq-content .anchor {
+  height: 140px;
+  margin-top: -140px;
+}
+
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#cf_core_homepage #footer {
+  padding-top: 40px;
+}
+
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 40px 0;
+  position: relative;
+  text-align: center;
+  color: #949494;
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .introduction {
+  font-size: 18px;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .social {
+  padding: 20px 0;
+}
+
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .social .button-social {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  border-radius: 100%;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+}
+
+/* line 9, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .social .button-social .fa {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* line 10, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .social .facebook {
+  background: #b2dfdb;
+}
+
+/* line 11, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .social .pinterest {
+  background: #b2dfdb;
+}
+
+/* line 12, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .social .instagram {
+  background: #b2dfdb;
+}
+
+/* line 15, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .link {
+  padding-top: 40px;
+}
+
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .link ul {
+  list-style-type: none;
+}
+
+/* line 17, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .link ul li {
+  display: inline-block;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* line 18, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .link ul li:not(:last-child):after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  position: absolute;
+  height: 1px;
+  background: #828ca4;
+  width: 10px;
+}
+
+/* line 19, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .link ul li a {
+  font-size: 16px;
+  color: #949494;
+}
+
+/* line 20, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#footer .link ul li a:hover {
+  color: #4F9893;
+}
+
+/* line 21, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+#copyright {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+  /* line 27, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+  #footer {
+    padding: 40px 5px;
+  }
+
+  /* line 28, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+  #footer .link {
+    padding-top: 20px;
+  }
+}
+@media (max-width: 768px) {
+  /* line 31, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+  #footer .link ul li {
+    padding-bottom: 15px;
+  }
+
+  /* line 32, ../../../src/CF/CoreBundle/Resources/css/modules/footer.scss */
+  #footer .link ul li:after {
+    content: none;
+    display: none;
+  }
+}
+/* line 1, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#contentHome {
+  position: relative;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 {
+  background: #fff url("/public/images/planche-style-2016.jpg") no-repeat center;
+  height: 540px;
+  width: 100%;
+  position: relative;
+  background-size: contain;
+  min-height: 100%;
+  padding: 40px 0;
+}
+
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 .content {
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  color: #949494;
+  max-width: 480px;
+  position: absolute;
+  text-align: center;
+  width: 90%;
+}
+
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 .content #logo {
+  margin: 0 auto;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 .content #logo a {
+  display: block;
+  max-width: 200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 .content #logo a img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 .content p {
+  font-size: 60px;
+  padding-top: 40px;
+  margin: 0;
+  font-family: "alwaysforeverregular";
+  line-height: 1em;
+  letter-spacing: 2px;
+}
+
+/* line 9, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 .content hr {
+  width: 60px;
+  border: none;
+  margin: 20px auto;
+  height: 1px;
+  background: #949494;
+}
+
+/* line 10, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 .content h1 {
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0;
+  font-weight: normal;
+}
+
+/* line 11, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part1 .content .btn {
+  margin-top: 20px;
+}
+
+/* line 13, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#how_work {
+  background: #f2f6f8;
+  color: #949494;
+  padding: 40px 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+/* line 15, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 {
+  color: #949494;
+  background: #FFF;
+}
+
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul {
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+/* line 17, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li {
+  width: 100%;
+  display: block;
+  text-align: center;
+  height: 480px;
+}
+
+/* line 19, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li .left {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 20, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul .step1 .left {
+  background: url("/public/images/part2Img1.jpg") no-repeat center;
+  background-size: cover;
+}
+
+/* line 21, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul .step2 .left {
+  background: url("/public/images/part2Img2.jpg") no-repeat center;
+  background-size: cover;
+}
+
+/* line 22, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul .step3 .left {
+  background: url("/public/images/part2Img3.jpg") no-repeat center;
+  background-size: cover;
+}
+
+/* line 23, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li .right {
+  float: right;
+  width: 50%;
+  position: relative;
+  height: 100%;
+}
+
+/* line 24, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li:nth-child(2) .left {
+  float: right;
+}
+
+/* line 25, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li:nth-child(2) .right {
+  float: left;
+}
+
+/* line 26, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li .content {
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  position: absolute;
+}
+
+/* line 27, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li .content .etape {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* line 28, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li .content .hr1 {
+  margin: 20px auto;
+  width: 60px;
+  height: 0;
+  border: none;
+  border-top: 1px dotted #828ca4;
+}
+
+/* line 29, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li .content h3 {
+  font-size: 26px;
+  font-weight: normal;
+}
+
+/* line 30, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li .content .hr2 {
+  width: 12px;
+  height: 12px;
+  margin: 20px auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  border: 1px solid #828ca4;
+}
+
+/* line 31, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part2 ul li .content p:not(.etape) {
+  font-size: 20px;
+}
+
+/* line 33, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 {
+  background: #f2f6f8;
+  color: #949494;
+  padding: 40px 0;
+}
+
+/* line 34, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 h2 {
+  font-size: 40px;
+  text-align: center;
+  font-weight: normal;
+}
+
+/* line 35, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 ul {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 80px;
+}
+
+/* line 36, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 ul li {
+  display: inline-block;
+  width: 33%;
+  padding: 0 20px;
+  vertical-align: top;
+  margin-right: -4px;
+}
+
+/* line 37, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 ul li h3 {
+  font-size: 26px;
+  padding-bottom: 20px;
+  font-weight: normal;
+  line-height: 1em;
+}
+
+/* line 38, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 ul li h3:before {
+  display: block;
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: #949494;
+  margin: 40px auto;
+}
+
+/* line 39, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 ul li p {
+  font-size: 16px;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* line 40, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 ul li .image {
+  height: 119px;
+}
+
+/* line 41, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 ul li .image img {
+  display: block;
+  height: auto;
+  width: 100%;
+  max-width: 131px;
+  max-height: 119px;
+  margin: 0 auto;
+}
+
+/* line 42, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part3 .voucher {
+  color: #D64541;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* line 44, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 {
+  background: #fff;
+  padding: 80px 0 4px 0;
+  color: #828ca4;
+  text-align: center;
+}
+
+/* line 45, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul {
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+/* line 47, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li {
+  float: left;
+  width: 50%;
+}
+
+/* line 48, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li:nth-child(1) {
+  border-right: 2px solid #fff;
+}
+
+/* line 49, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li:nth-child(2) {
+  border-left: 2px solid #fff;
+}
+
+/* line 50, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li .texte {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* line 51, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li h2 {
+  font-size: 36px;
+  font-weight: normal;
+}
+
+/* line 52, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li hr {
+  width: 12px;
+  height: 12px;
+  margin: 40px auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  border: 1px solid #828ca4;
+}
+
+/* line 53, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li p {
+  font-size: 20px;
+}
+
+/* line 54, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li .image {
+  margin-top: 80px;
+}
+
+/* line 55, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part4 ul li .image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* line 57, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 {
+  padding: 80px 10px;
+  background: #f2f6f8;
+  color: #828ca4;
+}
+
+/* line 58, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 .content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* line 60, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 .left {
+  position: absolute;
+  max-width: 540px;
+  padding: 0 20px;
+  left: 0;
+}
+
+/* line 61, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 .left h2 {
+  font-size: 36px;
+  font-weight: normal;
+}
+
+/* line 62, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 .left hr {
+  width: 40px;
+  margin: 20px 0;
+  height: 1px;
+  background: #828ca4;
+  border: none;
+}
+
+/* line 63, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 .left p {
+  font-style: italic;
+  font-size: 20px;
+}
+
+/* line 64, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 .left p span {
+  font-size: 25px;
+  padding-top: 20px;
+  display: block;
+  font-style: normal;
+}
+
+/* line 65, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 .right {
+  float: right;
+  background: transparent;
+}
+
+/* line 66, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part5 .right img {
+  max-width: 300px;
+  max-height: 300px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  border-radius: 100%;
+  display: block;
+}
+
+/* line 68, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part6 {
+  background: url("/public/images/part6Background.jpg") no-repeat center;
+  background-size: cover;
+  padding: 60px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+}
+
+/* line 69, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part6:before {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* line 70, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part6 .content {
+  border: 1px solid #ffffff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 80px;
+  position: relative;
+}
+
+/* line 71, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part6 .content h2 {
+  font-size: 80px;
+  font-weight: normal;
+}
+
+/* line 72, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part6 .content hr {
+  margin: 60px auto;
+  border: none;
+  height: 1px;
+  background: #ffffff;
+  max-width: 400px;
+  width: 50%;
+}
+
+/* line 73, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part6 .content p {
+  font-size: 26px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* line 77, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part8 {
+  background: #b2dfdb;
+  padding: 60px 0;
+  display: none;
+}
+
+/* line 78, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part8 h2 {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* line 79, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part8 ul {
+  list-style-type: none;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 40px;
+}
+
+/* line 80, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#part8 ul li {
+  display: inline-block;
+  margin: 0 40px;
+}
+
+/* line 84, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#account .content {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* line 86, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.header_account {
+  padding: 10px;
+  background: #f7f7f7;
+  border-bottom: 1px solid #dedede;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* line 87, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.header_account .content {
+  padding: 0 20px;
+}
+
+/* line 88, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.header_account .left_welcome {
+  float: left;
+  margin-top: 6px;
+}
+
+/* line 89, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.header_account .right_actions {
+  float: right;
+}
+
+/* line 90, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.header_account h1 {
+  font-size: 24px;
+  font-weight: normal;
+  color: #828ca4;
+}
+
+/* line 91, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.header_account .right_actions a {
+  display: block;
+  padding: 10px 20px;
+  background: #f0415b;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #f0415b;
+}
+
+/* line 92, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.header_account .right_actions a:hover {
+  background: #C7374D;
+  border: 1px solid #8d0b1e;
+}
+
+/* line 94, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+#block_order, #block_infos {
+  padding: 40px 20px 0 20px;
+  color: #737373;
+}
+
+/* line 95, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_item {
+  border: 1px double #eee;
+  padding: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 96, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_detail {
+  float: left;
+  width: 60%;
+}
+
+/* line 97, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_history {
+  float: right;
+  width: 38%;
+  min-height: 300px;
+}
+
+/* line 98, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_item h2 {
+  line-height: 1em;
+  font-weight: normal;
+  color: #828ca4;
+}
+
+/* line 99, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_item h2:after {
+  display: block;
+  content: "";
+  margin-top: 10px;
+  height: 1px;
+  width: 100%;
+  background: #eee;
+}
+
+/* line 101, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_state {
+  display: block;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+/* line 102, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_state tr td:first-child {
+  width: 70%;
+}
+
+/* line 103, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_state tr td {
+  padding: 8px 8px 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+/* line 104, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_state tr:last-child td {
+  border-bottom: none;
+}
+
+/* line 105, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_state tr td i {
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 10px;
+  vertical-align: middle;
+  min-width: 14px;
+}
+
+/* line 106, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_state tr td span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1em;
+}
+
+/* line 107, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_state tr td:last-child {
+  font-weight: bold;
+}
+
+/* line 108, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_order_state tr td span.state_order_label {
+  padding: 5px 10px;
+  background: #3a746e;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: normal;
+}
+
+/* line 109, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_addresses > div {
+  float: left;
+  width: 50%;
+}
+
+/* line 111, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_addresses h3 {
+  font-weight: normal;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+/* line 112, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.block_addresses h3 i {
+  margin-right: 10px;
+}
+
+/* line 114, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.form_block {
+  padding: 20px 0 0 0;
+}
+
+/* line 115, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.form_block .form_field {
+  margin-bottom: 10px;
+}
+
+/* line 116, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+.form_block .form_field:last-child {
+  margin-bottom: 0;
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+  /* line 120, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li .left img {
+    max-width: none;
+    width: auto;
+    height: 100%;
+  }
+
+  /* line 121, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* line 122, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li .left:first-child {
+    padding-top: 0;
+  }
+
+  /* line 123, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li .content {
+    padding: 0 20px;
+  }
+
+  /* line 125, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part4 ul li .image {
+    margin-top: 40px;
+  }
+}
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+  /* line 130, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part1 {
+    height: auto;
+    background: #FFF;
+  }
+
+  /* line 131, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part1 .content {
+    position: relative;
+    top: 0;
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+  }
+
+  /* line 132, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 {
+    padding-top: 0;
+  }
+
+  /* line 133, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 h2 {
+    padding: 40px 20px;
+  }
+
+  /* line 134, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul {
+    padding: 0;
+  }
+
+  /* line 135, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li {
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  /* line 136, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li .content {
+    position: relative;
+    top: 0;
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+  }
+
+  /* line 137, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li .left {
+    float: none;
+    width: 100%;
+    margin: 0 auto;
+    height: 400px;
+  }
+
+  /* line 138, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li .right {
+    float: none;
+    width: 100%;
+    position: relative;
+    height: auto;
+    margin: 0 auto;
+    padding: 40px 10px;
+  }
+
+  /* line 139, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li:nth-child(2) .left {
+    float: none;
+  }
+
+  /* line 140, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li:nth-child(2) .right {
+    float: none;
+  }
+
+  /* line 142, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part4 ul li {
+    width: 100%;
+    float: inherit;
+    border: none !important;
+  }
+
+  /* line 143, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part4 ul li:nth-child(1) {
+    margin-bottom: 60px;
+  }
+
+  /* line 144, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part5 .left {
+    position: relative;
+    top: 0;
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  /* line 145, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part5 .left hr {
+    margin: 20px auto;
+  }
+
+  /* line 146, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part5 .left .br {
+    display: none;
+  }
+
+  /* line 147, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part5 .right {
+    float: none;
+  }
+
+  /* line 148, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part5 .right img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 40px auto 0;
+  }
+
+  /* line 150, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part6 .content h2 {
+    font-size: 40px;
+  }
+
+  /* line 151, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part6 .content {
+    padding: 40px 20px;
+  }
+
+  /* line 152, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part6 .content hr {
+    margin: 20px auto;
+  }
+
+  /* line 153, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part6 .br {
+    display: none;
+  }
+
+  /* line 155, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part7 {
+    padding: 10px;
+  }
+
+  /* line 156, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part7 .left {
+    display: none;
+  }
+
+  /* line 157, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part7 .right {
+    margin: 0 auto;
+    float: inherit;
+    max-width: 100%;
+  }
+
+  /* line 159, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part8 {
+    margin: 0 auto 65px;
+  }
+}
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  /* line 164, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part1 .content #logo {
+    max-width: 300px;
+  }
+
+  /* line 165, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part1 .content p {
+    padding-top: 40px;
+  }
+
+  /* line 166, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part1 .content .bouton {
+    margin-top: 40px;
+  }
+
+  /* line 167, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part2 ul li .right,
+  #part2 ul li .left {
+    width: 100%;
+  }
+
+  /* line 170, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part3 {
+    padding: 40px 10px;
+  }
+
+  /* line 171, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part3 ul li {
+    display: block;
+    width: 100%;
+    padding: 0 20px 60px;
+    margin-right: auto;
+  }
+
+  /* line 172, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part3 ul li:last-child {
+    padding-bottom: 0;
+  }
+
+  /* line 173, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part3 ul li .image {
+    height: 80px;
+  }
+
+  /* line 174, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part3 ul li .image img {
+    max-height: 80px;
+    width: auto;
+  }
+
+  /* line 175, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part3 ul li h3::before {
+    display: none;
+    content: none;
+  }
+
+  /* line 176, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part3 ul li h3 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  /* line 178, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part4 {
+    padding: 40px 10px;
+  }
+
+  /* line 179, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part4 ul li:nth-child(1) {
+    padding-bottom: 40px;
+  }
+
+  /* line 180, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part4 ul li {
+    width: 100%;
+    max-width: 700px;
+    float: none;
+    margin: 0 auto;
+  }
+
+  /* line 181, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part4 ul li hr {
+    margin: 20px auto;
+  }
+
+  /* line 182, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part4 ul li .image {
+    margin: 20px auto 0px;
+  }
+
+  /* line 184, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part5 {
+    padding: 40px 10px;
+  }
+
+  /* line 186, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part6 {
+    padding: 10px;
+  }
+
+  /* line 187, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part6 .content {
+    padding: 10px;
+  }
+
+  /* line 188, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part6 .content p {
+    font-size: 22px;
+  }
+
+  /* line 192, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part8 {
+    padding-bottom: 40px;
+  }
+
+  /* line 193, ../../../src/CF/CoreBundle/Resources/css/modules/global.scss */
+  #part8 ul li {
+    display: block;
+    margin: 00px auto 40px;
+  }
+}
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/maintenance.scss */
+#logo {
+  margin: 0 auto;
+  display: block;
+  opacity: 0.5;
+  max-width: 200px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/maintenance.scss */
+#logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/modules/maintenance.scss */
+#maintenance-content {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/modules/maintenance.scss */
+#maintenance-content .entete {
+  padding: 20px;
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/maintenance.scss */
+#maintenance-content .entete h1 {
+  color: #4F9893;
+  font-size: 26px;
+  font-weight: normal;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/maintenance.scss */
+#maintenance-content .entete p {
+  font-size: 18px;
+  font-weight: normal;
+  display: block;
+}
+
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/mentions.scss */
+#mentions-content {
+  max-width: 1200px;
+  padding: 40px;
+  margin: 0 auto;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/mentions.scss */
+#mentions-content .entete h1 {
+  color: #4F9893;
+  font-size: 26px;
+  font-weight: normal;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* line 4, ../../../src/CF/CoreBundle/Resources/css/modules/mentions.scss */
+#mentions-content .entete {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #949494;
+  margin-bottom: 40px;
+}
+
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/modules/mentions.scss */
+#mentions-content .entete p {
+  font-size: 18px;
+  font-weight: normal;
+  display: block;
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/mentions.scss */
+#mentions-content .content h2 {
+  font-weight: normal;
+  margin: 22px 0;
+  color: #4F9893;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/mentions.scss */
+#mentions-content .content h2:first-child {
+  margin-top: 0;
+}
+
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/mentions.scss */
+#mentions-content .content p {
+  margin-bottom: 15px;
+  color: #777;
+}
+
+/* line 9, ../../../src/CF/CoreBundle/Resources/css/modules/mentions.scss */
+#mentions-content .content a {
+  color: #4F9893;
+}
+
+/*
+-----------------
+Commander ma box
+-----------------
+*/
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander {
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+  /* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander {
+    margin-top: 10px;
+  }
+}
+/* line 11, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-shadow_small-padding {
+  background: #fdfdfd;
+  padding: 0;
+  height: auto;
+}
+/* line 12, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-comment {
+  padding: 0;
+  margin-bottom: 10px;
+  position: relative;
+}
+/* line 13, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-comment .label {
+  display: block;
+  text-align: center;
+  max-width: 30%;
+  padding: 20px;
+  position: absolute;
+}
+/* line 14, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-comment .textarea {
+  border: none;
+  border-left: 1px solid #ddd;
+  padding: 15px;
+  background: #FFF;
+  resize: none;
+  max-width: 70%;
+  width: 100%;
+  min-height: 100px;
+  font-size: 16px;
+  float: right;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  /* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-comment .label {
+    position: relative;
+    max-width: 100%;
+    padding: 15px;
+    top: 0;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0);
+    -ms-transform: translateY(0);
+  }
+  /* line 17, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-comment .textarea {
+    float: none;
+    max-width: 100%;
+    border: none;
+    border-top: 1px solid #ddd;
+    min-height: 120px;
+  }
+}
+@media (max-width: 480px) {
+  /* line 20, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-comment .textarea {
+    min-height: 150px;
+  }
+}
+/* line 24, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-top {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+/* line 26, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-top .title {
+  padding-bottom: 2px;
+  font-size: 20px;
+  color: #383838;
+}
+/* line 28, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle {
+  position: relative;
+}
+/* line 29, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle .right {
+  width: 50%;
+  min-height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+/* line 30, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle .right .img-produit {
+  background: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  border: 10px solid #FDFDFD;
+  position: absolute;
+  height: 100%;
+}
+/* line 31, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle .right .img-produit .img {
+  background: url("/public/images/commande-clic-and-fit.png") no-repeat center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+@media (max-width: 768px) {
+  /* line 29, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-middle .right {
+    display: none;
+  }
+  /* line 35, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-middle .right .img-produit {
+    position: relative;
+    height: auto;
+  }
+}
+/* line 38, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle .left {
+  position: relative;
+  width: 50%;
+  padding: 20px;
+}
+/* line 40, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle .left .line .title {
+  padding-bottom: 2px;
+  font-size: 20px;
+  color: #383838;
+}
+/* line 41, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle .left .line .text {
+  font-size: 14px;
+}
+/* line 42, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle .left .line .img-credit-card {
+  background: url("/public/images/credit-card-icon.png") no-repeat left;
+  background-size: contain;
+  max-width: 100%;
+  width: auto;
+  min-width: 210px;
+  height: 40px;
+  margin: 0;
+}
+/* line 44, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-middle .left .hr-dot {
+  margin: 20px auto;
+  padding: 0;
+}
+@media (max-width: 768px) {
+  /* line 38, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-middle .left {
+    width: 100%;
+  }
+  /* line 47, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-middle .left .line {
+    text-align: center;
+  }
+  /* line 48, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-middle .left .line .img-credit-card {
+    background: url("/public/images/credit-card-icon.png") no-repeat center;
+    background-size: contain;
+  }
+}
+/* line 53, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom {
+  position: relative;
+  background: #FFF;
+  border-top: 1px solid #ddd;
+}
+/* line 54, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left {
+  padding: 20px;
+  text-align: left;
+}
+/* line 55, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #bloc-cgv {
+  display: block;
+  cursor: pointer;
+  font-size: 14px;
+  padding-bottom: 15px;
+}
+/* line 56, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked),
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+  display: none;
+}
+/* line 58, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked) + label,
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  display: block;
+}
+/* line 60, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked) + label:before, #commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked) + label:after,
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label:before,
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 17px;
+  height: 17px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  text-align: center;
+}
+/* line 62, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked) + label:before,
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label:before {
+  border: 1px solid #aaa;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: #f8f8f8;
+}
+/* line 63, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked) + label:after,
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label:after {
+  opacity: 0;
+  transform: scale(0);
+  color: #3FC380;
+  content: '✔';
+  top: 1px;
+  width: 19px;
+  height: 19px;
+}
+/* line 64, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:not(:checked) + label .link-text,
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label .link-text {
+  display: inline-block;
+}
+/* line 66, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #bloc-cgv [type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* line 70, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .bloc-bottom .left #mark-payment-form {
+  display: inline-block;
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  /* line 75, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-bottom .left {
+    height: auto;
+    width: 100%;
+    text-align: center;
+  }
+  /* line 76, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-bottom .left #bloc-cgv {
+    padding: 15px 0;
+    text-align: left;
+  }
+  /* line 77, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-bottom .left #mark-payment-form {
+    display: block;
+  }
+  /* line 78, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #commander .bloc-bottom .left #mark-payment-form .btn {
+    width: 100%;
+    height: 50px;
+  }
+}
+/* line 83, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander .cgv-not-checked {
+  display: none;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: #ef6c00;
+}
+
+/* line 90, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander-ma-box #message .title-bloc-shadow {
+  padding: 0 20px 20px;
+}
+/* line 91, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander-ma-box #message .bloc-shadow {
+  padding-top: 40px;
+}
+/* line 93, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander-ma-box .page-success {
+  margin-top: 20px;
+}
+/* line 94, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#commander-ma-box .img-full {
+  background: transparent url("/public/images/part2Img3.jpg") no-repeat scroll center;
+  background-size: cover;
+}
+
+/*
+-----------------
+Payer ma box
+-----------------
+*/
+/* line 107, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire {
+  padding-bottom: 10px;
+}
+/* line 108, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .title-bloc-shadow {
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+@media (max-width: 768px) {
+  /* line 108, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #payer-ma-selection-formulaire .title-bloc-shadow {
+    text-align: center;
+  }
+}
+/* line 111, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .product,
+#payer-ma-selection-formulaire .total {
+  padding: 8px 0;
+  position: relative;
+  max-width: 400px;
+}
+/* line 114, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .product .name {
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 115, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .product .price {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  background: #fff;
+}
+@media (max-width: 768px) {
+  /* line 115, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #payer-ma-selection-formulaire .product .price {
+    position: relative;
+    top: 0;
+  }
+}
+@media (max-width: 768px) {
+  /* line 113, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #payer-ma-selection-formulaire .product {
+    text-align: right;
+  }
+}
+/* line 120, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .total {
+  text-align: right;
+  padding: 4px 0;
+}
+/* line 121, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .total .price,
+#payer-ma-selection-formulaire .total .name {
+  display: inline-block;
+}
+/* line 123, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .total .name {
+  font-weight: bold;
+}
+/* line 124, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .total .crossed {
+  text-decoration: line-through;
+}
+/* line 126, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection-formulaire .hr-dot {
+  max-width: 400px;
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  /* line 130, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #form-payment-return .total .price,
+  #form-payment-return .total .name {
+    display: block;
+  }
+
+  /* line 132, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+  #form-payment-return .total .price {
+    max-width: 100%;
+  }
+}
+/* line 137, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection .page-success {
+  margin-top: 20px;
+}
+/* line 138, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection .facebook {
+  background: #3b5998;
+  color: #fff;
+  padding: 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  display: inline-block;
+}
+/* line 139, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection .facebook:hover {
+  background: #2d4373;
+}
+/* line 140, ../../../src/CF/CoreBundle/Resources/css/modules/commander-ma-box.scss */
+#payer-ma-selection .facebook i {
+  margin-right: 5px;
+}
+
+/* line 1, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#payment-return {
+  padding-bottom: 20px;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .bloc-shadow {
+  margin-bottom: 20px;
+}
+
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .titre {
+  font-family: "sofia_prolight";
+  font-size: 24px;
+  padding-right: 220px;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .prix {
+  font-family: "sofia_prolight";
+  font-size: 22px;
+  color: #F0415B;
+  position: relative;
+}
+
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* line 9, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .texte {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* line 10, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .choix {
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  overflow: hidden;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* line 11, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .choix ::selection {
+  background: transparent;
+}
+
+/* line 12, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .choix ::-moz-selection {
+  background: transparent;
+}
+
+/* line 13, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .choix {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-transform: uppercase;
+}
+
+/* line 14, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .choix .oui {
+  float: left;
+  width: 50px;
+  height: 30px;
+  background: #4F986F;
+  line-height: 30px;
+  color: #fff;
+}
+
+/* line 15, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .choix .non {
+  float: left;
+  width: 50px;
+  height: 30px;
+  background: #ef5350;
+  line-height: 30px;
+  color: #fff;
+}
+
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .choix .cache {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 50px;
+  height: 30px;
+  background: #eee;
+}
+
+/* line 17, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .informations .je_le_veux .choix .cache .lines {
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  vertical-align: middle;
+  background: #BABABA;
+  top: 10px;
+}
+
+/* line 19, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .avis .texte {
+  font-size: 16px;
+}
+
+/* line 20, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .avis .commentaire {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  margin: 10px 0 0;
+  resize: none;
+  display: block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* line 21, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles .avis .commentaire:focus {
+  border: 1px solid #B2DFDB;
+}
+
+/* line 23, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles.check .informations .je_le_veux .choix .cache {
+  left: 50px;
+}
+
+/* line 24, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#block-payment .articles ::-webkit-input-placeholder,
+#block-payment .articles :-moz-placeholder,
+#block-payment .articles :-ms-input-placeholder {
+  font-family: "sofia_prolight";
+  color: #383838;
+}
+
+/* line 34, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#retour-client .bloc:first-child {
+  padding-bottom: 20px;
+}
+@media (max-width: 768px) {
+  /* line 33, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+  #retour-client .bloc {
+    padding-bottom: 30px;
+  }
+}
+/* line 39, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#retour-client .bloc .title {
+  padding-bottom: 5px;
+}
+/* line 40, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#retour-client .bloc .cadre {
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #F9F9F9;
+}
+@media (max-width: 480px) {
+  /* line 40, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+  #retour-client .bloc .cadre {
+    height: 60px;
+  }
+}
+/* line 45, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#retour-client .bloc label {
+  float: left;
+  text-align: center;
+  padding: 10px 5px;
+  border-right: 1px solid #ddd;
+  background: #F9F9F9;
+  font-size: 14px;
+  position: relative;
+  height: 100%;
+}
+/* line 46, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#retour-client .bloc label:last-child {
+  border: none;
+}
+/* line 51, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#retour-client input[type="radio"]:not(:checked),
+#retour-client input[type="radio"]:checked {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+  display: none;
+}
+/* line 54, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#retour-client input[type="radio"]:not(:checked) + label,
+#retour-client input[type="radio"]:checked + label {
+  position: relative;
+  cursor: pointer;
+}
+/* line 57, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#retour-client input[type="radio"]:checked + label {
+  background: #B2DFDB;
+  color: #6D737F;
+}
+
+/* line 66, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#resume {
+  text-align: left;
+}
+
+/* line 67, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#resume .bloc {
+  padding-bottom: 20px;
+}
+
+/* line 68, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#resume .bloc .titre {
+  font-weight: bold;
+}
+
+/* line 69, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#resume .bloc .price {
+  font-family: "sofia_prolight";
+  font-size: 18px;
+  color: #F0415B;
+  position: relative;
+}
+
+/* line 70, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#resume .bloc .texte_reduction .miss_product {
+  color: #F0415B;
+}
+
+/* line 71, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+#resume .btn {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  /* line 81, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+  #block-payment .articles .informations .titre {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  /* line 82, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+  #block-payment .articles .informations .prix {
+    text-align: center;
+  }
+
+  /* line 83, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+  #block-payment .articles .informations .je_le_veux {
+    left: 0;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px 0 5px;
+    text-align: center;
+  }
+
+  /* line 84, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+  #block-payment .articles .informations .je_le_veux .texte {
+    margin-right: 0;
+  }
+
+  /* line 85, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+  #block-payment .articles .informations .je_le_veux .choix {
+    display: block;
+    margin: 5px auto 0;
+  }
+
+  /* line 87, ../../../src/CF/CoreBundle/Resources/css/modules/payment-return.scss */
+  #resume {
+    padding: 0 10px;
+  }
+}
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+#propos-content ul {
+  max-width: 1200px;
+  padding: 80px 0 0;
+  margin: 0 auto;
+  list-style-type: none;
+  text-align: center;
+}
+
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+#propos-content ul li {
+  float: left;
+  width: 33%;
+  min-height: 500px;
+  padding: 0 20px;
+}
+
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+#propos-content ul li:nth-child(3n+2) {
+  width: 34%;
+}
+
+/* line 9, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+#propos-content ul li .image {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  border-radius: 100%;
+  background: #EFEFEF;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+/* line 10, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+#propos-content ul li .name {
+  color: #4F9893;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+/* line 11, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+#propos-content ul li .job {
+  font-size: 18px;
+  font-style: italic;
+  padding-top: 20px;
+}
+
+/* line 12, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+#propos-content ul li .texte {
+  font-size: 16px;
+  padding-top: 5px;
+}
+
+@media (max-width: 992px) {
+  /* line 18, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+  #propos-content .entete {
+    padding: 0 20px;
+  }
+
+  /* line 19, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+  #propos-content ul {
+    padding: 40px 0 0 0;
+  }
+
+  /* line 20, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+  #propos-content ul li,
+  #propos-content ul li:nth-child(3n+2) {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  /* line 24, ../../../src/CF/CoreBundle/Resources/css/modules/propos.scss */
+  #propos-content ul li,
+  #propos-content ul li:nth-child(3n+2) {
+    width: 100%;
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+}
+/* line 2, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+body {
+  background: #F8F8F8;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style input,
+#formulaire-style select {
+  outline: none;
+  font-family: "sofia_prolight";
+}
+
+/* SAFARI */
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style input,
+#formulaire-style input[type="submit"],
+#formulaire-style textarea,
+#formulaire-style select,
+#formulaire-style option {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* line 15, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style {
+  margin: 0 auto 20px;
+  font-family: "sofia_prolight";
+}
+
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question {
+  margin-bottom: 20px;
+}
+
+/* line 17, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question.error .question-title {
+  color: #f0415b;
+}
+
+/* line 18, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question.error textarea,
+#formulaire-style .question.error input,
+#formulaire-style .question.error .select-content {
+  border: 1px solid #f0415b;
+}
+
+/* line 21, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question.error .select-content:after {
+  border-top: 6px solid #f0415b;
+}
+
+/* line 22, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question.error .champ-requis {
+  clear: both;
+  display: block;
+  color: #f0415b;
+  padding-top: 10px;
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* line 23, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question.error .info-input {
+  color: #f0415b;
+}
+
+/* line 24, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .champ-requis {
+  display: none;
+}
+
+/* line 27, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question-title {
+  padding-bottom: 10px;
+  display: block;
+  font-size: 20px;
+  color: #4F9893;
+}
+
+/* line 28, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question-title .note-title {
+  display: block;
+  color: #828ca4;
+  font-size: 16px;
+  padding-top: 5px;
+}
+
+/* line 29, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question textarea {
+  font-family: "sofia_prolight";
+  resize: none;
+  width: 100%;
+  height: 120px;
+  border: 1px solid #383838;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  padding: 10px;
+  position: relative;
+  color: #383838;
+}
+
+/* line 30, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question input {
+  font-family: "sofia_prolight";
+  border: 1px solid #383838;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  padding: 5px;
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  color: #383838;
+}
+
+/* line 31, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question select {
+  font-family: "sofia_prolight";
+  position: relative;
+  width: 300px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  z-index: 2;
+  background: transparent;
+  font-size: 16px;
+  color: #383838;
+}
+
+/* line 32, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question select option {
+  font-family: "sofia_prolight";
+  border: none;
+  padding: 5px;
+}
+
+/* line 33, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .info-input {
+  padding-left: 10px;
+  display: inline-block;
+}
+
+/* line 34, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .select-content {
+  overflow: hidden;
+  border: 1px solid #383838;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  position: relative;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* line 35, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .select-content:after {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  right: 10px;
+  border-top: 6px solid #383838;
+  border-left: 6px solid #FFF;
+  border-right: 6px solid #FFF;
+}
+
+/* line 36, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .select-width-60 {
+  width: 60px;
+}
+
+/* line 37, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .select-width-80 {
+  width: 80px;
+}
+
+/* line 38, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .select-width-140 {
+  width: 140px;
+}
+
+/* line 39, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .select-width-160 {
+  width: 160px;
+}
+
+/* line 40, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .select-width-220 {
+  width: 220px;
+}
+
+/* line 41, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun {
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: left;
+  padding: 0 0 20px;
+  background: #f8f8f8;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #e0e0e0;
+  vertical-align: top;
+}
+
+/* line 42, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun.planche-style {
+  background: #fff;
+  padding: 40px 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  float: none;
+}
+
+/* line 43, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun.question-width-40 {
+  max-width: 48%;
+}
+
+/* line 44, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun.question-width-40 .choix-question-commun {
+  display: block;
+}
+
+/* line 45, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun .title-question-commun {
+  font-size: 22px;
+  padding: 20px 20px 0;
+  text-align: center;
+}
+
+/* line 46, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun .choix-question-commun {
+  display: inline-block;
+  padding: 20px 20px 0;
+}
+
+/* line 47, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun .choix-question-commun input {
+  margin: 0 auto;
+  margin-top: 10px;
+  display: none;
+}
+
+/* line 48, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .image-planche {
+  max-width: 1200px;
+  width: 100%;
+  height: auto;
+  padding-top: 20px;
+}
+
+/* line 49, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .image-planche img {
+  width: 100%;
+  height: auto;
+}
+
+/* line 50, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style [type="radio"]:not(:checked),
+#formulaire-style [type="radio"]:checked,
+#formulaire-style [type="checkbox"]:not(:checked),
+#formulaire-style [type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+  display: none;
+}
+
+/* line 54, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style [type="radio"]:not(:checked) + label,
+#formulaire-style [type="radio"]:checked + label,
+#formulaire-style [type="checkbox"]:not(:checked) + label,
+#formulaire-style [type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+/* line 58, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style [type="radio"]:not(:checked) + label:before,
+#formulaire-style [type="radio"]:checked + label:before,
+#formulaire-style [type="checkbox"]:not(:checked) + label:before,
+#formulaire-style [type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  border-radius: 100%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* line 62, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style [type="checkbox"]:not(:checked) + label:before,
+#formulaire-style [type="checkbox"]:checked + label:before {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* line 64, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style [type="radio"]:not(:checked) + label:after,
+#formulaire-style [type="radio"]:checked + label:after,
+#formulaire-style [type="checkbox"]:not(:checked) + label:after,
+#formulaire-style [type="checkbox"]:checked + label:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  border-radius: 100%;
+  width: 19px;
+  height: 19px;
+  background: #b2dfdb;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* line 68, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style [type="checkbox"]:not(:checked) + label:after,
+#formulaire-style [type="checkbox"]:checked + label:after {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* line 70, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style [type="radio"]:not(:checked) + label:after,
+#formulaire-style [type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* line 72, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style [type="radio"]:checked + label:after,
+#formulaire-style [type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* line 74, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question #question-social-titre {
+  padding: 20px 0;
+}
+
+/* line 75, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun-social {
+  padding: 20px 0;
+}
+
+/* line 76, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun-social input {
+  max-width: 300px;
+  width: 100%;
+}
+
+/* line 77, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun-social .champ-info {
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* line 78, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun-social .champ-info a {
+  display: inline-block;
+}
+
+/* line 79, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun-social .champ-info .fa {
+  font-size: 22px;
+}
+
+/* line 80, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun-social .champ-info .fa-instagram {
+  color: #125688;
+}
+
+/* line 81, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#formulaire-style .question .question-commun-social .champ-info .fa-pinterest {
+  color: #CB2027;
+}
+
+/* line 83, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#aide_tableau_correspondance_taille {
+  cursor: pointer;
+}
+
+/* line 84, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#tableau_correspondance_taille {
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 85, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#tableau_correspondance_taille.show {
+  height: auto;
+}
+
+/* line 86, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#tableau_correspondance_taille table {
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* line 87, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#tableau_correspondance_taille table tr:nth-child(odd) {
+  background: #fff;
+}
+
+/* line 88, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#tableau_correspondance_taille table tr:first-child td,
+#tableau_correspondance_taille table tr td:first-child {
+  font-weight: bold;
+  color: #80BFBA;
+}
+
+/* line 90, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+#tableau_correspondance_taille table td {
+  padding: 5px;
+  border-right: 1px solid #e0e0e0;
+}
+
+@media (max-width: 992px) {
+  /* line 93, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+  #formulaire-style .question .question-commun,
+  #formulaire-style .question .question-commun.question-width-40 {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* line 96, ../../../src/CF/CoreBundle/Resources/css/modules/style.scss */
+  #formulaire-style .question input,
+  #formulaire-style .question select,
+  #formulaire-style .question select option {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+  }
+}
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/accueil-client.scss */
+#accueil-client .bloc-shadow {
+  padding: 40px 20px;
+}
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/accueil-client.scss */
+#accueil-client #profil.bloc-shadow .text-bloc-shadow {
+  padding-bottom: 10px;
+}
+/* line 9, ../../../src/CF/CoreBundle/Resources/css/modules/accueil-client.scss */
+#accueil-client .content-commentaire {
+  padding-bottom: 20px;
+}
+/* line 11, ../../../src/CF/CoreBundle/Resources/css/modules/accueil-client.scss */
+#accueil-client .content-commentaire .label {
+  padding-bottom: 5px;
+  display: block;
+}
+/* line 12, ../../../src/CF/CoreBundle/Resources/css/modules/accueil-client.scss */
+#accueil-client .content-commentaire .textarea {
+  width: 100%;
+  display: block;
+  height: 100px;
+  resize: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+/* line 1, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#cf_core_homepage2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* line 3, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_top {
+  width: 100%;
+  height: auto;
+  position: relative;
+  text-align: center;
+  background: #fff url("/public/images/planche-style-2016.jpg") no-repeat center;
+  background-size: contain;
+}
+/* line 5, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_top .content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 480px;
+}
+/* line 6, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_top .title {
+  font-size: 46px;
+  color: #555;
+  font-family: 'sofia_prolight';
+  letter-spacing: 1px;
+}
+/* line 7, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_top .text {
+  font-family: 'sofia_prolight';
+  padding: 4px 0 40px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+/* line 8, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_top .h1 {
+  font-family: 'sofia_prolight';
+  font-weight: normal;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+/* line 9, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_top .btn {
+  box-shadow: inset 0 1px 1px #f47084, 0px 2px 2px #D2D2D2;
+  border-top: 1px solid #f68898;
+  border-bottom: 1px solid #d4112e;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 8px 16px;
+  letter-spacing: 0.8px;
+}
+/* line 14, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto {
+  background: #fafafa;
+}
+/* line 16, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .header {
+  background: #F7F5F2;
+  padding: 80px 10px;
+  text-align: center;
+}
+/* line 18, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .header .title {
+  font-size: 28px;
+  font-weight: normal;
+  font-family: 'sofia_prolight';
+  text-transform: uppercase;
+}
+/* line 20, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto ul {
+  margin: 0 auto;
+  list-style-type: none;
+}
+/* line 23, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step {
+  height: 360px;
+  text-align: center;
+}
+/* line 26, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step .left {
+  float: left;
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+/* line 27, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step .right {
+  float: right;
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+/* line 29, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step.block_step2 .left {
+  float: right;
+}
+/* line 30, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step.block_step2 .right {
+  float: left;
+}
+/* line 31, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step.block_step1 .right {
+  background: url("/public/images/part2Img1.jpg") no-repeat center;
+  background-size: cover;
+}
+/* line 32, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step.block_step2 .right {
+  background: url("/public/images/part2Img2.jpg") no-repeat center;
+  background-size: cover;
+}
+/* line 33, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step.block_step3 .right {
+  background: url("/public/images/part2Img3.jpg") no-repeat center;
+  background-size: cover;
+}
+/* line 36, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step .content {
+  margin: 0 auto;
+  padding: 20px;
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  position: absolute;
+}
+/* line 37, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step .content .etape {
+  font-family: 'LibreBaskerville-Regular';
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 48px;
+  color: #d4d4d4;
+  text-shadow: 1px 1px 0px #FFF;
+}
+/* line 38, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step .content .text {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  padding-left: 40px;
+}
+/* line 39, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step .content .h3 {
+  font-size: 24px;
+  font-weight: normal;
+  font-family: 'sofia_prolight';
+}
+/* line 40, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_howto .block_step .content .p {
+  font-family: 'sofia_prolight';
+  font-size: 16px;
+  padding-top: 10px;
+}
+/* line 44, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege {
+  background: #F3EFEC;
+  padding: 60px 0;
+  text-align: center;
+}
+/* line 46, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege.block_privilege_bottom {
+  background: #F7F5F2;
+}
+/* line 47, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege .title {
+  font-size: 24px;
+  font-weight: normal;
+  font-family: 'sofia_prolight';
+  text-transform: uppercase;
+}
+/* line 48, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege .ul {
+  padding-top: 40px;
+}
+/* line 49, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege .ul .li {
+  display: block;
+  width: 33.33333333%;
+  padding: 0 20px;
+  vertical-align: top;
+  float: left;
+}
+/* line 50, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege .ul .li .h3 {
+  font-size: 18px;
+  padding: 20px 0 5px;
+  font-weight: bold;
+  font-family: 'sofia_prolight';
+}
+/* line 51, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege .ul .li .p {
+  font-size: 16px;
+}
+/* line 52, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege .ul .li .content_img {
+  height: auto;
+}
+/* line 53, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .block_privilege .ul .li .content_img .img {
+  display: block;
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+  max-width: 45px;
+  max-height: 45px;
+}
+/* line 59, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste {
+  background: #FAFAFA;
+  color: #555;
+  padding: 60px 0;
+}
+/* line 61, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste .left {
+  width: 50%;
+  position: absolute;
+  left: 0;
+}
+/* line 62, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste .left .h2 {
+  font-size: 24px;
+  font-weight: normal;
+  font-family: 'sofia_prolight';
+}
+/* line 63, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste .left .p {
+  font-size: 18px;
+  padding: 20px 0;
+}
+/* line 64, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste .left .styliste {
+  font-size: 16px;
+  font-family: 'LibreBaskerville-Regular';
+}
+/* line 66, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste .right {
+  left: 50%;
+  width: 50%;
+  float: right;
+}
+/* line 67, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste .right .content_img {
+  display: block;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+  position: relative;
+}
+/* line 68, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste .right .content_img:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  box-shadow: inset 0 0 5px 5px #FAFAFA;
+}
+/* line 69, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_styliste .right .content_img .img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+/* line 74, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou {
+  background: #FFF;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+/* line 76, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .header {
+  padding: 40px;
+}
+/* line 78, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .header .title {
+  font-size: 28px;
+  font-weight: normal;
+  font-family: 'sofia_prolight';
+  text-transform: uppercase;
+}
+/* line 84, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection {
+  display: block;
+  padding: 40px 0;
+  width: 100%;
+  text-align: center;
+}
+/* line 86, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection .letter {
+  position: relative;
+  font-family: 'LibreBaskerville-Regular';
+  font-size: 40px;
+  color: #d9d9d9;
+  text-shadow: 1px 1px 0px #FFF;
+}
+/* line 87, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection .left {
+  float: left;
+  width: 50%;
+}
+/* line 88, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection .right {
+  float: right;
+  width: 50%;
+}
+/* line 89, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection .img {
+  max-width: 280px;
+  max-height: 280px;
+}
+/* line 90, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection.selection_2 {
+  background: #FAFAFA;
+}
+/* line 92, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection.selection_2 .left {
+  float: right;
+}
+/* line 93, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection.selection_2 .right {
+  float: left;
+}
+/* line 95, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection .text {
+  padding: 20px;
+}
+/* line 96, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 #block_couldbeyou .ul .selection .name {
+  font-family: 'LibreBaskerville-Regular';
+  font-size: 16px;
+}
+/* line 103, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .toto {
+  text-align: center;
+}
+/* line 105, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .toto .text {
+  display: inline-block;
+  margin: 0 20px;
+  vertical-align: middle;
+  padding: 0;
+}
+/* line 108, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .toto .rond {
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #ddd;
+}
+/* line 113, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#homepage_2 .btn {
+  box-shadow: inset 0 1px 1px #f47084, 0px 2px 2px #D2D2D2;
+  border-top: 1px solid #f68898;
+  border-bottom: 1px solid #d4112e;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 8px 16px;
+  letter-spacing: 0.8px;
+}
+
+/* line 120, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#navigation2 {
+  background: #FFF;
+  text-align: center;
+  padding: 30px 0;
+}
+/* line 122, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#navigation2 ul {
+  list-style-type: none;
+}
+/* line 123, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#navigation2 ul li {
+  display: inline-block;
+  padding: 0 20px;
+}
+/* line 124, ../../../src/CF/CoreBundle/Resources/css/modules/homepage_2.scss */
+#navigation2 ul li a {
+  color: #555;
+}

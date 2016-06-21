@@ -1,0 +1,107 @@
+{% include 'HistoryBundle:History:header.html.twig' %}
+
+<div class="wrapper-new-person">
+    <form method="post" enctype="multipart/form-data">
+        <h4>
+            Créer une personnalité :
+        </h4>
+
+        Nom <input type="text" name="person_name">
+        <br>
+        Wiki <input type="text" name="person_wiki">
+        <br>
+        Photo <input type="file" name="person_picture">
+        <br>
+        Sexe : 
+        <input type="radio" id="homme" name="gender" value="1" checked="checked"><label for="homme">Homme</label> 
+        <input type="radio" id="femme" name="gender" value="2"><label for="femme">Femme</label><br>
+        <input type="hidden" name="new_person_action" value="create_person">
+        <input type="submit" class="btn btn-info">
+    </form>
+
+    <div class="list-personnes">
+        <ul>
+            {% for personne in personnes %}
+                <li>
+                    {{ personne.getNom() }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <hr>
+
+    <form method="post" enctype="multipart/form-data" class="new-place-form">
+        <h4>
+            Créer un endroit :
+        </h4>
+
+        Nom <input type="text" class="place-name" name="place_name"><input type="button" class="localize-place" value="Localiser">
+        <br>
+        Latitude <input type="text" class="lat" name="place_lat">
+        <br>
+        Longitude <input type="text" class="lng" name="place_lng">
+        <br>
+        <input type="hidden" name="new_person_action" value="create_place">
+        <input type="submit" class="btn btn-info">
+        <div class="data_localization">
+
+        </div>
+    </form>
+
+    <div class="list-places">
+        <ul>
+            {% for place in places %}
+                <li>
+                    {{ place.getNom() }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <hr>
+
+    <form method="post" enctype="multipart/form-data">
+        <h4>
+            Créer un événement :
+        </h4>
+
+        <label for="event-name">
+            Intitulé
+        </label>
+        <input type="text" id="event-name" class="event-name" name="event_name">
+        <br>
+        <select name="event_type">
+            {% for key, type in eventTypes %}
+                <option value="{{ type.getId() }}">
+                    {{ type.getNom() }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="event-year">
+            Date
+        </label>
+        <input type="number" id="event-year" class="event-year" name="event_year">
+        <br>
+        <select name="personne_id">
+            {% for key, personne in personnes %}
+                <option value="{{ personne.getId() }}">
+                    {{ personne.getNom() }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <select name="place_id">
+            {% for key, place in places %}
+                <option value="{{ place.getId() }}">
+                    {{ place.getNom() }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="hidden" name="new_person_action" value="create_event">
+        <input type="submit" class="btn btn-info">
+    </form>
+</div>
+{% include 'HistoryBundle:History:footer.html.twig' %}

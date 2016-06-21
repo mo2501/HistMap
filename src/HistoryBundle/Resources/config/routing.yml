@@ -1,0 +1,39 @@
+history_homepage:
+    path:     /
+    defaults: { _controller: HistoryBundle:History:index }
+
+history_about:
+    path:     /about
+    defaults: { _controller: HistoryBundle:History:about }
+
+history_get_persons_ajax:
+    path:     /get-persons-ajax/{from}/{to}
+    defaults: { _controller: HistoryBundle:History:getPersonsAjax }
+
+history_admin_index:
+    path:     /admin-index
+    defaults: { _controller: HistoryBundle:History:adminindex }
+
+history_new_person:
+    path:     /admin-new-person
+    defaults: { _controller: HistoryBundle:History:newPerson }
+
+history_thematiques:
+    path:     /admin-thematiques
+    defaults: { _controller: HistoryBundle:History:thematiques }
+
+history_suggestions:
+    path:     /admin-suggestions
+    defaults: { _controller: HistoryBundle:History:suggestions }
+
+history_test:
+    path:     /admin-test
+    defaults: { _controller: HistoryBundle:History:admintest }
+
+history_login:
+    path:     /admin-login
+    defaults: { _controller: HistoryBundle:History:login }
+
+history_logout:
+    path:     /admin-logout
+    defaults: { _controller: HistoryBundle:History:logout }

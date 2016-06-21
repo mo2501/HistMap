@@ -1,0 +1,78 @@
+<form method="post" class="suggestion-form">
+    <div class="suggestion-subwrapper">
+        {% if data is not empty %}
+            {% if errors is not empty %}
+                <ul class="error-div">
+                    {% for error in errors %}
+                        <li> <i class="fa fa-exclamation-circle"></i> 
+                            {% if error == "date" %}
+                                L'année est incorrecte.
+                            {% elseif error == "person-name" %}
+                                Le nom est incorrect.
+                            {% elseif error == "place-name" %}
+                                Le lieu est incorrect.
+                            {% elseif error == "event" %}
+                                L'événement est incorrect.
+                            {% elseif error == "wiki" %}
+                                Le lien est incorrect.
+                            {% endif%}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="success-div">
+                    <i class="fa fa-check-circle"></i> Votre suggestion a bien été prise en compte et sera étudiée.
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="suggestion-title">
+            Suggérer un événement
+        </div>
+
+        <div class="form-field">
+            <label class="label-field" for="person-name">Nom</label>
+            <span>
+                <input type="text" name="person_name" id="person-name" placeholder="Ex : Napoléon Bonaparte">
+            </span>
+        </div>
+
+        <div class="form-field">
+            <label class="label-field" for="wiki">Wikipédia</label>
+            <span>
+                <input type="text" name="wiki" id="wiki" placeholder="Ex : https://fr.wikipedia.org/wiki/Napol%C3%A9on_Ier">
+            </span>
+        </div>
+
+        <div class="form-field">
+            <label class="label-field" for="place-name">Lieu</label>
+            <span>
+                <input type="text" name="place_name" id="place-name" placeholder="Ex : Ajaccio, France">
+            </span>
+        </div>
+
+        <div class="form-field">
+            <label class="label-field" for="date">Année</label>
+            <span>
+                <input type="number" name="date" id="date" placeholder="Ex : 1769">
+            </span>
+        </div>
+
+        <div class="form-field">
+            <label class="label-field" for="event">Événement</label>
+            <span>
+                <input type="text" name="event" id="event" placeholder="Ex : Naissance">
+            </span>
+        </div>
+
+        <div class="form-field form-field-submit">
+            <input type="hidden" name="form_action" value="add_suggestion">
+            <input type="submit" class="btn btn-success" value="Envoyer">
+        </div>
+
+        
+    </div>
+    <div class="suggestion-close-button">
+        <i class="arrow-suggestion fa fa-angle-double-right"></i>
+    </div>
+</form>

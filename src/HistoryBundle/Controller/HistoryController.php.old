@@ -1,0 +1,152 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace HistoryBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use HistoryBundle\Entity\personne;
+use HistoryBundle\Entity\place;
+use HistoryBundle\Entity\event;
+use HistoryBundle\Entity\suggestion;
+
+class HistoryController extends Controller{
+    
+    public function indexAction(Request $request){
+        
+        $repositoryE = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:event");
+        
+        $data = array();
+        $errors = array();
+        
+        if($request->isMethod('POST')){
+            $data = $_POST;
+
+            if($data["form_action"] == "add_suggestion"){
+                if(!in_array($data["event"], array("Naissance", "Mort"))){
+                    $errors[] = "event";
+                }
+                
+                if($data["date"] == "" || !is_numeric($data["date"])){
+                    $errors[] = "date";
+                }
+                
+                if($data["person_name"] == "" || preg_match('/^[a-z0-9 .\-]+$/i', $data["person_name"])){
+                    $errors[] = "person-name";
+                }
+                
+                if($data["place_name"] == "" || preg_match('/^[a-z0-9 .\-]+$/i', $data["place_name"])){
+                    $errors[] = "place-name";
+                }
+                
+                if(empty($errors)){
+                    
+                }
+            }
+        }
+        
+        $from = 1000;
+        $to = 2000;
+        
+        $events = $repositoryE->getEvents($from, $to);
+        
+        return $this->render('HistoryBundle:History:index.html.twig', array("events" => $events, 
+                                                                            "from" => $from, 
+                                                                            "to" => $to,
+                                                                            "errors" => $errors,
+                                                                            "data" => $data));
+    }
+    
+    public function getPersonsAjaxAction($from, $to){
+        $repositoryE = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:event");
+        
+        $repositoryPe = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:personne");
+        
+        $repositoryPl = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:place");
+        
+        $events = $repositoryE->getEvents($from, $to, true);
+        
+        $response = new \Symfony\Component\HttpFoundation\JsonResponse();
+        return $response->setData(array("events" => $events));
+    }
+    
+    public function newPersonAction(Request $request){
+        $data = array();
+            
+        $repositoryE = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:event");
+
+        $repositoryPe = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:personne");
+
+        $repositoryPl = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:place");
+        
+        $personnes = $repositoryPe->findAll();
+        $places = $repositoryPl->findAll();
+        
+        if($request->isMethod('POST')){
+            $data = $_POST;
+            
+            if($data["new_person_action"] == "create_person"){
+                $personne = new personne();
+                
+                $personne->setNom($data["person_name"]);
+                $personne->setRef($repositoryPe->generateRef());
+                $personne->setWiki($data["person_wiki"]);
+                
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($personne);
+                $em->flush();
+                
+                move_uploaded_file($_FILES["person_picture"]["tmp_name"], "public/personne/" . $personne->getRef() . ".jpg");
+            }
+            elseif($data["new_person_action"] == "create_place"){
+                $place = new place();
+                
+                $place->setNom($data["place_name"]);
+                $place->setLat($data["place_lat"]);
+                $place->setLng($data["place_lng"]);
+                
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($place);
+                $em->flush();
+            }
+            elseif($data["new_person_action"] == "create_event"){
+                $event = new event();
+                
+                $event->setIntitule($data["event_name"]);
+                $event->setYear($data["event_year"]);
+                $event->setPersonne($repositoryPe->findOneById($data["personne_id"]));
+                $event->setPlace($repositoryPl->findOneById($data["place_id"]));
+                
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($event);
+                $em->flush();
+            }
+        }
+        
+        $personnes = $repositoryPe->findBy(array(), array("nom" => "ASC"));
+        $places = $repositoryPl->findBy(array(), array("nom" => "ASC"));
+        
+        return $this->render('HistoryBundle:History:new-person.html.twig', array("data" => $data,
+                                                                                 "places" => $places,
+                                                                                 "personnes" => $personnes));
+    }
+}

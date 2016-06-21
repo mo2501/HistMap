@@ -1,0 +1,43 @@
+{% include 'HistoryBundle:History:header.html.twig' %}
+
+<div class="wrapper-new-person">
+    <form method="post">
+        <h4>
+            Créer une thématique
+        </h4>
+        Nom <input type="text" name="thematique-name">
+        <input type="hidden" name="thematique-action" value="new-thematique">
+        <input type="submit" class="btn btn-success">
+    </form>
+
+    <hr>
+
+    <form method="post">
+        <h4>
+            Ajouter personnes
+        </h4>
+        <ul>
+            {% for key, thematique in thematiques %}
+                <li>
+                    <input type="radio" name="thematique-id" id="{{ thematique.id }}-thematique" value="{{ thematique.getId() }}" {% if key == 0 %}checked="checked"{% endif %}>
+                    <label for="{{ thematique.id }}-thematique">
+                        {{ thematique.getNom() }}
+                    </label>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="list-places">
+            {% for key, personne in personnes %}
+                <li>
+                    <input type="checkbox" name="personnes-id[]" id="{{ personne.id }}-personne" value="{{ personne.getId() }}">
+                    <label for="{{ personne.id }}-personne">
+                        {{ personne.getNom() }}
+                    </label>
+                </li>
+            {% endfor %}
+        </div>
+        <input type="hidden" name="thematique-action" value="add-persons">
+        <input type="submit" class="btn btn-success">
+    </form>
+</div>
+{% include 'HistoryBundle:History:footer.html.twig' %}

@@ -1,0 +1,159 @@
+{% include 'HistoryBundle:History:header.html.twig' %}
+
+<div id="map">
+    
+</div>
+
+<div class="showbox">
+    <div class="loader">
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+      </svg>
+    </div>
+</div>
+
+<div class="slider-wrapper">
+    <div class="title-site">
+        <a href="">
+            <i class="fa fa-globe"></i> Hist Map
+        </a><br>
+        La carte historique collaborative
+    </div><!--
+    --><div id="slider-range"></div><!--
+    --><p id="slider-amount">    
+        <input type="text" id="amount" readonly>    
+    </p>
+    <div class="era-filter-div">
+        <span class="era-filter-button" from="-1200" to="475">
+            Âge du fer
+        </span> -
+        <span class="era-filter-button" from="475" to="987">
+            Haut moyen-age
+        </span> -
+        <span class="era-filter-button" from="987" to="1328">
+            Moyen-age classique
+        </span> -
+        <span class="era-filter-button" from="1328" to="1517">
+            Bas moyen-age
+        </span> -
+        <span class="era-filter-button" from="1303" to="1642">
+            Renaissance
+        </span> -
+        <span class="era-filter-button" from="1517" to="1789">
+            Époque moderne
+        </span> -
+        <span class="era-filter-button" from="1789" to="2016">
+            Époque contemporaine
+        </span> -
+        <span class="era-filter-button" from="1900" to="2000">
+            XXème siècle
+        </span>
+    </div>
+</div>
+<script type="text/javascript">    
+    var from = {{ from }};    
+    var to = {{ to }};    
+    var map;  
+    var icon = "public/images/marker-icon.png";        
+    function initMap() {        
+        map = new google.maps.Map(document.getElementById('map'), {            
+            center: {lat: 45.738323, lng: 4.860955},
+            minZoom: 2,
+            zoom: 3,            
+            styles: [{"featureType":"landscape","stylers":[{"saturation":-7},{"gamma":1.02},{"hue":"#ffc300"},{"lightness":-10}]},{"featureType":"road.highway","stylers":[{"hue":"#ffaa00"},{"saturation":-45},{"gamma":1},{"lightness":-4}]},{"featureType":"road.arterial","stylers":[{"hue":"#ffaa00"},{"lightness":-10},{"saturation":64},{"gamma":0.9}]},{"featureType":"road.local","stylers":[{"lightness":-5},{"hue":"#00f6ff"},{"saturation":-40},{"gamma":0.75}]},{"featureType":"poi","stylers":[{"saturation":-30},{"lightness":11},{"gamma":0.5},{"hue":"#ff8000"}]},{"featureType":"water","stylers":[{"hue":"#0077ff"},{"gamma":1.25},{"saturation":-22},{"lightness":-31}]}]
+        });                            
+        var contentString = [];        
+        marker = [];        
+        {% for key, event in events %}            
+            contentString[{{ key }}] = "<div class='marker'>\n\                                            <h4>\n\
+                                                            <a target='_blank' href='{{ event["personne"]["wiki"] }}'> \n\
+                                                            {{ event["personne"]["nom"] }} \n\
+                                                        <img class='small-wiki' src='public/images/wiki_small.png'>\n\
+                                                    </a>\n\
+                                                </h4>\n\
+                                                <div>Événement : {{ event["intitule"] }}</div>\n\
+                                                <div>Lieu : {{ event["place"]["nom"] }}</div>\n\
+                                                <div>Année : {{ event["year"] }}</div>\n\
+                                                <a target='_blank' href='{{ event["personne"]["wiki"] }}'>\n\
+                                                    <img width='100px' src='public/personne/{{ event["personne"]["ref"] }}.jpg'>\n\
+                                                </a>\n\
+                                           </div>";
+            var infowindow = new google.maps.InfoWindow({                
+                content: contentString[{{ key }}]
+            });            
+            var title = "{{ event["personne"]["nom"] }}";
+
+            marker[{{ key }}] = new google.maps.Marker({                  
+                position: {lat:{{ event["place"]["lat"] }}, lng: {{ event["place"]["lng"] }}},
+                map: map,                  
+                title: title,                  
+                icon: icon          
+            });
+
+            marker[{{ key }}].addListener('click', function() {                
+                infowindow.setContent(contentString[{{ key }}]);                
+                infowindow.open(map, marker[{{ key }}]);            
+            });        
+        {% endfor %}      
+    }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw0QmEHjgwLq7FHQu3jwrOBL1p4wpMmMw&callback=initMap">
+            
+        </script>
+        
+        <div class="filters-div">
+            <div class="filters-subwrapper">
+                <div class="filters-title">
+                    Filtrer les résultats
+                </div>
+                <div class="theme-filter">
+                    <h4>
+                        Thématique
+                    </h4>
+                    <select name="thematique-select" id="thematique-select">
+                        {% for thematique in thematiques %}
+                            <option {% if thematique.getId() == 1 %}selected="selected"{% endif %} value="{{ thematique.getId() }}">
+                                {{ thematique.getNom() }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="events-filer">
+                    <h4>
+                        Événement
+                    </h4>
+                    {% for type in eventTypes %}
+                        <span class="checkbox">
+                            <label for="{{ type.getNom|lower }}">
+                                <input class="filter-activator event" checked="checked" type="checkbox" name="{{ type.getNom|lower }}" value="{{ type.getId() }}" id="{{ type.getNom|lower }}">
+                                {{ type.getNom }}
+                            </label>
+                        </span>
+                    {% endfor %}
+                </div>
+                <h4>
+                    Sexe
+                </h4>
+                <span class="checkbox">
+                    <label for="female">
+                        <input class="filter-activator" checked="checked" type="checkbox" name="female" value="true" id="female">
+                        Femmes
+                    </label>
+                </span>
+                <span class="checkbox">
+                    <label for="male">
+                        <input class="filter-activator" checked="checked" type="checkbox" name="male" value="true" id="male">
+                        Hommes
+                    </label>
+                </span>
+                
+                <div class="filters-close-button">
+                    <i class="arrow-filters fa fa-angle-double-left"></i>
+                </div>
+            </div>
+        </div>
+        
+        
+        {% include 'HistoryBundle:History:about.html.twig' %}
+        {% include 'HistoryBundle:History:suggestion-form.html.twig' %}
+        {% include 'HistoryBundle:History:footer.html.twig' %}

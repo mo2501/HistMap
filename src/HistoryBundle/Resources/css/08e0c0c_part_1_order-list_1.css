@@ -1,0 +1,319 @@
+@charset "UTF-8";
+/* line 1, assetic_compassocvxSP.scss */
+#orderlist {
+  font-family: 'sofia_prolight';
+  padding: 0;
+  margin: 0;
+}
+/* line 3, assetic_compassocvxSP.scss */
+#orderlist .bloc-validation {
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0px 2px 4px rgba(50, 50, 50, 0.1);
+  background: #FFF;
+  padding: 20px;
+}
+/* line 4, assetic_compassocvxSP.scss */
+#orderlist .bloc-validation .icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+/* line 5, assetic_compassocvxSP.scss */
+#orderlist .bloc-validation .icon.rond {
+  border-radius: 100%;
+}
+/* line 6, assetic_compassocvxSP.scss */
+#orderlist .bloc-validation .icon.success {
+  background: #2ecc71;
+}
+/* line 7, assetic_compassocvxSP.scss */
+#orderlist .bloc-validation .icon .fa {
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+/* line 9, assetic_compassocvxSP.scss */
+#orderlist .bloc-validation .msg {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+/* line 13, assetic_compassocvxSP.scss */
+#orderlist #orderlist-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px auto 0;
+  max-width: 1200px;
+}
+/* line 14, assetic_compassocvxSP.scss */
+#orderlist #orderlist-menu li {
+  display: block;
+  padding: 10px;
+  float: left;
+  margin-right: 4px;
+  border-radius: 10px 10px 0 0;
+  background: #ddd;
+  cursor: pointer;
+}
+/* line 15, assetic_compassocvxSP.scss */
+#orderlist #orderlist-menu li.active {
+  background: #B2DFDB;
+}
+/* line 19, assetic_compassocvxSP.scss */
+#orderlist .table-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #000;
+  opacity: 0.2;
+  z-index: 1;
+  visibility: hidden;
+}
+/* line 20, assetic_compassocvxSP.scss */
+#orderlist .table-overlay.open {
+  visibility: visible;
+}
+/* line 23, assetic_compassocvxSP.scss */
+#orderlist .table-order-list {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+}
+/* line 26, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .table-header {
+  font-weight: bold;
+}
+/* line 28, assetic_compassocvxSP.scss */
+#orderlist .table-order-list tr {
+  border-bottom: 1px solid #ddd;
+  background: #FFF;
+}
+/* line 29, assetic_compassocvxSP.scss */
+#orderlist .table-order-list tr.open {
+  z-index: 2;
+  position: relative;
+}
+/* line 30, assetic_compassocvxSP.scss */
+#orderlist .table-order-list tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+/* line 31, assetic_compassocvxSP.scss */
+#orderlist .table-order-list tr:nth-child(odd) .actions-menu {
+  background: #f5f5f5 !important;
+}
+/* line 35, assetic_compassocvxSP.scss */
+#orderlist .table-order-list td {
+  padding: 10px 5px;
+  border-right: 1px solid #ddd;
+}
+/* line 37, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .one-order {
+  display: none;
+}
+/* line 38, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .one-order.show_element {
+  display: table-row;
+}
+/* line 42, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions {
+  cursor: pointer;
+  position: relative;
+  width: 60px;
+  text-align: center;
+  z-index: 1;
+  list-style-type: none;
+}
+/* line 43, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions.open {
+  z-index: 2;
+}
+/* line 44, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions.open .fa-ellipsis-h {
+  display: none;
+}
+/* line 45, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions.open .fa-remove {
+  display: block;
+}
+/* line 46, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions.open .actions-menu {
+  opacity: 1;
+  visibility: visible;
+}
+/* line 48, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .fa-ellipsis-h {
+  display: block;
+  font-size: 26px;
+}
+/* line 49, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .fa-remove {
+  display: none;
+  font-size: 18px;
+  color: #f44336;
+}
+/* line 50, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .actions-menu {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  background: #FFF;
+  position: absolute;
+  right: -1px;
+  top: 100%;
+  border-top: 1px solid #ddd;
+  visibility: hidden;
+  opacity: 0;
+  text-align: left;
+  cursor: default;
+}
+/* line 53, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions li {
+  margin-bottom: 4px;
+}
+/* line 54, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .nowrap {
+  white-space: nowrap;
+}
+/* line 55, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .bouton {
+  border-radius: 4px;
+  display: block;
+  padding: 6px 12px;
+  color: #fff;
+  white-space: nowrap;
+  float: left;
+}
+/* line 56, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .bouton .fa {
+  margin-left: 4px;
+}
+/* line 57, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .bouton.bouton-inline {
+  margin-right: 4px;
+}
+/* line 58, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .bouton.bouton-blue {
+  background: #3498db;
+  border: 1px solid #2980b9;
+}
+/* line 59, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .bouton.bouton-green {
+  background: #2ecc71;
+  border: 1px solid #27ae60;
+}
+/* line 60, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .bouton.bouton-orange {
+  background: #E67E22;
+  border: 1px solid #d35400;
+}
+/* line 63, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .hr-orderlist {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: #DDD;
+  margin: 20px auto;
+}
+/* line 66, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .mot-styliste #textarea-mot-styliste {
+  display: block;
+  padding: 4px;
+  height: 90px;
+  min-width: 460px;
+  max-width: 620px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  resize: none;
+}
+/* line 67, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .mot-styliste .fa-spinner,
+#orderlist .table-order-list .actions .mot-styliste .fa-check,
+#orderlist .table-order-list .actions .mot-styliste .fa-remove {
+  display: none;
+}
+/* line 70, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .mot-styliste .fa-spinner.open,
+#orderlist .table-order-list .actions .mot-styliste .fa-check.open,
+#orderlist .table-order-list .actions .mot-styliste .fa-remove.open {
+  display: inline-block;
+}
+/* line 76, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .change-state-form [type="radio"]:not(:checked), #orderlist .table-order-list .actions .change-state-form [type="radio"]:checked {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+  display: none;
+}
+/* line 79, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .change-state-form [type="radio"]:not(:checked) + label, #orderlist .table-order-list .actions .change-state-form [type="radio"]:checked + label {
+  position: relative;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin-right: -4px;
+  text-align: center;
+  background: #DDD;
+}
+/* line 81, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .change-state-form [type="radio"]:checked + label {
+  background: #2ecc71;
+  color: #fff;
+}
+/* line 82, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .change-state-form [type="radio"]:not(:checked) + label:hover {
+  background: #27ae60;
+  color: #fff;
+}
+/* line 85, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .change-state-form label.label-state-order-3 {
+  border-radius: 8px 0 0 8px;
+}
+/* line 86, assetic_compassocvxSP.scss */
+#orderlist .table-order-list .actions .change-state-form label.label-state-order-7 {
+  border-radius: 0 8px 8px 0;
+}
+/* line 91, assetic_compassocvxSP.scss */
+#orderlist .lastname {
+  text-transform: uppercase;
+}
+/* line 92, assetic_compassocvxSP.scss */
+#orderlist .mb {
+  margin-bottom: 4px;
+}
+
+/* 
+Correspondance order statut :
+1 - Adr non renseignee
+2 - En attente de validation
+3 - Acceptée
+4 - Composée
+5 - Expédiée
+6 - Reçue
+7 - Renvoyée et payée
+8 - Retour réceptionné
+9 - Clotuée
+10 - Annulée
+11 - Adresse renseignée
+
+----
+
+match 
+2
+3/4
+5
+6/7/8
+*/
