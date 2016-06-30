@@ -1,13 +1,5 @@
-<form method="post">
-    {% if errors != "" %}
-        {{ errors }}
-    {% endif %}
-    
-    <input type="text" name="login">
-    
-    <input type="password" name="password">
-    
-    <input type="submit">
-</form>
+{% if errors != "" %}
+    {{ errors }}
+{% endif %}
     
 {{ form(form) }}
