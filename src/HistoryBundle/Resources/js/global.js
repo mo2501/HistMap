@@ -95,8 +95,9 @@ $(document).ready(function(){
                     $(".showbox").attr("class", "showbox");
                 },
                 success: function(data){
-                    setMapOnAll();
                     var contentString = [];
+                    setMapOnAll(null);
+                    markerCluster.clearMarkers();
                     marker = [];
                     for (var i = 0; i < data["events"].length; i++){
                         contentString[i] = "<div class='marker'>\n\
@@ -135,6 +136,35 @@ $(document).ready(function(){
                             infowindow.open(map, $(this)[0]);
                         });
                     }
+                    
+                    var clusterStyles = [
+                        {
+                          textColor: 'white',
+                          url: 'markerclusterer/images/m1.png',
+                          height: 40,
+                          width: 42
+                        },
+                       {
+                          textColor: 'black',
+                          url: 'markerclusterer/images/m2.png',
+                          height: 50,
+                          width: 50
+                        },
+                       {
+                          textColor: 'white',
+                          url: 'markerclusterer/images/m3.png',
+                          height: 60,
+                          width: 60
+                        }
+                    ];
+                    
+                    var options = {
+                        imagePath: 'markerclusterer/images/m',
+                        textColor: "#fff",
+                        styles: clusterStyles
+                    }; 
+
+                    markerCluster = new MarkerClusterer(map, marker, options);
                 }
         });
     }
@@ -219,4 +249,10 @@ $(document).ready(function(){
             $(".filters-div").removeClass("filters-div-closed");
         }
     });
+    
+    $(".filters-close-button").trigger("click");
+    
+    if (typeof error == 'undefined' && typeof success == 'undefined') {
+        $(".suggestion-close-button").trigger("click");
+    }
 });

@@ -17,7 +17,7 @@
         <a href="">
             <i class="fa fa-globe"></i> Hist Map
         </a><br>
-        La carte historique collaborative
+        La carte historique collaborative 
     </div><!--
     --><div id="slider-range"></div><!--
     --><p id="slider-amount">    
@@ -93,67 +93,97 @@
             marker[{{ key }}].addListener('click', function() {                
                 infowindow.setContent(contentString[{{ key }}]);                
                 infowindow.open(map, marker[{{ key }}]);            
-            });        
-        {% endfor %}      
-    }
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw0QmEHjgwLq7FHQu3jwrOBL1p4wpMmMw&callback=initMap">
+            });
+
+        {% endfor %}     
+        
+        var clusterStyles = [
+            {
+              textColor: 'white',
+              url: 'markerclusterer/images/m1.png',
+              height: 40,
+              width: 42
+            },
+           {
+              textColor: 'black',
+              url: 'markerclusterer/images/m2.png',
+              height: 50,
+              width: 50
+            },
+           {
+              textColor: 'white',
+              url: 'markerclusterer/images/m3.png',
+              height: 60,
+              width: 60
+            }
+        ];
             
-        </script>
+        var options = {
+            imagePath: 'markerclusterer/images/m',
+            textColor: "#fff",
+            styles: clusterStyles
+        }; 
         
-        <div class="filters-div">
-            <div class="filters-subwrapper">
-                <div class="filters-title">
-                    Filtrer les résultats
-                </div>
-                <div class="theme-filter">
-                    <h4>
-                        Thématique
-                    </h4>
-                    <select name="thematique-select" id="thematique-select">
-                        {% for thematique in thematiques %}
-                            <option {% if thematique.getId() == 1 %}selected="selected"{% endif %} value="{{ thematique.getId() }}">
-                                {{ thematique.getNom() }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="events-filer">
-                    <h4>
-                        Événement
-                    </h4>
-                    {% for type in eventTypes %}
-                        <span class="checkbox">
-                            <label for="{{ type.getNom|lower }}">
-                                <input class="filter-activator event" checked="checked" type="checkbox" name="{{ type.getNom|lower }}" value="{{ type.getId() }}" id="{{ type.getNom|lower }}">
-                                {{ type.getNom }}
-                            </label>
-                        </span>
-                    {% endfor %}
-                </div>
-                <h4>
-                    Sexe
-                </h4>
-                <span class="checkbox">
-                    <label for="female">
-                        <input class="filter-activator" checked="checked" type="checkbox" name="female" value="true" id="female">
-                        Femmes
-                    </label>
-                </span>
-                <span class="checkbox">
-                    <label for="male">
-                        <input class="filter-activator" checked="checked" type="checkbox" name="male" value="true" id="male">
-                        Hommes
-                    </label>
-                </span>
-                
-                <div class="filters-close-button">
-                    <i class="arrow-filters fa fa-angle-double-left"></i>
-                </div>
-            </div>
+        markerCluster = new MarkerClusterer(map, marker, options);
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw0QmEHjgwLq7FHQu3jwrOBL1p4wpMmMw&callback=initMap">
+            
+</script>
+        
+<div class="filters-div">
+    <div class="filters-subwrapper">
+        <div class="filters-title">
+            Filtrer les résultats
         </div>
-        
-        
-        {% include 'HistoryBundle:History:about.html.twig' %}
-        {% include 'HistoryBundle:History:suggestion-form.html.twig' %}
-        {% include 'HistoryBundle:History:footer.html.twig' %}
+        <div class="theme-filter">
+            <h4>
+                Thématique
+            </h4>
+            <select name="thematique-select" id="thematique-select">
+                {% for thematique in thematiques %}
+                    <option {% if thematique.getId() == 1 %}selected="selected"{% endif %} value="{{ thematique.getId() }}">
+                        {{ thematique.getNom() }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="events-filer">
+            <h4>
+                Événement
+            </h4>
+            {% for type in eventTypes %}
+                <span class="checkbox">
+                    <label for="{{ type.getNom|lower }}">
+                        <input class="filter-activator event" checked="checked" type="checkbox" name="{{ type.getNom|lower }}" value="{{ type.getId() }}" id="{{ type.getNom|lower }}">
+                        {{ type.getNom }}
+                    </label>
+                </span>
+            {% endfor %}
+        </div>
+        <h4>
+            Sexe
+        </h4>
+        <span class="checkbox">
+            <label for="female">
+                <input class="filter-activator" checked="checked" type="checkbox" name="female" value="true" id="female">
+                Femmes
+            </label>
+        </span>
+        <span class="checkbox">
+            <label for="male">
+                <input class="filter-activator" checked="checked" type="checkbox" name="male" value="true" id="male">
+                Hommes
+            </label>
+        </span>
+
+        <div class="filters-close-button">
+            <i class="arrow-filters fa fa-angle-double-left"></i>
+        </div>
+    </div>
+</div>
+
+
+{% include 'HistoryBundle:History:about.html.twig' %}
+{% include 'HistoryBundle:History:suggestion-form.html.twig' %}
+{% include 'HistoryBundle:History:footer.html.twig' %}

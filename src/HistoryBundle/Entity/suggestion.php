@@ -3,6 +3,7 @@
 namespace HistoryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * suggestion
@@ -25,6 +26,12 @@ class suggestion
      * @var string
      *
      * @ORM\Column(name="person_name", type="string", length=255)
+     * @Assert\NotBlank(message="Le nom ne doit pas être vide.")
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9 \-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
+     *     match=true,
+     *     message="Le nom est incorrect."
+     * )
      */
     private $personName;
 
@@ -32,6 +39,12 @@ class suggestion
      * @var string
      *
      * @ORM\Column(name="place_name", type="string", length=255)
+     * @Assert\NotBlank(message="Le lieu ne doit pas être vide.")
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9 \-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
+     *     match=true,
+     *     message="Le lieu est incorrect."
+     * )
      */
     private $placeName;
 
@@ -39,6 +52,14 @@ class suggestion
      * @var int
      *
      * @ORM\Column(name="date", type="integer")
+     * @Assert\NotBlank(message="L'année ne doit pas être vide.")
+     * @Assert\Range(
+     *      min = -3000,
+     *      max = 2020,
+     *      minMessage = "La date doit être supérieure à -3000.",
+     *      maxMessage = "La date doit être inférieure à 2020.",
+     *      invalidMessage = "La date doit être un nombre."
+     * )
      */
     private $date;
 
@@ -46,6 +67,12 @@ class suggestion
      * @var string
      *
      * @ORM\Column(name="event_name", type="string", length=255)
+     * @Assert\NotBlank(message="Le nom de l'événement ne doit pas être vide")
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9 \-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
+     *     match=true,
+     *     message="Le nom de l'événement est incorrect."
+     * )
      */
     private $eventName;
 
@@ -53,6 +80,15 @@ class suggestion
      * @var string
      *
      * @ORM\Column(name="wiki", type="string", length=1000)
+     * @Assert\NotBlank(message="Le lien Wikipédia ne doit pas être vide")
+     * @Assert\Url(
+     *    message = "Le lien Wikipédia est invalide.",
+     * )
+     * @Assert\Regex(
+     *     pattern="/wikipedia.org/",
+     *     match=true,
+     *     message="Le lien Wikipédia est invalide."
+     * )
      */
     private $wiki;
 

@@ -24,6 +24,7 @@ ul{
     bottom: 0;
     right: 0;
     left: 0;
+    margin-top: 110px;
 }
 
 .small-wiki{
@@ -300,7 +301,7 @@ ul{
     width: 100%;
 }
 
-.form-field input[type=submit]{
+.form-field button[type=submit]{
     width: 96%;
 }
 
@@ -403,12 +404,12 @@ ul{
     padding: 20px 10px;
     font-size: 18px;
     cursor: pointer;
-    transition: right ease 0.3s;
+    transition: all ease 0.3s;
     box-shadow: -6px 0px 5px -4px #9b9b9b;
 }
 
 .suggestion-close-button:hover{
-    right: 245px;
+    padding-right: 15px;
 }
 
 .filters-div{
@@ -451,12 +452,12 @@ ul{
     padding: 20px 10px;
     font-size: 18px;
     cursor: pointer;
-    transition: left ease 0.3s;
+    transition: all ease 0.3s;
     box-shadow: 6px 0px 5px -4px #9b9b9b;
 }
 
 .filters-close-button:hover{
-    left: 245px;
+    padding-left: 15px;
 }
 
 /*.events-filer{

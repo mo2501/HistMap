@@ -17,8 +17,10 @@ use HistoryBundle\Entity\suggestion;
 use HistoryBundle\Entity\thematique;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 class HistoryController extends Controller{
     
@@ -38,58 +40,40 @@ class HistoryController extends Controller{
         
         $data = array();
         $errors = array();
+        $success = array();
+        $form = array();
         
-        if($request->isMethod('POST')){
-            $data = $_POST;
+        $repositoryS = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:suggestion");
+        
+        $suggestion = new suggestion();
 
-            if(@$data["form_action"] == "add_suggestion"){
+        $form = $this->createFormBuilder($suggestion)
+            ->add("person_name", TextType::class, array('label' => 'Nom'))
+            ->add("place_name", TextType::class, array('label' => 'Lieu'))
+            ->add("date", TextType::class, array('label' => 'Année'))
+            ->add("event_name", TextType::class, array('label' => 'Événement'))
+            ->add("wiki", UrlType::class, array('label' => 'Wikipédia'))
+            ->add("save", SubmitType::class, array('label' => 'Envoyer'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $suggestion = $form->getData();
                 
-                if($data["event"] == "" || !preg_match('/^[a-zA-Z0-9 -ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]+$/', $data["event"])){
-                    $errors[] = "event";
-                }
+                $data = $form->getData();
                 
-                if($data["date"] == "" || !is_numeric($data["date"])){
-                    $errors[] = "date";
-                }
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($suggestion);
+                $em->flush();
                 
-                if($data["person_name"] == "" || !preg_match('/^[a-zA-Z0-9 -ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]+$/', $data["person_name"])){
-                    $errors[] = "person-name";
-                }
-                
-                if($data["place_name"] == "" || !preg_match('/^[a-zA-Z0-9 -ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]+$/', $data["place_name"])){
-                    $errors[] = "place-name";
-                }
-                
-                if($data["wiki"] == ""){
-                    $errors[] = "wiki";
-                }
-                else{
-                    $pieces = parse_url($data["wiki"]);
-                    $domain = isset($pieces['host']) ? $pieces['host'] : '';
-                    if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
-                        $url = $regs['domain'];
-                        if($url != "wikipedia.org"){
-                            $errors[] = "wiki";
-                        }
-                    }
-                    else{
-                        $errors[] = "wiki";
-                    }
-                }
-                
-                if(empty($errors)){
-                    $suggestion = new suggestion();
-                    
-                    $suggestion->setPersonName($data["person_name"]);
-                    $suggestion->setPlaceName($data["place_name"]);
-                    $suggestion->setDate($data["date"]);
-                    $suggestion->setWiki($data["wiki"]);
-                    $suggestion->setEventName($data["event"]);
-                    
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($suggestion);
-                    $em->flush();
-                }
+                $success = array(true);
+            }
+            else{
+                $errors = $this->getErrorMessages($form);
             }
         }
         
@@ -117,9 +101,31 @@ class HistoryController extends Controller{
                                                                             "from" => $from, 
                                                                             "to" => $to,
                                                                             "errors" => $errors,
+                                                                            "success" => $success,
                                                                             "thematiques" => $thematiques,
                                                                             "eventTypes" => $eventTypesObj,
+                                                                            "form" => $form->createView(),
                                                                             "data" => $data));
+    }
+    
+    private function getErrorMessages(\Symfony\Component\Form\Form $form) {
+        $errors = array();
+
+        foreach ($form->getErrors() as $key => $error) {
+            if ($form->isRoot()) {
+                $errors['#'][] = $error->getMessage();
+            } else {
+                $errors[] = $error->getMessage();
+            }
+        }
+
+        foreach ($form->all() as $child) {
+            if (!$child->isValid()) {
+                $errors[$child->getName()] = $this->getErrorMessages($child);
+            }
+        }
+
+        return $errors;
     }
     
     public function aboutAction(Request $request){
