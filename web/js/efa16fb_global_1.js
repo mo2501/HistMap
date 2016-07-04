@@ -145,7 +145,7 @@ $(document).ready(function(){
                           width: 42
                         },
                        {
-                          textColor: 'black',
+                          textColor: '#111',
                           url: 'markerclusterer/images/m2.png',
                           height: 50,
                           width: 50
