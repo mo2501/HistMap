@@ -255,4 +255,15 @@ $(document).ready(function(){
     if (typeof error == 'undefined' && typeof success == 'undefined') {
         $(".suggestion-close-button").trigger("click");
     }
+
+    $.ajax({
+        url: 'get-events',
+        type: 'POST',
+        cache: false,
+        data: {"gender" : [1, 2], "eventType" : [1, 2], "from" : "1500", "to" : "2000", "nom" : ""},
+        success: function(data){
+            console.log(data["events"]);
+        }
+    });
+
 });

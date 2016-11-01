@@ -70,10 +70,30 @@ ul{
 #slider-range{
     display: inline-block;
     position: absolute;
-    right: 170px;
-    top: 30px;
+    left: 365px;
+    top: 25px;
     vertical-align: middle;
-    width: 64%;
+    width: 415px;
+}
+
+#input-from{
+    display: inline-block;
+    left: 285px;
+    position: absolute;
+    text-align: center;
+    top: 18px;
+    vertical-align: middle;
+    width: 60px;
+}
+
+#input-to{
+    display: inline-block;
+    left: 805px;
+    position: absolute;
+    text-align: center;
+    top: 18px;
+    vertical-align: middle;
+    width: 60px;
 }
 
 #slider-amount{
@@ -83,6 +103,46 @@ ul{
     top: 50px;
     vertical-align: middle;
     width: 100%;
+}
+
+.div-gender-filter{
+    position: absolute;
+    left: 285px;
+    top: 45px;
+}
+
+.div-event-type-filter{
+    border-left: 1px solid #dedede;
+    left: 410px;
+    padding-left: 50px;
+    position: absolute;
+    top: 55px;
+    width: 500px;
+}
+
+.div-event-type-filter .checkbox{
+    display: inline-block;
+    margin-bottom: 7px;
+    margin-right: 20px;
+    margin-top: 0;
+    min-width: 90px;
+}
+
+.div-name-filter{
+    left: 905px;
+    position: absolute;
+    top: 18px;
+}
+
+.div-submit-search{
+    position: absolute;
+    left: 905px;
+    top: 55px;
+}
+
+.div-submit-search button{
+    width: 175px;
+    height: 45px;
 }
 
 .slider-wrapper p{
@@ -501,23 +561,36 @@ ul{
     top: 0; bottom: 0; left: 0; right: 0;
     padding: 5%;
     display: none;
+    background: #fff;
+    width: 100%;
+    height: 100%;
 }
 
 .showbox-open{
     display: initial;
+    background: #fff;
 }
 
-// end demo-specific
+.gm-style .marker > a{
+    display: inline-block;
+}
+
+.gm-style .marker-text{
+    display: inline-block;
+    padding-top: 20px;
+}
 
 .loader {
-  position: relative;
-  margin: 0px auto;
-  width: 100px;
-  &:before {
+    position: relative;
+    margin: 0px auto;
+    padding-top: 150px;
+    width: 100px;
+}
+
+.loader:before{
     content:'';
     display: block;
     padding-top: 100%;
-  }
 }
 
 .circular {
@@ -545,6 +618,10 @@ ul{
      color 6s ease-in-out infinite
     ;
     stroke-linecap: round;
+}
+
+.admin-menu{
+    width: 100%;
 }
 
 @keyframes rotate{

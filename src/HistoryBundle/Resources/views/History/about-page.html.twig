@@ -1,6 +1,8 @@
-{% include 'HistoryBundle:History:header.html.twig' %}
+{% extends "HistoryBundle:History:base.html.twig" %}
 
-<div class="about-div">
+{% block content %}
+
+    <div class="about-div">
     <h1 class="about-title">
         À propos
     </h1>
@@ -18,4 +20,4 @@
     </a>
 </div>
 
-{% include 'HistoryBundle:History:footer.html.twig' %}
+{% endblock %}

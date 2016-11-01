@@ -7,6 +7,8 @@
  */
 
 namespace HistoryBundle\Controller;
+
+use HistoryBundle\Repository\eventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use HistoryBundle\Entity\personne;
@@ -21,9 +23,14 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class HistoryController extends Controller{
-    
+
+    /**
+     * @Route("/", name="history_homepage")
+     */
     public function indexAction(Request $request){
         
         $repositoryE = $this->getDoctrine()
@@ -107,7 +114,46 @@ class HistoryController extends Controller{
                                                                             "form" => $form->createView(),
                                                                             "data" => $data));
     }
-    
+
+
+    /**
+     * @Route("/new-index", name="history_new_homepage")
+     */
+    public function newIndexAction(Request $request){
+        /* @var eventTypeRepository $repositoryET */
+        $repositoryET = $this->getDoctrine()
+                             ->getManager()
+                             ->getRepository("HistoryBundle:eventType");
+
+        $from = 1000;
+        $to = date("Y");
+
+        $genders = array("Femmes" => "female", "Hommes" => "male");
+        $eventTypes = $repositoryET->findBy(array(), array("nom" => "ASC"));
+
+        return $this->render('HistoryBundle:History:new-index.html.twig', array(
+            "from" => $from,
+            "to" => $to,
+            "genders" => $genders,
+            "eventTypes" => $eventTypes
+        ));
+    }
+
+    /**
+     * @Route("/get-events", name="history_get_events", options = { "expose" = true })
+     */
+    public function getEventsAjaxAction(){
+        /* @var eventRepository $repositoryE */
+        $repositoryE = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("HistoryBundle:event");
+
+        $events = $repositoryE->getEventsNew($_POST);
+
+        $response = new \Symfony\Component\HttpFoundation\JsonResponse();
+        return $response->setData(array("events" => $events));
+    }
+
     private function getErrorMessages(\Symfony\Component\Form\Form $form) {
         $errors = array();
 
@@ -127,7 +173,10 @@ class HistoryController extends Controller{
 
         return $errors;
     }
-    
+
+    /**
+     * @Route("/about", name="history_about")
+     */
     public function aboutAction(Request $request){
         
         
@@ -135,6 +184,7 @@ class HistoryController extends Controller{
     }
     
     public function getPersonsAjaxAction($from, $to){
+        /* @var eventRepository $repositoryE */
         $repositoryE = $this->getDoctrine()
                             ->getManager()
                             ->getRepository("HistoryBundle:event");

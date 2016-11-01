@@ -94,4 +94,3 @@ class admin
         return $this->password;
     }
 }
-

@@ -1,5 +1,6 @@
-{% include 'HistoryBundle:History:header.html.twig' %}
+{% extends "HistoryBundle:History:admin-base.html.twig" %}
 
+{% block content %}
 
 <div class="wrapper-suggestions">
     {% for key, suggestion in suggestions %}
@@ -83,4 +84,4 @@
     {% endif %}
 </div>
 
-{% include 'HistoryBundle:History:footer.html.twig' %}
+{% endblock %}

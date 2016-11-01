@@ -1,4 +1,6 @@
-{% include 'HistoryBundle:History:header.html.twig' %}
+{% extends "HistoryBundle:History:base.html.twig" %}
+
+{% block content %}
 
 <div id="map">
     
@@ -76,19 +78,22 @@
         var contentString = [];        
         marker = [];        
         {% for key, event in events %}            
-            contentString[{{ key }}] = "<div class='marker'>\n\                                            <h4>\n\
-                                                            <a target='_blank' href='{{ event["personne"]["wiki"] }}'> \n\
-                                                            {{ event["personne"]["nom"] }} \n\
+            contentString[{{ key }}] = "<div class='marker'>\n\
+                                            <a target='_blank' href='{{ event["personne"]["wiki"] }}'>\n\
+                                                <img width='100px' src='public/personne/{{ event["personne"]["ref"] }}.jpg'>\n\
+                                            </a>\n\
+                                            <div class='marker-text'>\n\
+                                                <h4>\n\
+                                                    <a target='_blank' href='{{ event["personne"]["wiki"] }}'>\n\
+                                                        {{ event["personne"]["nom"] }} \n\
                                                         <img class='small-wiki' src='public/images/wiki_small.png'>\n\
                                                     </a>\n\
                                                 </h4>\n\
                                                 <div>Événement : {{ event["intitule"] }}</div>\n\
                                                 <div>Lieu : {{ event["place"]["nom"] }}</div>\n\
                                                 <div>Année : {{ event["year"] }}</div>\n\
-                                                <a target='_blank' href='{{ event["personne"]["wiki"] }}'>\n\
-                                                    <img width='100px' src='public/personne/{{ event["personne"]["ref"] }}.jpg'>\n\
-                                                </a>\n\
-                                           </div>";
+                                            </div>\n\
+                                        </div>";
             var infowindow = new google.maps.InfoWindow({                
                 content: contentString[{{ key }}]
             });            
@@ -197,4 +202,5 @@
 
 {% include 'HistoryBundle:History:about.html.twig' %}
 {% include 'HistoryBundle:History:suggestion-form.html.twig' %}
-{% include 'HistoryBundle:History:footer.html.twig' %}
+
+{% endblock %}

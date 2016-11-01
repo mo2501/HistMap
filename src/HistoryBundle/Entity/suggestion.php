@@ -223,4 +223,3 @@ class suggestion
         return $this->wiki;
     }
 }
-

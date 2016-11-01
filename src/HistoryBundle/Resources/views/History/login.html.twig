@@ -1,5 +1,9 @@
-{% if errors != "" %}
-    {{ errors }}
-{% endif %}
-    
-{{ form(form) }}
+{% extends "HistoryBundle:History:admin-base.html.twig" %}
+
+{% block content %}
+    {% if errors != "" %}
+        {{ errors }}
+    {% endif %}
+
+    {{ form(form) }}
+{% endblock %}

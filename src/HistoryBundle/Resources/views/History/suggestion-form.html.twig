@@ -1,56 +1,9 @@
 <form method="post" class="suggestion-form">
     <div class="suggestion-subwrapper">
-        {% if errors is not empty %}
-            <ul class="error-div">
-                {% for error in errors %}
-                    <li> <i class="fa fa-exclamation-circle"></i> 
-                        {{ error[0] }}
-                    </li>
-                {% endfor %}
-            </ul>
-            <script>
-                error = true;
-            </script>
-        {% endif %}
-        
-        {% if success is not empty %}
-            <div class="success-div">
-                <i class="fa fa-check-circle"></i> Votre suggestion a bien été prise en compte et sera étudiée.
-            </div>
-            <script>
-                success = true;
-            </script>
-        {% endif %}
 
         <div class="suggestion-title">
             Suggérer un événement
         </div>
-
-        {{ form_start(form) }}
-            <div class="form-field">
-                {{ form_label(form.person_name, null, {'label_attr': {'class': 'label-field'}}) }}
-                {{ form_widget(form.person_name, {'attr': {'placeholder': 'Ex : Napoléon Bonaparte'}}) }}
-            </div>
-            <div class="form-field">
-                {{ form_label(form.wiki, null, {'label_attr': {'class': 'label-field'}}) }}
-                {{ form_widget(form.wiki, {'attr': {'placeholder': 'Ex : https://fr.wikipedia.org/wiki/Napol%C3%A9on_Ier', 'required': ''}}) }}
-            </div>
-            <div class="form-field">
-                {{ form_label(form.place_name, null, {'label_attr': {'class': 'label-field'}}) }}
-                {{ form_widget(form.place_name, {'attr': {'placeholder': 'Ex : Ajaccio, France'}}) }}
-            </div>
-            <div class="form-field">
-                {{ form_label(form.date, null, {'label_attr': {'class': 'label-field'}}) }}
-                {{ form_widget(form.date, {'attr': {'placeholder': 'Ex : 1769'}}) }}
-            </div>
-            <div class="form-field">
-                {{ form_label(form.event_name, null, {'label_attr': {'class': 'label-field'}}) }}
-                {{ form_widget(form.event_name, {'attr': {'placeholder': 'Ex : Naissance'}}) }}
-            </div>
-            <div class="form-field form-field-submit">
-                {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
-            </div>
-        {{ form_end(form) }}
         
         <div class="suggestion-close-button">
             <i class="arrow-suggestion fa fa-angle-double-right"></i>
