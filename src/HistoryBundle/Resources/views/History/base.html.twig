@@ -55,9 +55,15 @@
                 ga('create', 'UA-24743720-3', 'auto');
                 ga('send', 'pageview');
             </script>
-            
+            <script>
+                setTimeout(function(){
+                    $.getScript("/oms/oms.min.js", function(){
+                    });
+                }, 500);
+            </script>
+
             {% javascripts 
-                '@HistoryBundle/Resources/js/new-global.js'
+                '@HistoryBundle/Resources/js/global.js'
             %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}

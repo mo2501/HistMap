@@ -14,7 +14,7 @@ history_thematiques:
     path:     /admin-thematiques
     defaults: { _controller: HistoryBundle:History:thematiques }
 
-history_suggestions:
+history_admin_suggestions:
     path:     /admin-suggestions
     defaults: { _controller: HistoryBundle:History:suggestions }
 

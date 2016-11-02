@@ -31,7 +31,7 @@ class HistoryController extends Controller{
     /**
      * @Route("/", name="history_homepage")
      */
-    public function indexAction(Request $request){
+    /*public function indexAction(Request $request){
         
         $repositoryE = $this->getDoctrine()
                             ->getManager()
@@ -113,13 +113,13 @@ class HistoryController extends Controller{
                                                                             "eventTypes" => $eventTypesObj,
                                                                             "form" => $form->createView(),
                                                                             "data" => $data));
-    }
+    }*/
 
 
     /**
-     * @Route("/new-index", name="history_new_homepage")
+     * @Route("/", name="history_homepage")
      */
-    public function newIndexAction(Request $request){
+    public function indexAction(Request $request){
         /* @var eventTypeRepository $repositoryET */
         $repositoryET = $this->getDoctrine()
                              ->getManager()
@@ -131,12 +131,58 @@ class HistoryController extends Controller{
         $genders = array("Femmes" => "female", "Hommes" => "male");
         $eventTypes = $repositoryET->findBy(array(), array("nom" => "ASC"));
 
-        return $this->render('HistoryBundle:History:new-index.html.twig', array(
+        return $this->render('HistoryBundle:History:index.html.twig', array(
             "from" => $from,
             "to" => $to,
             "genders" => $genders,
             "eventTypes" => $eventTypes
         ));
+    }
+
+    /**
+     * @Route("/suggestion-evenement", name="history_suggestions")
+     */
+    public function suggestionsAction(Request $request){
+
+        $data = array();
+        $errors = array();
+        $success = array();
+
+        $suggestion = new suggestion();
+
+        $form = $this->createFormBuilder($suggestion)
+            ->add("person_name", TextType::class, array('label' => 'Nom'))
+            ->add("place_name", TextType::class, array('label' => 'Lieu'))
+            ->add("date", TextType::class, array('label' => 'Année'))
+            ->add("event_name", TextType::class, array('label' => 'Événement'))
+            ->add("wiki", UrlType::class, array('label' => 'Wikipédia'))
+            ->add("save", SubmitType::class, array('label' => 'Envoyer'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $suggestion = $form->getData();
+
+                $data = $form->getData();
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($suggestion);
+                $em->flush();
+
+                $success = array(true);
+            }
+            else{
+                $errors = $this->getErrorMessages($form);
+            }
+        }
+
+        return $this->render('HistoryBundle:History:suggestion-form.html.twig', array(
+            "errors" => $errors,
+            "success" => $success,
+            "form" => $form->createView(),
+            "data" => $data));
     }
 
     /**
@@ -378,7 +424,7 @@ class HistoryController extends Controller{
                                                                                   "personnes" => $personnes));
     }
     
-    public function suggestionsAction(Request $request){
+    public function suggestionsAdminAction(Request $request){
         $session = $request->getSession();
         $session->start();
         
