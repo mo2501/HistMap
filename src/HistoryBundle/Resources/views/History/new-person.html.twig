@@ -1,5 +1,6 @@
-{% include 'HistoryBundle:History:header.html.twig' %}
+{% extends "HistoryBundle:History:admin-base.html.twig" %}
 
+{% block content %}
 <div class="wrapper-new-person">
     <form method="post" enctype="multipart/form-data">
         <h4>
@@ -104,4 +105,4 @@
         <input type="submit" class="btn btn-info">
     </form>
 </div>
-{% include 'HistoryBundle:History:footer.html.twig' %}
+{% endblock %}

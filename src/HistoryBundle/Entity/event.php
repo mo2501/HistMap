@@ -46,9 +46,7 @@ class event
     private $place;
     
     /**
-     * @var \integer
-     *
-     * @ORM\Column(name="eventType", type="integer")
+     * @ORM\ManyToOne(targetEntity="HistoryBundle\Entity\eventType")
      */
     private $eventType;
 
@@ -158,7 +156,7 @@ class event
     {
         return $this->year;
     }
-    
+
     /**
      * Set eventType
      *

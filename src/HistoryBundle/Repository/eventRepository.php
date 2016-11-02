@@ -1,6 +1,7 @@
 <?php
 
 namespace HistoryBundle\Repository;
+use HistoryBundle\Entity\event;
 
 /**
  * AdminRepository
@@ -149,6 +150,58 @@ class eventRepository extends \Doctrine\ORM\EntityRepository{
         }
         
         return $events;
+    }
+
+    public function getEventsNew($data = array()){
+        $repositoryE = $this->getEntityManager()
+            ->getRepository('HistoryBundle:event');
+
+        $repositoryPe = $this->getEntityManager()
+            ->getRepository('HistoryBundle:personne');
+
+        $repositoryPl = $this->getEntityManager()
+            ->getRepository('HistoryBundle:place');
+
+        $repositoryTh = $this->getEntityManager()
+            ->getRepository('HistoryBundle:thematique');
+
+        if(empty($data)){
+            return $data;
+        }
+
+        /* @var event[] $events */
+        $events = $this->createQueryBuilder('e')
+                       ->join('e.personne', 'pe')
+                       ->join('e.place', 'pl')
+                       ->join('e.eventType', 'et')
+                       ->where("pe.gender in (:gender)")
+                       ->setParameter("gender", $data["gender"])
+                       ->andWhere("et.id in (:eventType)")
+                       ->setParameter("eventType", $data["eventType"])
+                       ->andWhere("e.year BETWEEN :from AND :to")
+                       ->setParameter("from", $data["from"])
+                       ->setParameter("to", $data["to"])
+                       ->andWhere("pe.nom LIKE :nom")
+                       ->setParameter("nom", "%".$data["nom"]."%")
+                       ->getQuery()
+                       ->getResult();
+
+        $events_response = array();
+
+        foreach($events as $key => $event){
+            $events_response[$key]["intitule"] = $event->getIntitule();
+            $events_response[$key]["year"] = $event->getYear();
+            $events_response[$key]["personne"]["nom"] = $event->getPersonne()->getNom();
+            $events_response[$key]["personne"]["wiki"] = $event->getPersonne()->getWiki();
+            $events_response[$key]["personne"]["gender"] = $event->getPersonne()->getGender();
+            $events_response[$key]["personne"]["ref"] = $event->getPersonne()->getRef();
+            $events_response[$key]["place"]["nom"] = $event->getPlace()->getNom();
+            $events_response[$key]["place"]["lat"] = $event->getPlace()->getLat();
+            $events_response[$key]["place"]["lng"] = $event->getPlace()->getLng();
+            $events_response[$key]["eventType"]["nom"] = $event->getEventType()->getNom();
+        }
+
+        return $events_response;
     }
     
     public function sortEventsObjects($a, $b){

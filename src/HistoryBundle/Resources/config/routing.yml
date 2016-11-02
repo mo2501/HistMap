@@ -1,11 +1,3 @@
-history_homepage:
-    path:     /
-    defaults: { _controller: HistoryBundle:History:index }
-
-history_about:
-    path:     /about
-    defaults: { _controller: HistoryBundle:History:about }
-
 history_get_persons_ajax:
     path:     /get-persons-ajax/{from}/{to}
     defaults: { _controller: HistoryBundle:History:getPersonsAjax }
@@ -22,7 +14,7 @@ history_thematiques:
     path:     /admin-thematiques
     defaults: { _controller: HistoryBundle:History:thematiques }
 
-history_suggestions:
+history_admin_suggestions:
     path:     /admin-suggestions
     defaults: { _controller: HistoryBundle:History:suggestions }
 
@@ -37,3 +29,10 @@ history_login:
 history_logout:
     path:     /admin-logout
     defaults: { _controller: HistoryBundle:History:logout }
+
+###Controller routes###
+
+cf_controllers:
+    resource: "@HistoryBundle/Controller"
+    type:     annotation
+    prefix: /

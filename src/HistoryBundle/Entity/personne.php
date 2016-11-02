@@ -51,20 +51,6 @@ class personne
      * @ORM\Column(name="gender", type="integer")
      */
     private $gender;
-    
-    /**
-    * @ORM\ManyToMany(targetEntity="HistoryBundle\Entity\thematique", cascade={"persist"}, inversedBy="personnes")
-    * @ORM\JoinTable(name="thematique_personne",
-    *      joinColumns={@ORM\JoinColumn(name="personne_id", referencedColumnName="id")},
-    *      inverseJoinColumns={@ORM\JoinColumn(name="thematiques_id", referencedColumnName="id")}
-    * )
-    */
-    private $thematiques;
-    
-    public function __construct()
-    {
-        $this->thematiques = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -170,22 +156,5 @@ class personne
     public function getGender()
     {
         return $this->gender;
-    }
-    
-    public function addThematique(Thematique $thematique)
-    {
-      $this->thematiques[] = $thematique;
-
-      return $this;
-    }
-
-    public function removeThematique(Thematique $thematique)
-    {
-      $this->thematiques->removeElement($thematique);
-    }
-
-    public function getThematiques()
-    {
-      return $this->thematiques;
     }
 }

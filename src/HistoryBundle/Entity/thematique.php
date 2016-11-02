@@ -30,20 +30,6 @@ class thematique
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-    
-    /**
-    * @ORM\ManyToMany(targetEntity="HistoryBundle\Entity\personne", cascade={"persist"}, inversedBy="thematiques")
-    * @ORM\JoinTable(name="thematique_personne",
-    *      joinColumns={@ORM\JoinColumn(name="thematique_id", referencedColumnName="id")},
-    *      inverseJoinColumns={@ORM\JoinColumn(name="personne_id", referencedColumnName="id")}
-    * )
-    */
-    private $personnes;
-    
-    public function __construct()
-    {
-        $this->personnes = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -77,23 +63,6 @@ class thematique
     public function getNom()
     {
         return $this->nom;
-    }
-    
-    public function addPersonne(Personne $personne)
-    {
-        $this->personnes[] = $personne;
-        
-        return $this;
-    }
-
-    public function removePersonne(Personne $personne)
-    {
-        $this->personnes->removeElement($personne);
-    }
-
-    public function getPersonnes()
-    {
-        return $this->personnes;
     }
 
 }

@@ -7,6 +7,8 @@
  */
 
 namespace HistoryBundle\Controller;
+
+use HistoryBundle\Repository\eventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use HistoryBundle\Entity\personne;
@@ -21,10 +23,15 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class HistoryController extends Controller{
-    
-    public function indexAction(Request $request){
+
+    /**
+     * @Route("/", name="history_homepage")
+     */
+    /*public function indexAction(Request $request){
         
         $repositoryE = $this->getDoctrine()
                             ->getManager()
@@ -106,8 +113,93 @@ class HistoryController extends Controller{
                                                                             "eventTypes" => $eventTypesObj,
                                                                             "form" => $form->createView(),
                                                                             "data" => $data));
+    }*/
+
+
+    /**
+     * @Route("/", name="history_homepage")
+     */
+    public function indexAction(Request $request){
+        /* @var eventTypeRepository $repositoryET */
+        $repositoryET = $this->getDoctrine()
+                             ->getManager()
+                             ->getRepository("HistoryBundle:eventType");
+
+        $from = 1000;
+        $to = date("Y");
+
+        $genders = array("Femmes" => "female", "Hommes" => "male");
+        $eventTypes = $repositoryET->findBy(array(), array("nom" => "ASC"));
+
+        return $this->render('HistoryBundle:History:index.html.twig', array(
+            "from" => $from,
+            "to" => $to,
+            "genders" => $genders,
+            "eventTypes" => $eventTypes
+        ));
     }
-    
+
+    /**
+     * @Route("/suggestion-evenement", name="history_suggestions")
+     */
+    public function suggestionsAction(Request $request){
+
+        $data = array();
+        $errors = array();
+        $success = array();
+
+        $suggestion = new suggestion();
+
+        $form = $this->createFormBuilder($suggestion)
+            ->add("person_name", TextType::class, array('label' => 'Nom'))
+            ->add("place_name", TextType::class, array('label' => 'Lieu'))
+            ->add("date", TextType::class, array('label' => 'Année'))
+            ->add("event_name", TextType::class, array('label' => 'Événement'))
+            ->add("wiki", UrlType::class, array('label' => 'Wikipédia'))
+            ->add("save", SubmitType::class, array('label' => 'Envoyer'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $suggestion = $form->getData();
+
+                $data = $form->getData();
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($suggestion);
+                $em->flush();
+
+                $success = array(true);
+            }
+            else{
+                $errors = $this->getErrorMessages($form);
+            }
+        }
+
+        return $this->render('HistoryBundle:History:suggestion-form.html.twig', array(
+            "errors" => $errors,
+            "success" => $success,
+            "form" => $form->createView(),
+            "data" => $data));
+    }
+
+    /**
+     * @Route("/get-events", name="history_get_events", options = { "expose" = true })
+     */
+    public function getEventsAjaxAction(){
+        /* @var eventRepository $repositoryE */
+        $repositoryE = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("HistoryBundle:event");
+
+        $events = $repositoryE->getEventsNew($_POST);
+
+        $response = new \Symfony\Component\HttpFoundation\JsonResponse();
+        return $response->setData(array("events" => $events));
+    }
+
     private function getErrorMessages(\Symfony\Component\Form\Form $form) {
         $errors = array();
 
@@ -127,7 +219,10 @@ class HistoryController extends Controller{
 
         return $errors;
     }
-    
+
+    /**
+     * @Route("/about", name="history_about")
+     */
     public function aboutAction(Request $request){
         
         
@@ -135,6 +230,7 @@ class HistoryController extends Controller{
     }
     
     public function getPersonsAjaxAction($from, $to){
+        /* @var eventRepository $repositoryE */
         $repositoryE = $this->getDoctrine()
                             ->getManager()
                             ->getRepository("HistoryBundle:event");
@@ -328,7 +424,7 @@ class HistoryController extends Controller{
                                                                                   "personnes" => $personnes));
     }
     
-    public function suggestionsAction(Request $request){
+    public function suggestionsAdminAction(Request $request){
         $session = $request->getSession();
         $session->start();
         
