@@ -104,7 +104,7 @@ class HistoryController extends Controller{
         
         $thematiques = $repositoryTh->findAllCustom();
         
-        return $this->render('HistoryBundle:History:index.html.twig', array("events" => $events, 
+        return $this->render('HistoryBundle:History:front/index.html.twig', array("events" => $events,
                                                                             "from" => $from, 
                                                                             "to" => $to,
                                                                             "errors" => $errors,
@@ -114,7 +114,6 @@ class HistoryController extends Controller{
                                                                             "form" => $form->createView(),
                                                                             "data" => $data));
     }*/
-
 
     /**
      * @Route("/", name="history_homepage")
@@ -131,7 +130,7 @@ class HistoryController extends Controller{
         $genders = array("Femmes" => "female", "Hommes" => "male");
         $eventTypes = $repositoryET->findBy(array(), array("nom" => "ASC"));
 
-        return $this->render('HistoryBundle:History:index.html.twig', array(
+        return $this->render('HistoryBundle:History:front/index.html.twig', array(
             "from" => $from,
             "to" => $to,
             "genders" => $genders,
@@ -178,7 +177,7 @@ class HistoryController extends Controller{
             }
         }
 
-        return $this->render('HistoryBundle:History:suggestion-form.html.twig', array(
+        return $this->render('HistoryBundle:History:front/suggestion-form.html.twig', array(
             "errors" => $errors,
             "success" => $success,
             "form" => $form->createView(),
@@ -226,22 +225,17 @@ class HistoryController extends Controller{
     public function aboutAction(Request $request){
         
         
-        return $this->render('HistoryBundle:History:about-page.html.twig', array());
+        return $this->render('HistoryBundle:History:front/about-page.html.twig', array());
     }
-    
+
+    /**
+     * @Route("/get-persons-ajax/{from}/{to}", name="history_get_persons_ajax")
+     */
     public function getPersonsAjaxAction($from, $to){
         /* @var eventRepository $repositoryE */
         $repositoryE = $this->getDoctrine()
                             ->getManager()
                             ->getRepository("HistoryBundle:event");
-        
-        $repositoryPe = $this->getDoctrine()
-                            ->getManager()
-                            ->getRepository("HistoryBundle:personne");
-        
-        $repositoryPl = $this->getDoctrine()
-                            ->getManager()
-                            ->getRepository("HistoryBundle:place");
         
         
         $events = $repositoryE->getEvents($from, $to, $_POST);
@@ -249,7 +243,10 @@ class HistoryController extends Controller{
         $response = new \Symfony\Component\HttpFoundation\JsonResponse();
         return $response->setData(array("events" => $events));
     }
-    
+
+    /**
+     * @Route("/admin/index", name="history_admin_index")
+     */
     public function adminindexAction(Request $request){
         $session = $request->getSession();
         
@@ -257,9 +254,9 @@ class HistoryController extends Controller{
             return $this->redirect($this->generateUrl('history_login'));
         }
         
-        return $this->render('HistoryBundle:History:admin-index.html.twig', array());
+        return $this->render('HistoryBundle:History:admin/admin-index.html.twig', array());
     }
-    
+
     public function admintestAction(Request $request){
         $session = $request->getSession();
         
@@ -279,10 +276,13 @@ class HistoryController extends Controller{
         
         $personnes = $repositoryTh->getIdPersonnesByThematique(10);
         
-        return $this->render('HistoryBundle:History:admin-test.html.twig', array("thematiques" => $thematiques,
+        return $this->render('HistoryBundle:History:admin/admin-test.html.twig', array("thematiques" => $thematiques,
                                                                                  "personnes" => $personnes));
     }
-    
+
+    /**
+     * @Route("/admin/new-person", name="history_new_person")
+     */
     public function newPersonAction(Request $request){
         $session = $request->getSession();
         $session->start();
@@ -333,8 +333,8 @@ class HistoryController extends Controller{
                 $personne->setWiki($data["person_wiki"]);
                 $personne->setGender($data["gender"]);
                 
-                $thematique = $repositoryTh->getThematiqueTous(1);
-                $repositoryTh->addToThematique($personne, $thematique);
+                //$thematique = $repositoryTh->getThematiqueTous(1);
+                //$repositoryTh->addToThematique($personne, $thematique);
                 
                 $em->persist($personne);
                 
@@ -353,7 +353,7 @@ class HistoryController extends Controller{
                 $event = new event();
                 
                 $event->setIntitule($data["event_name"]);
-                $event->setEventType($data["event_type"]);
+                $event->setEventType($repositoryET->findOneById($data["event_type"]));
                 $event->setYear($data["event_year"]);
                 $event->setPersonne($repositoryPe->findOneById($data["personne_id"]));
                 $event->setPlace($repositoryPl->findOneById($data["place_id"]));
@@ -368,12 +368,15 @@ class HistoryController extends Controller{
         $places = $repositoryPl->findBy(array(), array("nom" => "ASC"));
         $eventTypes = $repositoryET->findAll();
         
-        return $this->render('HistoryBundle:History:new-person.html.twig', array("data" => $data,
+        return $this->render('HistoryBundle:History:admin/new-person.html.twig', array("data" => $data,
                                                                                  "places" => $places,
                                                                                  "eventTypes" => $eventTypes,
                                                                                  "personnes" => $personnes));
     }
-    
+
+    /**
+     * @Route("/admin/thematiques", name="history_thematiques")
+     */
     public function thematiquesAction(Request $request){
         $session = $request->getSession();
         $session->start();
@@ -419,11 +422,14 @@ class HistoryController extends Controller{
         
         $thematiques = $repositoryT->findBy(array(), array("nom" => "ASC"));
         
-        return $this->render('HistoryBundle:History:thematiques.html.twig', array("data" => $data,
+        return $this->render('HistoryBundle:History:admin/thematiques.html.twig', array("data" => $data,
                                                                                   "thematiques" => $thematiques,
                                                                                   "personnes" => $personnes));
     }
-    
+
+    /**
+     * @Route("/admin/suggestions", name="history_admin_suggestions")
+     */
     public function suggestionsAdminAction(Request $request){
         $session = $request->getSession();
         $session->start();
@@ -521,13 +527,16 @@ class HistoryController extends Controller{
         $suggestions = $repositoryS->findAll();
         $eventTypes = $repositoryET->findAll();
         
-        return $this->render('HistoryBundle:History:suggestions.html.twig', array("data" => $data,
+        return $this->render('HistoryBundle:History:admin/suggestions.html.twig', array("data" => $data,
                                                                                   "suggestions" => $suggestions,
                                                                                   "personnes" => $personnes,
                                                                                   "eventTypes" => $eventTypes,
                                                                                   "places" => $places));
     }
-    
+
+    /**
+     * @Route("/admin/login", name="history_login")
+     */
     public function loginAction(Request $request){
         $session = $request->getSession();
         $session->start();
@@ -566,10 +575,13 @@ class HistoryController extends Controller{
             }
         }
         
-        return $this->render('HistoryBundle:History:login.html.twig', array("errors" => $errors,
+        return $this->render('HistoryBundle:History:admin/login.html.twig', array("errors" => $errors,
                                                                             "form" => $form->createView()));
     }
-    
+
+    /**
+     * @Route("/admin/logout", name="history_logout")
+     */
     public function logoutAction(Request $request){
         $session = $request->getSession();
         $session->start();

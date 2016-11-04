@@ -1,4 +1,4 @@
-{% extends "HistoryBundle:History:admin-base.html.twig" %}
+{% extends "HistoryBundle:History:admin/admin-base.html.twig" %}
 
 {% block content %}
 <div class="wrapper-new-person">
@@ -19,6 +19,28 @@
         <input type="hidden" name="new_person_action" value="create_person">
         <input type="submit" class="btn btn-info">
     </form>
+
+    <div id="localization_map">
+        <script type="text/javascript">
+            var icon = "/public/images/marker-icon.png";
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('localization_map'), {
+                    center: {lat: 45.738323, lng: 4.860955},
+                    minZoom: 2,
+                    zoom: 3,
+                    styles: [{"featureType":"landscape","stylers":[{"saturation":-7},{"gamma":1.02},{"hue":"#ffc300"},{"lightness":-10}]},{"featureType":"road.highway","stylers":[{"hue":"#ffaa00"},{"saturation":-45},{"gamma":1},{"lightness":-4}]},{"featureType":"road.arterial","stylers":[{"hue":"#ffaa00"},{"lightness":-10},{"saturation":64},{"gamma":0.9}]},{"featureType":"road.local","stylers":[{"lightness":-5},{"hue":"#00f6ff"},{"saturation":-40},{"gamma":0.75}]},{"featureType":"poi","stylers":[{"saturation":-30},{"lightness":11},{"gamma":0.5},{"hue":"#ff8000"}]},{"featureType":"water","stylers":[{"hue":"#0077ff"},{"gamma":1.25},{"saturation":-22},{"lightness":-31}]}],
+                    scaleControl: true,
+                    streetViewControl: false
+                });
+                var contentString = [];
+            }
+
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw0QmEHjgwLq7FHQu3jwrOBL1p4wpMmMw&callback=initMap">
+
+        </script>
+    </div>
 
     <div class="list-personnes">
         <ul>

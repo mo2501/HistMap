@@ -77,21 +77,22 @@ $(document).ready(function(){
         sendDataAjax(data);
     });
 
-    setTimeout(function(){
-        oms = new OverlappingMarkerSpiderfier(map, {"keepSpiderfied": true});
+    if(window.location.pathname == "/" || window.location.pathname == "/app_dev.php") {
+        setTimeout(function () {
+            oms = new OverlappingMarkerSpiderfier(map, {"keepSpiderfied": true});
 
-        oms.addListener('click', function(marker, event) {
-            infowindow.setContent(contentString[marker.id]);
-            infowindow.open(map, marker);
-        });
-    }, 1000);
+            oms.addListener('click', function (marker, event) {
+                infowindow.setContent(contentString[marker.id]);
+                infowindow.open(map, marker);
+            });
+        }, 1000);
 
-    setTimeout(function(){
-        var data = gatherData();
+        setTimeout(function () {
+            var data = gatherData();
 
-        sendDataAjax(data);
-    }, 1500);
-
+            sendDataAjax(data);
+        }, 1500);
+    }
 });
 
 function sendDataAjax(data) {
@@ -113,18 +114,20 @@ function sendDataAjax(data) {
 
             for (var i = 0; i < data["events"].length; i++) {
                 contentString[i] = "<div class='marker'>\n\
-                                                <h4>\n\
-                                                    <a target='_blank' href='" + data["events"][i]["personne"]["wiki"] + "'>\n\
-                                                        " + data["events"][i]["personne"]["nom"] + "\n\
-                                                        <img class='small-wiki' src='/public/images/wiki_small.png'>\n\
-                                                    </a>\n\
-                                                </h4>\n\
-                                                <div>Événement : " + data["events"][i]["intitule"] + "</div>\n\
-                                                <div>Lieu : " + data["events"][i]["place"]["nom"] + "</div>\n\
-                                                <div>Année : " + data["events"][i]["year"] + "</div>\n\
                                                 <a target='_blank' href='" + data["events"][i]["personne"]["wiki"] + "'>\n\
                                                     <img width='100px' src='/public/personne/" + data["events"][i]["personne"]["ref"] + ".jpg'>\n\
                                                 </a>\n\
+                                                <div>\n\
+                                                    <h4>\n\
+                                                        <a target='_blank' href='" + data["events"][i]["personne"]["wiki"] + "'>\n\
+                                                            " + data["events"][i]["personne"]["nom"] + "\n\
+                                                            <img class='small-wiki' src='/public/images/wiki_small.png'>\n\
+                                                        </a>\n\
+                                                    </h4>\n\
+                                                    <div>Événement : " + data["events"][i]["intitule"] + "</div>\n\
+                                                    <div>Lieu : " + data["events"][i]["place"]["nom"] + "</div>\n\
+                                                    <div>Année : " + data["events"][i]["year"] + "</div>\n\
+                                                </div>\n\
                                             </div>";
 
                 infowindow = new google.maps.InfoWindow({
