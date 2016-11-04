@@ -33,6 +33,7 @@ ul{
 
 .marker{
     z-index: 1000;
+    vertical-align: top;
 }
 
 .marker a{
@@ -43,6 +44,11 @@ ul{
 
 .marker a:hover{
     color: #555;
+}
+
+.marker > div{
+    display: inline-block;
+    vertical-align: top;
 }
 
 #amount{
@@ -192,25 +198,25 @@ ul{
 }
 
 .list-personnes{
-    background: #fff;
+    background: #fff none repeat scroll 0 0;
+    height: 252px;
+    overflow: scroll;
     padding: 20px;
     position: absolute;
     right: 30px;
-    top: 20px;
-    width: 50%;
-    overflow: scroll;
-    height: 200px;
+    top: 55px;
+    width: 20%;
 }
 
 .list-places{
-    background: #fff;
+    background: #fff none repeat scroll 0 0;
+    height: 178px;
+    overflow: scroll;
     padding: 20px;
     position: absolute;
     right: 30px;
-    top: 275px;
-    width: 50%;
-    overflow: scroll;
-    height: 200px;
+    top: 308px;
+    width: 311px;
 }
 
 .about-div{
@@ -437,14 +443,22 @@ ul{
 }
 
 .data_localization{
-    background: #fff;
-    height: 185px;
-    left: 350px;
+    background: #fff none repeat scroll 0 0;
+    height: 179px;
+    left: 270px;
     overflow: scroll;
     padding: 10px;
     position: absolute;
     top: -20px;
-    width: 300px;
+    width: 880px;
+}
+
+#localization_map{
+    height: 250px;
+    left: 320px;
+    position: absolute;
+    top: 55px;
+    width: 860px;
 }
 
 .suggestion-close-button{

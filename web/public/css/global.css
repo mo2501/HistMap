@@ -135,10 +135,10 @@ ul{
     padding: 20px;
     position: absolute;
     right: 30px;
-    top: 20px;
+    top: 55px;
     width: 50%;
     overflow: scroll;
-    height: 200px;
+    height: 250px;
 }
 
 .list-places{
@@ -146,7 +146,7 @@ ul{
     padding: 20px;
     position: absolute;
     right: 30px;
-    top: 275px;
+    top: 308px;
     width: 50%;
     overflow: scroll;
     height: 200px;
@@ -505,8 +505,6 @@ ul{
 .showbox-open{
     display: initial;
 }
-
-// end demo-specific
 
 .loader {
   position: relative;
