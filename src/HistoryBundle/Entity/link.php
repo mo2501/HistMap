@@ -36,7 +36,6 @@ class link
      */
     private $linkType;
 
-
     /**
      * Get id
      *

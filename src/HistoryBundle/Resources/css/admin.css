@@ -1,0 +1,38 @@
+.link-list-admin{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    padding: 40px;
+}
+
+.link-element-admin{
+    padding: 5px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+}
+
+.link-list-img{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.link-list-img img{
+    width: 100%;
+}
+
+.wrapper{
+    height: auto;
+}
+
+.admin-link-create{
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}

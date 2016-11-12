@@ -1,0 +1,49 @@
+{% extends "HistoryBundle:History:front/base.html.twig" %}
+
+{% block content %}
+    <div class="header">
+        <div class="title-site">
+            <a href="{{ path("history_histlink") }}">
+                <i class="fa fa-users"></i> Hist Link
+            </a>
+            <span>
+                Le réseau historique collaboratif
+            </span>
+        </div>
+    </div>
+
+    {% include "HistoryBundle:History:front/histlink-left-panel.html.twig" %}
+
+    <div class="presentation-histlink">
+        <p class="about-paragraph">
+            <strong>Hist Link</strong> est un projet de <strong>réseau historique collaboratif</strong> regroupant un ensemble de personnalités historiques connues ainsi que les liens qui les unissent entre elles.
+        </p>
+
+        <div class="list-links col-md-12">
+            {% for link in links %}
+                <div class="link-display col-md-4">
+                    <div class="thumb-container left-thumb">
+                        <a href="{{ path("history_histlink_personne", {"id": link.from.id}) }}">
+                            <img class="thumb-personne" src="/public/personne/{{ link.from.ref }}.jpg">
+                        </a>
+                    </div>
+                    <div class="text-link">
+                        <a href="{{ path("history_histlink_personne", {"id": link.from.id}) }}">
+                            {{ link.from.nom }}
+                        </a>
+                        est {{ link.linkType.nom }} de
+                        <a href="{{ path("history_histlink_personne", {"id": link.to.id}) }}">
+                            {{ link.to.nom }}
+                        </a>
+                    </div>
+                    <div class="thumb-container right-thumb">
+                        <a href="{{ path("history_histlink_personne", {"id": link.to.id}) }}">
+                            <img class="thumb-personne" src="/public/personne/{{ link.to.ref }}.jpg">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

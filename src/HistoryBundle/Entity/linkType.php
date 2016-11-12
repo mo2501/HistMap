@@ -28,6 +28,11 @@ class linkType
      */
     private $nom;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="HistoryBundle\Entity\linkType")
+     */
+    private $reverseLink;
+
 
     /**
      * Get id
@@ -62,5 +67,28 @@ class linkType
     {
         return $this->nom;
     }
-}
 
+    /**
+     * Set reverseLink
+     *
+     * @param \HistoryBundle\Entity\linkType $reverseLink
+     *
+     * @return linkType
+     */
+    public function setReverseLink(\HistoryBundle\Entity\linkType $reverseLink = null)
+    {
+        $this->reverseLink = $reverseLink;
+
+        return $this;
+    }
+
+    /**
+     * Get reverseLink
+     *
+     * @return \HistoryBundle\Entity\linkType
+     */
+    public function getReverseLink()
+    {
+        return $this->reverseLink;
+    }
+}

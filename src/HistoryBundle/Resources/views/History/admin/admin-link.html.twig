@@ -1,0 +1,22 @@
+{% extends "HistoryBundle:History:admin/admin-base.html.twig" %}
+
+{% block content %}
+    <form method="post">
+            <input type="submit" class="btn btn-info">
+            {{ personne.nom }} est : <br>
+            {% for key, pers in personnesList %}
+                <div class="admin-link-create col-md-2">
+                    <div>
+                        <input type="checkbox" name="keys[]" value="{{ key }}">
+                        <select name="linkType[]">
+                            {% for linkType in linkTypes %}
+                                <option value="{{ linkType.id }}">{{ linkType.nom }}</option>
+                            {% endfor %}
+                        </select>
+                        {{ pers.nom }}
+                    </div>
+                </div>
+            {% endfor %}
+    </form>
+
+{% endblock %}
