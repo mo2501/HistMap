@@ -1,0 +1,231 @@
+.wrapper{
+    min-width: 920px;
+}
+
+.header{
+    background: #f5f5f5 none repeat scroll 0 0;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    height: 85px;
+    margin: auto;
+    padding: 35px 20px 10px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+.left-panel{
+    background: #f5f5f5 none repeat scroll 0 0;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    height: 95%;
+    padding: 35px 20px 10px;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 300px;
+    z-index: 40;
+}
+
+.left-panel input[type=text]{
+    height: 35px;
+    width: 216px;
+}
+
+.left-panel button{
+    border-radius: 0 4px 4px 0;
+    height: 35px;
+    left: 230px;
+    position: absolute;
+}
+
+.circle-medium{
+    display: block;
+    width: 160px;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 80px;
+    background-position: center center;
+    background-size: cover;
+    z-index: 2;
+    border: 1px solid #265bb2;
+}
+
+.circle-small{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50px;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    border: 1px solid #265bb2;
+}
+
+.circle-centered{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.picture-default{
+    width: 100%;
+}
+
+.tooltip-inner {
+    white-space: pre-wrap;
+}
+
+#mynetwork {
+    width: 100%;
+    height: 100%;
+    padding-top: 85px;
+    padding-left: 300px;
+    background: #eee;
+}
+
+.person-search-result{
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 3px 5px;
+    display: block;
+    text-decoration: none;
+    color: #555;
+    background: #fefefe;
+    position: relative;
+    padding-left: 35px;
+}
+
+.person-search-result:hover{
+    text-decoration: none;
+    color: #193969;
+    background: #fff;
+}
+
+.person-search-result .img-container{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: -7px;
+    left: -13px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+}
+
+.person-search-result img{
+    width: 100%;
+}
+
+.title-site span{
+    position: absolute;
+    width: 300px;
+    top: 36px;
+    left: 250px;
+    cursor: default;
+}
+
+.histmap-link{
+    bottom: 100px;
+    left: 0;
+    position: absolute;
+    padding: 5px 10px;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    width: 300px;
+}
+
+.histmap-link a{
+    text-decoration: none;
+    color: #222;
+    width: 100%;
+    display: block;
+    font-size: 18px;
+}
+
+.histmap-link a:hover{
+    text-decoration: none;
+}
+
+.histmap-link a .fa-arrow-left{
+    margin-right: 20px;
+}
+
+.presentation-histlink{
+    margin-left: 300px;
+    margin-top: 85px;
+    padding: 15px;
+}
+
+.presentation-histlink .about-paragraph{
+    width: 300px;
+    background: #f5f5f5;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    padding: 15px;
+}
+
+.presentation-histlink .list-links{
+    background: #f5f5f5;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    padding: 15px;
+    height: 100%;
+}
+
+.presentation-histlink .list-links .link-display{
+    background: #fff;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 500px;
+    position: relative;
+}
+
+.presentation-histlink .list-links .link-display .thumb-container{
+    border: 2px solid #fefefe;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+    border-radius: 75px;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+}
+
+.presentation-histlink .list-links .link-display .thumb-container.left-thumb{
+    left: 10px;
+}
+
+.presentation-histlink .list-links .link-display .thumb-container.right-thumb{
+    right: 10px;
+}
+
+.presentation-histlink .list-links .link-display .thumb-personne{
+    width: 100%;
+    vertical-align: middle;
+}
+
+.presentation-histlink .list-links .link-display .text-link{
+    margin: 0 80px;
+    min-height: 80px;
+    padding-top: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.presentation-histlink .list-links .link-display a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.presentation-histlink .list-links .link-display a:hover{
+    text-decoration: none;
+}

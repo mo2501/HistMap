@@ -1,0 +1,53 @@
+{% extends "HistoryBundle:History:front/base.html.twig" %}
+
+{% block content %}
+    <div class="header">
+        <div class="title-site">
+            <a href="{{ path("history_histlink") }}">
+                <i class="fa fa-users"></i> Hist Link
+            </a>
+            <span>
+                Le réseau historique collaboratif
+            </span>
+        </div>
+    </div>
+
+    {% include "HistoryBundle:History:front/histlink-left-panel.html.twig" %}
+
+    <div id="mynetwork"></div>
+
+    <script>
+        nodesArray = [{id: 1, shape: "circularImage", title: "{{ personne.nom }}", size: 80, image: "/public/personne/{{ personne.ref }}.jpg", fixed: true}];
+        edgesArray = [];
+        nodesLinks = [{ "url": "{{ path("history_histlink_personne", {"id": personne.id}) }}" }]
+        counter = 2;
+
+        {% for key, link in links %}
+            nodesArray.push({
+                id: counter,
+                title: "Nom : {{ link.from.nom }}<br>Lien : {{ link.linkType.nom }}",
+                shape: "circularImage",
+                image: "/public/personne/{{ link.from.ref }}.jpg"
+            });
+
+            edgesArray.push({from: 1, to: counter });
+            nodesLinks.push({ "url": "{{ path("history_histlink_personne", {"id": link.from.id}) }}" });
+            var InnerCounter = counter;
+            counter++;
+
+            {% for cle, sublink in link.sublinks %}
+                nodesArray.push({
+                    id: counter,
+                    title: "Nom : {{ sublink.from.nom }}",
+                    shape: "circularImage",
+                    image: "/public/personne/{{ sublink.from.ref }}.jpg"
+                });
+
+                edgesArray.push({from: InnerCounter, to: counter });
+                nodesLinks.push({ "url": "{{ path("history_histlink_personne", {"id": sublink.from.id}) }}" });
+                counter++;
+            {% endfor %}
+        {% endfor %}
+    </script>
+
+{% endblock %}

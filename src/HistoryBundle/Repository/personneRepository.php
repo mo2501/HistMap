@@ -9,5 +9,40 @@ namespace HistoryBundle\Repository;
  * repository methods below.
  */
 class personneRepository extends \Doctrine\ORM\EntityRepository{
-    
+    public function getPersons($name, $container){
+        $repositoryE = $this->getEntityManager()
+            ->getRepository('HistoryBundle:event');
+
+        $repositoryPe = $this->getEntityManager()
+            ->getRepository('HistoryBundle:personne');
+
+        $repositoryPl = $this->getEntityManager()
+            ->getRepository('HistoryBundle:place');
+
+        $repositoryTh = $this->getEntityManager()
+            ->getRepository('HistoryBundle:thematique');
+
+        if($name == ""){
+            return [];
+        }
+
+        /* @var personne[] $personnes */
+        $personnes = $this->createQueryBuilder('pe')
+            ->andWhere("pe.nom LIKE :nom")
+            ->setParameter("nom", "%".$name."%")
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+
+        $personnes_response = array();
+
+        foreach($personnes as $key => $personne){
+            $personnes_response[$key]["id"] = $personne->getId();
+            $personnes_response[$key]["nom"] = $personne->getNom();
+            $personnes_response[$key]["ref"] = $personne->getRef();
+            $personnes_response[$key]["link"] = $container->get('router')->generate("history_histlink_personne", array("id" => $personne->getId()));
+        }
+
+        return $personnes_response;
+    }
 }

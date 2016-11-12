@@ -9,6 +9,8 @@
 namespace HistoryBundle\Controller;
 
 use HistoryBundle\Repository\eventRepository;
+use HistoryBundle\Repository\linkRepository;
+use HistoryBundle\Repository\personneRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use HistoryBundle\Entity\personne;
@@ -16,6 +18,7 @@ use HistoryBundle\Entity\place;
 use HistoryBundle\Entity\event;
 use HistoryBundle\Entity\admin;
 use HistoryBundle\Entity\suggestion;
+use HistoryBundle\Entity\link;
 use HistoryBundle\Entity\thematique;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,6 +28,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class HistoryController extends Controller{
 
@@ -136,6 +140,70 @@ class HistoryController extends Controller{
             "genders" => $genders,
             "eventTypes" => $eventTypes
         ));
+    }
+
+    /**
+     * @Route("/histlink", name="history_histlink")
+     */
+    public function histlinkAction(Request $request){
+        /* @var linkRepository $repositoryL */
+        $repositoryL = $this->getDoctrine()
+                             ->getManager()
+                             ->getRepository("HistoryBundle:link");
+
+        $qb = $repositoryL->createQueryBuilder('l');
+
+        $qb->setMaxResults(10);
+
+        $links = $qb->getQuery()
+                    ->getResult();
+
+        return $this->render('HistoryBundle:History:front/histlink.html.twig', array(
+            "links" => $links
+        ));
+    }
+
+    /**
+     * @Route("/histlink/{id}", name="history_histlink_personne")
+     * @ParamConverter("personne", class="HistoryBundle:personne")
+     */
+    public function histlinkPersonneAction(personne $personne, Request $request){
+        /* @var linkRepository $repositoryL */
+        $repositoryL = $this->getDoctrine()
+                             ->getManager()
+                             ->getRepository("HistoryBundle:link");
+
+        $links = $repositoryL->findByTo($personne);
+
+        foreach($links as $key => $link){
+            $qb = $repositoryL->createQueryBuilder('l');
+            $qb->where('l.from != :from')
+                ->setParameter('from', $personne)
+                ->andWhere("l.to = :to")
+                ->setParameter('to', $link->getFrom());
+
+            $links[$key]->sublinks = $qb->getQuery()->getResult();
+        }
+
+        return $this->render('HistoryBundle:History:front/histlink-personne.html.twig', array(
+            "links" => $links,
+            "personne" => $personne,
+        ));
+    }
+
+    /**
+     * @Route("/get-persons-search", name="history_get_persons_search", options = { "expose" = true })
+     */
+    public function getPersonsSearchAjaxAction(){
+        /* @var personneRepository $repositoryP */
+        $repositoryP = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("HistoryBundle:personne");
+
+        $personnes = $repositoryP->getPersons($_POST["name"], $this->container);
+
+        $response = new \Symfony\Component\HttpFoundation\JsonResponse();
+        return $response->setData(array("personnes" => $personnes));
     }
 
     /**
@@ -425,6 +493,109 @@ class HistoryController extends Controller{
         return $this->render('HistoryBundle:History:admin/thematiques.html.twig', array("data" => $data,
                                                                                   "thematiques" => $thematiques,
                                                                                   "personnes" => $personnes));
+    }
+
+    /**
+     * @Route("/admin/links", name="history_links")
+     */
+    public function adminLinksAction(Request $request){
+        $session = $request->getSession();
+        $session->start();
+
+        if($session->get("logged") == null){
+            return $this->redirect($this->generateUrl('history_login'));
+        }
+
+        $data = array();
+
+        $repositoryL = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:link");
+
+        $repositoryP = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("HistoryBundle:personne");
+
+        if($request->isMethod('POST') && isset($_POST["link_id"])){
+            $data = $_POST;
+
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($repositoryL->findOneById($_POST["link_id"]));
+            $em->flush();
+        }
+
+        $links = $repositoryL->findAll();
+        $personnes = $repositoryP->findBy(array(), array("nom" => "asc"));
+
+        return $this->render('HistoryBundle:History:admin/admin-links.html.twig', array("data" => $data,
+                                                                                        "links" => $links,
+                                                                                        "personnes" => $personnes
+                                                                                        ));
+    }
+
+    /**
+     * @Route("/admin/link/{id}", name="history_link")
+     * @ParamConverter("personne", class="HistoryBundle:personne")
+     */
+    public function adminLinkAction(Personne $personne, Request $request){
+        $session = $request->getSession();
+        $session->start();
+
+        if($session->get("logged") == null){
+            return $this->redirect($this->generateUrl('history_login'));
+        }
+
+        $data = array();
+
+        $repositoryL = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:link");
+
+        $repositoryP = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:personne");
+
+        $repositoryLT = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:linkType");
+
+        $personnesList = $repositoryP->findBy(array(), array("nom" => "asc"));
+        $linkTypes = $repositoryLT->findAll();
+        dump($linkTypes);
+        dump($personnesList);
+
+        if($request->isMethod('POST')){
+            $data = $_POST;
+            $em = $this->getDoctrine()->getManager();
+
+            foreach($data["keys"] as $key => $cle){
+                /* @var link $link */
+                $link = new link();
+
+                /* @var link $reverseLink */
+                $reverseLink = new link();
+
+                $linkType = $repositoryLT->findOneById($data["linkType"][$cle]);
+
+                $link->setFrom($personne);
+                $link->setTo($personnesList[$cle]);
+                $link->setLinkType($linkType);
+
+                $reverseLink->setFrom($personnesList[$cle]);
+                $reverseLink->setTo($personne);
+                $reverseLink->setLinkType($linkType->getReverseLink());
+
+                $em->persist($link);
+                $em->persist($reverseLink);
+                $em->flush();
+            }
+        }
+
+        return $this->render('HistoryBundle:History:admin/admin-link.html.twig', array("data" => $data,
+                                                                                       "personnesList" => $personnesList,
+                                                                                       "linkTypes" => $linkTypes,
+                                                                                       "personne" => $personne
+                                                                                      ));
     }
 
     /**

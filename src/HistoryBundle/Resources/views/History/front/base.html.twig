@@ -14,14 +14,23 @@
         
         <link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css">
         
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         
         {% stylesheets
                 "@HistoryBundle/Resources/css/global.css"
         %}<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-	{% endstylesheets %}
+        {% endstylesheets %}
+
+        {% if app.request.attributes.get('_route') in ["history_histlink", "history_histlink_personne"] %}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.css">
+            {% stylesheets
+            "@HistoryBundle/Resources/css/histlink.css"
+            %}<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        {% endif %}
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <meta name="description" content="Hist Map est une carte historique collaborative référençant les personnalités par événements et dates."/>
@@ -54,17 +63,28 @@
                 ga('send', 'pageview');
             </script>
             <script>
-                setTimeout(function(){
-                    $.getScript("/oms/oms.min.js", function(){
-                    });
-                }, 500);
+                {% if app.request.attributes.get('_route') == 'history_homepage' %}
+                    setTimeout(function(){
+                        $.getScript("/oms/oms.min.js", function(){
+                        });
+                    }, 500);
+                {% endif %}
             </script>
-
-            {% javascripts 
-                '@HistoryBundle/Resources/js/global.js'
+            {% javascripts
+            '@HistoryBundle/Resources/js/global.js'
             %}
-                <script src="{{ asset_url }}"></script>
+            <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
+
+            {% if app.request.attributes.get('_route') in ["history_histlink", "history_histlink_personne"] %}
+                <script src="/raphael/raphael.min.js"></script>
+                {% javascripts
+                '@HistoryBundle/Resources/js/histlink.js'
+                %}
+                <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endif %}
+
         </div>  
     </body>
 </html>
