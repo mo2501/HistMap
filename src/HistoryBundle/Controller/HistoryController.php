@@ -147,19 +147,21 @@ class HistoryController extends Controller{
      */
     public function histlinkAction(Request $request){
         /* @var linkRepository $repositoryL */
-        $repositoryL = $this->getDoctrine()
+        $repositoryLH = $this->getDoctrine()
                              ->getManager()
-                             ->getRepository("HistoryBundle:link");
+                             ->getRepository("HistoryBundle:linkHighlight");
 
-        $qb = $repositoryL->createQueryBuilder('l');
+        /*$qb = $repositoryL->createQueryBuilder('l');
 
         $qb->setMaxResults(10);
 
         $links = $qb->getQuery()
-                    ->getResult();
+                    ->getResult();*/
+
+        $highlights = $repositoryLH->findAll();
 
         return $this->render('HistoryBundle:History:front/histlink.html.twig', array(
-            "links" => $links
+            "highlights" => $highlights
         ));
     }
 
@@ -561,8 +563,6 @@ class HistoryController extends Controller{
 
         $personnesList = $repositoryP->findBy(array(), array("nom" => "asc"));
         $linkTypes = $repositoryLT->findAll();
-        dump($linkTypes);
-        dump($personnesList);
 
         if($request->isMethod('POST')){
             $data = $_POST;
