@@ -21,12 +21,19 @@
 
         <div class="list-links col-md-12">
             {% for highlight in highlights %}
-                <a class="link-display col-md-4" href="{{ path("history_histlink_personne", {"id": highlight.personne.id}) }}">
+                <a class="link-display" href="{{ path("history_histlink_personne", {"id": highlight.personne.id}) }}">
                     <div class="thumb-container left-thumb">
                         <img class="thumb-personne" src="/public/personne/{{ highlight.personne.ref }}.jpg">
                     </div>
                     <div class="text-link">
-                        {{ highlight.personne.nom }}
+                        {{ highlight.personne.nom }}<br>
+                        {% if highlight.links|length == 0 %}
+                            Aucune relation
+                        {% elseif highlight.links|length == 1 %}
+                            {{ highlight.links|length }} relation
+                        {% else %}
+                            {{ highlight.links|length }} relations
+                        {% endif %}
                     </div>
                 </a>
             {% endfor %}

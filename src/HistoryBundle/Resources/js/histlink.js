@@ -36,7 +36,7 @@ $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip({html: true});
 
-    
+
     if(typeof nodesArray !== "undefined") {
 
         var nodes = new vis.DataSet(nodesArray);

@@ -151,13 +151,6 @@ class HistoryController extends Controller{
                              ->getManager()
                              ->getRepository("HistoryBundle:linkHighlight");
 
-        /*$qb = $repositoryL->createQueryBuilder('l');
-
-        $qb->setMaxResults(10);
-
-        $links = $qb->getQuery()
-                    ->getResult();*/
-
         $highlights = $repositoryLH->findAll();
 
         return $this->render('HistoryBundle:History:front/histlink.html.twig', array(

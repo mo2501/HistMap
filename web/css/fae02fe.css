@@ -182,8 +182,9 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width: 500px;
+    width: 330px;
     position: relative;
+    display: inline-block;
 }
 
 .presentation-histlink .list-links .link-display .thumb-container{
@@ -213,7 +214,7 @@
 }
 
 .presentation-histlink .list-links .link-display .text-link{
-    margin: 0 80px;
+    padding-left: 40px;
     min-height: 80px;
     padding-top: 20px;
     text-align: center;
