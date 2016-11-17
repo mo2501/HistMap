@@ -20,28 +20,15 @@
         </p>
 
         <div class="list-links col-md-12">
-            {% for link in links %}
-                <div class="link-display col-md-4">
+            {% for highlight in highlights %}
+                <a class="link-display col-md-4" href="{{ path("history_histlink_personne", {"id": highlight.personne.id}) }}">
                     <div class="thumb-container left-thumb">
-                        <a href="{{ path("history_histlink_personne", {"id": link.from.id}) }}">
-                            <img class="thumb-personne" src="/public/personne/{{ link.from.ref }}.jpg">
-                        </a>
+                        <img class="thumb-personne" src="/public/personne/{{ highlight.personne.ref }}.jpg">
                     </div>
                     <div class="text-link">
-                        <a href="{{ path("history_histlink_personne", {"id": link.from.id}) }}">
-                            {{ link.from.nom }}
-                        </a>
-                        est {{ link.linkType.nom }} de
-                        <a href="{{ path("history_histlink_personne", {"id": link.to.id}) }}">
-                            {{ link.to.nom }}
-                        </a>
+                        {{ highlight.personne.nom }}
                     </div>
-                    <div class="thumb-container right-thumb">
-                        <a href="{{ path("history_histlink_personne", {"id": link.to.id}) }}">
-                            <img class="thumb-personne" src="/public/personne/{{ link.to.ref }}.jpg">
-                        </a>
-                    </div>
-                </div>
+                </a>
             {% endfor %}
         </div>
     </div>
