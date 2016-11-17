@@ -10,4 +10,18 @@ namespace HistoryBundle\Repository;
  */
 class linkHighlightRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAll(){
+
+        /* @var linkRepository $repositoryM */
+        $repositoryL = $this->getEntityManager()
+                            ->getRepository('HistoryBundle:link');
+
+        $highlights = parent::findAll();
+
+        foreach($highlights as $key => $highlight){
+            $highlights[$key]->links = $repositoryL->findByFrom($highlight->getPersonne());
+        }
+
+        return $highlights;
+    }
 }
