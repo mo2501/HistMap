@@ -72,7 +72,7 @@ $(document).ready(function(){
                     useBorderWithImage: true,
                     interpolation: false,
                 },
-                mass: 1.5,
+                mass: 5,
                 shadow: {
                     enabled: true,
                     color: 'rgba(0,0,0,0.9)',
@@ -83,7 +83,8 @@ $(document).ready(function(){
             },
             edges: {
                 color: '#265bb2',
-                hoverWidth: 0,
+                hoverWidth: 2,
+                width: 5
             },
             interaction: {
                 dragNodes: true,

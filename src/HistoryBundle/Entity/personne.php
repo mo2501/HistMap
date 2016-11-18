@@ -157,4 +157,9 @@ class personne
     {
         return $this->gender;
     }
+
+    public function __toString()
+    {
+        return strval($this->getId());
+    }
 }
