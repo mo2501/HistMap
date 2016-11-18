@@ -232,3 +232,41 @@
 .presentation-histlink .list-links .link-display a:hover{
     text-decoration: none;
 }
+
+.histlink-person-name{
+    background: #fefefe none repeat scroll 0 0;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    height: 50px;
+    padding: 10px 10px 10px 315px;
+    position: absolute;
+    top: 110px;
+    width: 700px;
+    z-index: 5;
+}
+
+.histlink-person-name .img-person-name{
+    border: 3px solid #265bb2;
+    border-radius: 60px;
+    display: inline-block;
+    height: 80px;
+    overflow: hidden;
+    position: absolute;
+    top: -15px;
+    width: 80px;
+}
+
+.histlink-person-name .histlink-person-name-wrapper{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    height: 80px;
+    line-height: 27px;
+    padding-left: 90px;
+    vertical-align: top;
+}
+
+.histlink-person-name img{
+    width: 100%;
+    position: absolute;
+    top: -20px;
+}

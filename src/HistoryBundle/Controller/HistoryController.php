@@ -168,21 +168,21 @@ class HistoryController extends Controller{
                              ->getManager()
                              ->getRepository("HistoryBundle:link");
 
-        $links = $repositoryL->findByTo($personne);
+        $personnes = $repositoryL->getPersons($personne, 3);
 
-        foreach($links as $key => $link){
-            $qb = $repositoryL->createQueryBuilder('l');
-            $qb->where('l.from != :from')
-                ->setParameter('from', $personne)
-                ->andWhere("l.to = :to")
-                ->setParameter('to', $link->getFrom());
+        $links = $repositoryL->generateLinks($personnes);
 
-            $links[$key]->sublinks = $qb->getQuery()->getResult();
+        $indexPersonnes = [];
+
+        foreach($personnes as $key => $pers){
+            $indexPersonnes[$pers->getId()] = $key + 1;
         }
 
         return $this->render('HistoryBundle:History:front/histlink-personne.html.twig', array(
             "links" => $links,
             "personne" => $personne,
+            "personnes" => $personnes,
+            "indexPersonnes" => $indexPersonnes
         ));
     }
 

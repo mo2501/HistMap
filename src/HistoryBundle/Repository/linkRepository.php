@@ -1,6 +1,7 @@
 <?php
 
 namespace HistoryBundle\Repository;
+use HistoryBundle\Entity\personne;
 
 /**
  * linkRepository
@@ -10,6 +11,78 @@ namespace HistoryBundle\Repository;
  */
 class linkRepository extends \Doctrine\ORM\EntityRepository{
 
+    public function generateLinks($personnes){
 
+        $links = [];
+
+        foreach($personnes as $key => $personne){
+            foreach($personnes as $cle => $secondPersonne){
+                $link = $this->findOneBy(array("from" => $personne, "to" => $secondPersonne));
+
+                if(!empty($link)){
+                    $links[$personne->getId() . "_" . $secondPersonne->getId()] = $link;
+                }
+            }
+        }
+
+        $cleanArray = [];
+
+        foreach($links as $key => $link){
+            if(!isset($links[$key]->used)) {
+                $explodedKeys = explode("_", $key);
+                $reverseKey = $explodedKeys[1] . "_" . $explodedKeys[0];
+
+                $links[$reverseKey]->used = true;
+
+                $cleanArrayEntry["from"] = $link->getFrom();
+                $cleanArrayEntry["to"] = $link->getTo();
+                if($link->getLinkType()->getNom() == $links[$reverseKey]->getLinkType()->getNom()){
+                    $cleanArrayEntry["linkType"] = $link->getLinkType()->getNom();
+                }
+                else{
+                    $cleanArrayEntry["linkType"] = $link->getLinkType()->getNom() . "/" . $links[$reverseKey]->getLinkType()->getNom();
+                }
+
+                $cleanArray[] = $cleanArrayEntry;
+            }
+        }
+
+        return $cleanArray;
+    }
+
+    public function getPersons(personne $personne, $depth = 3){
+
+        $list = $this->getPersonsRecursive($personne, $depth);
+
+        $list = array_merge(array($personne), $this->flattenPersons($list));
+
+        $new = array();
+        foreach($list as $value) $new[serialize($value)] = $value;
+        $list = array_values($new);
+
+        return $list;
+    }
+
+    public function getPersonsRecursive(personne $personne, $depth = 3, $personnesList = []){
+        if($depth < 0){
+            return $personne;
+        }
+        else{
+            $links = $this->findByTo($personne);
+
+            foreach($links as $key => $link){
+                $personnesList[] = $link->getFrom();
+                $personnesList[] = $this->getPersonsRecursive($link->getFrom(), $depth - 1);
+            }
+            return $personnesList;
+        }
+    }
+
+    public function flattenPersons($personnesList){
+        $list = [];
+
+        array_walk_recursive($personnesList, function($a) use (&$list) { $list[] = $a; });
+        return $list;
+    }
 
 }
