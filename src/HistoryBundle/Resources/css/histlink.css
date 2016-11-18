@@ -128,6 +128,15 @@
     cursor: default;
 }
 
+.histlink-link{
+    bottom: 150px;
+    left: 0;
+    position: absolute;
+    padding: 5px 10px;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    width: 300px;
+}
+
 .histmap-link{
     bottom: 100px;
     left: 0;
@@ -137,7 +146,7 @@
     width: 300px;
 }
 
-.histmap-link a{
+.histmap-link a, .histlink-link a{
     text-decoration: none;
     color: #222;
     width: 100%;
@@ -149,7 +158,7 @@
     text-decoration: none;
 }
 
-.histmap-link a .fa-arrow-left{
+.histmap-link a .fa-arrow-left, .histlink-link a .fa-arrow-left{
     margin-right: 20px;
 }
 
