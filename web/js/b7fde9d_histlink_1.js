@@ -82,7 +82,11 @@ $(document).ready(function(){
                 },
             },
             edges: {
-                color: '#265bb2',
+                color: {
+                    color: '#3682FF',
+                    highlight:'#1F3A66',
+                    hover: '#1F3A66',
+                },
                 hoverWidth: 2,
                 width: 5
             },

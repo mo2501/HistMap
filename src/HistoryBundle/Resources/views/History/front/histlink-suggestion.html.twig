@@ -1,0 +1,63 @@
+{% extends "HistoryBundle:History:front/base.html.twig" %}
+
+{% block content %}
+    <div class="header">
+        <div class="title-site">
+            <a href="{{ path("history_histlink") }}">
+                <i class="fa fa-users"></i> Hist Link
+            </a>
+            <span>
+                Le réseau historique collaboratif
+            </span>
+        </div>
+    </div>
+
+    {% include "HistoryBundle:History:front/histlink-left-panel.html.twig" %}
+
+    <div class="presentation-histlink">
+
+        <h3>
+            Suggérer un lien
+        </h3>
+        <div class="list-links col-md-12">
+            {{ form_start(form) }}
+                {% if dump(form.vars.errors.form.data.id) is not null %}
+                    <div class="success-div">
+                        Le lien que vous avez suggéré a bien été enregistré. Il sera étudié prochainement.
+                    </div>
+                {% endif %}
+                <div class="form-field">
+                    {{ form_label(form.from_person, null, {'label_attr': {'class': 'label-field'}}) }}
+                    {{ form_widget(form.from_person, {'attr': {'placeholder': 'Ex : Jules César'}}) }}
+                    {% if form_errors(form.from_person) != "" %}
+                        <div class="error-div">
+                            {{ form_errors(form.from_person) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-field">
+                    {{ form_label(form.link, null, {'label_attr': {'class': 'label-field'}}) }}
+                    {{ form_widget(form.link, {'attr': {'placeholder': 'Ex : Père adoptif'}}) }}
+                    {% if form_errors(form.link) != "" %}
+                        <div class="error-div">
+                            {{ form_errors(form.link) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-field">
+                    {{ form_label(form.to_person, null, {'label_attr': {'class': 'label-field'}}) }}
+                    {{ form_widget(form.to_person, {'attr': {'placeholder': 'Ex : Auguste'}}) }}
+                    {% if form_errors(form.to_person) != "" %}
+                        <div class="error-div">
+                            {{ form_errors(form.to_person) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-field form-field-submit">
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

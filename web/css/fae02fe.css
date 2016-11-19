@@ -128,25 +128,34 @@
     cursor: default;
 }
 
+.histlink-suggestion-link{
+    bottom: 100px;
+    left: 0;
+    position: absolute;
+    padding: 5px 30px;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    width: 300px;
+}
+
 .histlink-link{
     bottom: 150px;
     left: 0;
     position: absolute;
-    padding: 5px 10px;
+    padding: 5px 30px;
     box-shadow: 0 0 2px 0 #9b9b9b;
     width: 300px;
 }
 
 .histmap-link{
-    bottom: 100px;
+    bottom: 50px;
     left: 0;
     position: absolute;
-    padding: 5px 10px;
+    padding: 5px 30px;
     box-shadow: 0 0 2px 0 #9b9b9b;
     width: 300px;
 }
 
-.histmap-link a, .histlink-link a{
+.histmap-link a, .histlink-link a, .histlink-suggestion-link a{
     text-decoration: none;
     color: #222;
     width: 100%;
@@ -156,10 +165,6 @@
 
 .histmap-link a:hover{
     text-decoration: none;
-}
-
-.histmap-link a .fa-arrow-left, .histlink-link a .fa-arrow-left{
-    margin-right: 20px;
 }
 
 .presentation-histlink{
@@ -278,4 +283,31 @@
     width: 100%;
     position: absolute;
     top: -20px;
+}
+
+.form-field .label-field{
+    width: 125px;
+}
+
+.error-div{
+    margin: 0;
+    width: 530px;
+    padding: 5px 20px;
+    margin-bottom: 5px;
+}
+
+.error-div ul{
+    margin: 0;
+}
+
+.success-div{
+    margin: 0;
+    width: 530px;
+    padding: 5px 20px;
+    margin-bottom: 5px;
+    margin-left: 24%;
+}
+
+.error-div ul{
+    margin: 0;
 }
