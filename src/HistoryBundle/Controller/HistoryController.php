@@ -8,7 +8,10 @@
 
 namespace HistoryBundle\Controller;
 
+use HistoryBundle\Entity\histlinkSuggestion;
+use HistoryBundle\Entity\linkHighlight;
 use HistoryBundle\Repository\eventRepository;
+use HistoryBundle\Repository\linkHighlightRepository;
 use HistoryBundle\Repository\linkRepository;
 use HistoryBundle\Repository\personneRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -146,7 +149,7 @@ class HistoryController extends Controller{
      * @Route("/histlink", name="history_histlink")
      */
     public function histlinkAction(Request $request){
-        /* @var linkRepository $repositoryL */
+        /* @var linkHighlightRepository $repositoryL */
         $repositoryLH = $this->getDoctrine()
                              ->getManager()
                              ->getRepository("HistoryBundle:linkHighlight");
@@ -183,6 +186,35 @@ class HistoryController extends Controller{
             "personne" => $personne,
             "personnes" => $personnes,
             "indexPersonnes" => $indexPersonnes
+        ));
+    }
+
+    /**
+     * @Route("/histlink/suggestion/nouvelle", name="history_histlink_suggestion")
+     */
+    public function histlinkSuggestionAction(Request $request){
+
+        $suggestion = new histlinkSuggestion();
+
+        $form = $this->createFormBuilder($suggestion)
+            ->add("from_person", TextType::class, array('label' => 'Personnalité 1'))
+            ->add("link", TextType::class, array('label' => 'Lien'))
+            ->add("to_person", TextType::class, array('label' => 'Personnalité 2'))
+            ->add("save", SubmitType::class, array('label' => 'Envoyer'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $suggestion = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($suggestion);
+            $em->flush();
+        }
+
+        return $this->render('HistoryBundle:History:front/histlink-suggestion.html.twig', array(
+            "form" => $form->createView()
         ));
     }
 

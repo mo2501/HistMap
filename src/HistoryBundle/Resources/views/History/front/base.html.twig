@@ -23,7 +23,7 @@
         %}<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
 
-        {% if app.request.attributes.get('_route') in ["history_histlink", "history_histlink_personne"] %}
+        {% if app.request.attributes.get('_route') in ["history_histlink", "history_histlink_personne", "history_histlink_suggestion"] %}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.js"></script>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.css">
             {% stylesheets
@@ -76,7 +76,7 @@
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
 
-            {% if app.request.attributes.get('_route') in ["history_histlink", "history_histlink_personne"] %}
+            {% if app.request.attributes.get('_route') in ["history_histlink", "history_histlink_personne", "history_histlink_suggestion"] %}
                 <script src="/raphael/raphael.min.js"></script>
                 {% javascripts
                 '@HistoryBundle/Resources/js/histlink.js'

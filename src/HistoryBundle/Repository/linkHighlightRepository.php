@@ -16,7 +16,7 @@ class linkHighlightRepository extends \Doctrine\ORM\EntityRepository
         $repositoryL = $this->getEntityManager()
                             ->getRepository('HistoryBundle:link');
 
-        $highlights = parent::findAll();
+        $highlights = parent::findBy(array(), array("id" => "ASC"));
 
         foreach($highlights as $key => $highlight){
             $highlights[$key]->links = $repositoryL->findByFrom($highlight->getPersonne());
