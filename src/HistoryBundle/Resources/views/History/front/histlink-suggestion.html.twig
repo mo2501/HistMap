@@ -21,7 +21,7 @@
         </h3>
         <div class="list-links col-md-12">
             {{ form_start(form) }}
-                {% if dump(form.vars.errors.form.data.id) is not null %}
+                {% if form.vars.submitted == true and dump(form.vars.errors.form.data.id) is not null %}
                     <div class="success-div">
                         Le lien que vous avez suggéré a bien été enregistré. Il sera étudié prochainement.
                     </div>
