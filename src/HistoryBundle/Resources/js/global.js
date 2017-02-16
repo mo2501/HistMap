@@ -93,6 +93,11 @@ $(document).ready(function(){
             sendDataAjax(data);
         }, 1500);
     }
+
+    $('.dropdown-menu').click(function(event){
+        $(event.target).blur();
+        return false;
+    });
 });
 
 function sendDataAjax(data) {
