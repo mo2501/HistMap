@@ -15,7 +15,7 @@
         <div class="title-site">
             <a href="">
                 <i class="fa fa-globe"></i> Hist Map
-            </a><br>
+            </a>
             La carte historique collaborative
         </div><!--
      --><div>
@@ -36,14 +36,30 @@
             {% endfor %}
         </div>
         <div class="div-event-type-filter">
-            {% for key, eventType in eventTypes %}
-                <span class="checkbox">
-                    <label for="{{ eventType.nom }}">
-                        <input class="filter-activator eventType" checked="checked" type="checkbox" name="{{ eventType.nom }}" value="{{ eventType.id }}" id="{{ eventType.nom }}">
-                        {{ eventType.nom }}
-                    </label>
-                </span>
-            {% endfor %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="button-group dropdown-wrapper">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                Catégories d'événements
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for key, eventType in eventTypes %}
+                                    <li>
+                                        <label class="small" data-value="option{{ key + 1 }}">
+                                            <input type="checkbox" checked="checked" class="filter-activator eventType" name="{{ eventType.nom }}" tabIndex="-1" value="{{ eventType.id }}" id="{{ eventType.nom }}">
+                                            <span>
+                                                {{ eventType.nom }}
+                                            </span>
+                                        </label>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="div-name-filter">
             <input type="text" name="person-name" id="person-name" placeholder="Ex : Napoléon Bonaparte">
