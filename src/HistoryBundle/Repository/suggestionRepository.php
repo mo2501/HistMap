@@ -28,8 +28,7 @@ class suggestionRepository extends \Doctrine\ORM\EntityRepository{
         $imagesKey = key($response['query']['pages']);
 
         if(isset($response['query']['pages'][$imagesKey]['images'])) {
-            for($i = 0; $i <= 5; $i++){
-                $imageArray = $response['query']['pages'][$imagesKey]['images'][$i];
+            foreach($response['query']['pages'][$imagesKey]['images'] as $i => $imageArray){
 
                 if ($imageArray['title'] != 'File:Commons-logo.svg' && $imageArray['title'] != 'File:P vip.svg') {
                     $title = str_replace('Fichier:', '', $imageArray['title']);

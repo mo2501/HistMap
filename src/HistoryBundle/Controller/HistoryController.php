@@ -728,6 +728,8 @@ class HistoryController extends Controller{
         $suggestions = $repositoryS->findAll();
         $eventTypes = $repositoryET->findAll();
 
+        $nbSuggestions = 0;
+
         if(!empty($suggestions)) {
             $suggestions[0]->image = $repositoryS->wikipediaImageUrls($suggestions[0]->getWiki());
 
@@ -735,7 +737,7 @@ class HistoryController extends Controller{
 
             $suggestions = [$suggestions[0]];
         }
-        
+
         return $this->render('HistoryBundle:History:admin/suggestions.html.twig', array("data" => $data,
                                                                                   "suggestions" => $suggestions,
                                                                                   "nbSuggestions" => $nbSuggestions,
