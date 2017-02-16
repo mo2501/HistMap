@@ -42,16 +42,25 @@ $(document).ready(function(){
     }
 
     $(".localize-place-suggestions").click(function(){
-        var place = $(this).prev().val();
+        place = $(this).prev().val();
         var address = place.replace(" ", "+");
         $.ajax({
             url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=%20AIzaSyDiisfAuSDNvst54ZUdoNxOtr-pqQt59AU',
             type: 'POST',
             cache: false,
             success: function(data){
-                var location = data["results"][0]["geometry"]["location"];
-                $(".lat").val(location.lat);
-                $(".lng").val(location.lng);
+                if(typeof data["results"][0] !== "undefined") {
+                    var location = data["results"][0]["geometry"]["location"];
+                    $(".lat").val(location.lat);
+                    $(".lng").val(location.lng);
+
+                    var place = encodeURIComponent($(".localize-place-suggestions").prev().val());
+                    var geoHackUrl = "http://tools.wmflabs.org/geohack/geohack.php?language=fr&pagename="+
+                        place+
+                        "&params="+location.lat+"_N_"+location.lng+"_E";
+
+                    var win = window.open(geoHackUrl, '_blank');
+                }
             }
         });
     });

@@ -33,15 +33,22 @@
         {% endif %}
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <meta name="description" content="Hist Map est une carte historique collaborative référençant les personnalités par événements et dates."/>
         
         <meta name="keywords" content="carte, historique, collaboratif, personnage, histoire, evenement">
         <meta name="contact" content="berkani.lyes@gmail.com" />
 
         <meta property="og:title" content="Hist Map" >
-        <meta property="og:url" content="http://histmap.fr">
+        <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
         <meta property="og:type" content="website" >
-        <meta property="og:image" content="/public/personne/1324254325.jpg">
+        {% if app.request.attributes.get('_route') in ["history_histlink", "history_histlink_personne", "history_histlink_suggestion"] %}
+            <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}/public/personne/1324254325.jpg">
+            <meta property="og:title" content="Hist Link" >
+            <meta name="description" content="Hist Link est un projet de réseau historique collaboratif regroupant un ensemble de personnalités historiques connues ainsi que les liens qui les unissent entre elles."/>
+        {% else %}
+            <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}/public/personne/0987654321.jpg">
+            <meta property="og:title" content="Hist Map" >
+            <meta name="description" content="Hist Map est une carte historique collaborative référençant les personnalités par événements et dates."/>
+        {% endif %}
     </head>
     <body>
         <div class="wrapper">

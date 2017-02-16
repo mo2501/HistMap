@@ -677,12 +677,17 @@ class HistoryController extends Controller{
                     $personne->setWiki($data["wiki"]);
                     $personne->setGender($data["gender"]);
                     
-                    $thematique = $repositoryTh->getThematiqueTous(1);
-                    $repositoryTh->addToThematique($personne, $thematique);
+                    //$thematique = $repositoryTh->getThematiqueTous(1);
+                    //$repositoryTh->addToThematique($personne, $thematique);
 
                     $em->persist($personne);
 
-                    move_uploaded_file($_FILES["person_picture"]["tmp_name"], "public/personne/" . $personne->getRef() . ".jpg");
+                    if($data["photo_type"] == "wiki"){
+                        file_put_contents("public/personne/" . $personne->getRef() . ".jpg", file_get_contents($data["wiki_picture"]));
+                    }
+                    else{
+                        move_uploaded_file($_FILES["person_picture"]["tmp_name"], "public/personne/" . $personne->getRef() . ".jpg");
+                    }
                 }
                 else{
                     $personne = $repositoryPe->findOneById($data["person_id"]);
@@ -704,7 +709,7 @@ class HistoryController extends Controller{
                 $event = new event();
                 
                 $event->setIntitule($data["event_name"]);
-                $event->setEventType($data["event_type"]);
+                $event->setEventType($repositoryET->findOneById($data["event_type"]));
                 $event->setYear($data["date"]);
                 $event->setPersonne($personne);
                 $event->setPlace($place);
@@ -722,9 +727,18 @@ class HistoryController extends Controller{
         $places = $repositoryPl->findBy(array(), array("nom" => "ASC"));
         $suggestions = $repositoryS->findAll();
         $eventTypes = $repositoryET->findAll();
+
+        if(!empty($suggestions)) {
+            $suggestions[0]->image = $repositoryS->wikipediaImageUrls($suggestions[0]->getWiki());
+
+            $nbSuggestions = count($suggestions);
+
+            $suggestions = [$suggestions[0]];
+        }
         
         return $this->render('HistoryBundle:History:admin/suggestions.html.twig', array("data" => $data,
                                                                                   "suggestions" => $suggestions,
+                                                                                  "nbSuggestions" => $nbSuggestions,
                                                                                   "personnes" => $personnes,
                                                                                   "eventTypes" => $eventTypes,
                                                                                   "places" => $places));

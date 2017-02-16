@@ -28,7 +28,7 @@ class suggestion
      * @ORM\Column(name="person_name", type="string", length=255)
      * @Assert\NotBlank(message="Le nom ne doit pas être vide.")
      * @Assert\Regex(
-     *     pattern="/^[a-zA-Z0-9 \-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
+     *     pattern="/^[a-zA-Z0-9 '\-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
      *     match=true,
      *     message="Le nom est incorrect."
      * )
@@ -41,7 +41,7 @@ class suggestion
      * @ORM\Column(name="place_name", type="string", length=255)
      * @Assert\NotBlank(message="Le lieu ne doit pas être vide.")
      * @Assert\Regex(
-     *     pattern="/^[a-zA-Z0-9 \-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
+     *     pattern="/^[a-zA-Z0-9 ,'\-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
      *     match=true,
      *     message="Le lieu est incorrect."
      * )

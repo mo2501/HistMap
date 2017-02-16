@@ -36,3 +36,32 @@
     border: 1px solid #ddd;
     padding: 5px;
 }
+
+.suggestion-images{
+    width: 500px;
+    height: 350px;
+    background: #fff;
+    overflow: scroll;
+}
+
+.suggestion-images a{
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.suggestion-images img{
+    width: 100%;
+}
+
+.label-highlight{
+    background: #ffeb3b;
+    color: #555;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 3px 5px;
+}
