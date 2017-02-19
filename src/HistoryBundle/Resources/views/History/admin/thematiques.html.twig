@@ -7,6 +7,11 @@
             Créer une thématique
         </h4>
         Nom <input type="text" name="thematique-name">
+        <select name="thematique-category">
+            {% for thematiquesCategory in thematiquesCategories %}
+                <option value="{{ thematiquesCategory.id }}">{{ thematiquesCategory.name }}</option>
+            {% endfor %}
+        </select>
         <input type="hidden" name="thematique-action" value="new-thematique">
         <input type="submit" class="btn btn-success">
     </form>
@@ -27,11 +32,12 @@
                 </li>
             {% endfor %}
         </ul>
-        <div class="list-places">
+        <div class="list-persons">
             {% for key, personne in personnes %}
                 <li>
                     <input type="checkbox" name="personnes-id[]" id="{{ personne.id }}-personne" value="{{ personne.getId() }}">
                     <label for="{{ personne.id }}-personne">
+                        <img src="/public/personne/{{ personne.ref }}.jpg">
                         {{ personne.getNom() }}
                     </label>
                 </li>

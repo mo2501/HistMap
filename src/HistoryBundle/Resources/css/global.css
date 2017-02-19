@@ -79,7 +79,7 @@ ul{
     left: 365px;
     top: 25px;
     vertical-align: middle;
-    width: 600px;
+    width: 630px;
 }
 
 #input-from{
@@ -94,7 +94,7 @@ ul{
 
 #input-to{
     display: inline-block;
-    left: 992px;
+    left: 1019px;
     position: absolute;
     text-align: center;
     top: 18px;
@@ -131,7 +131,17 @@ ul{
     width: 500px;
 }
 
-.div-event-type-filter .checkbox{
+.div-thematique-filter{
+    border-left: 1px solid #dedede;
+    left: 690px;
+    padding-left: 10px;
+    position: absolute;
+    top: 50px;
+    width: 500px;
+    display: none;
+}
+
+.div-event-type-filter .checkbox, .div-thematique-filter .checkbox{
     display: inline-block;
     margin-bottom: 7px;
     margin-right: 20px;
@@ -140,20 +150,20 @@ ul{
 }
 
 .div-name-filter{
-    left: 690px;
+    left: 915px;
     position: absolute;
     top: 53px;
 }
 
 .div-submit-search{
     position: absolute;
-    left: 878px;
-    top: 53px;
+    left: 1100px;
+    top: 18px;
 }
 
 .div-submit-search button{
-    width: 175px;
-    height: 25px;
+    width: 160px;
+    height: 60px;
     padding: 0;
 }
 
@@ -656,6 +666,7 @@ ul{
     -o-transition: all ease 0.1s;
     transition: all ease 0.1s;
     position: relative;
+    display: block;
 }
 
 .dropdown-menu > li > label:hover{
@@ -669,6 +680,35 @@ ul{
 
 .dropdown-menu > li > label > span{
     padding-left: 23px;
+}
+
+.dropdown-menu > li > span{
+    margin-left: 23px;
+    position: relative;
+    top: -3px;
+}
+
+.dropdown-menu .dropdown-submenu{
+    display: none;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    border-left: 1px solid #eee;
+}
+
+.dropdown-menu .dropdown-submenu input{
+    margin-right: 5px;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.dropdown-menu .dropdown-submenu span{
+    top: -3px;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.dropdown-menu-thema > li > span{
+    cursor: pointer;
 }
 
 @keyframes rotate{

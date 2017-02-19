@@ -10,10 +10,12 @@ namespace HistoryBundle\Controller;
 
 use HistoryBundle\Entity\histlinkSuggestion;
 use HistoryBundle\Entity\linkHighlight;
+use HistoryBundle\Entity\thematiqueCategory;
 use HistoryBundle\Repository\eventRepository;
 use HistoryBundle\Repository\linkHighlightRepository;
 use HistoryBundle\Repository\linkRepository;
 use HistoryBundle\Repository\personneRepository;
+use HistoryBundle\Repository\thematiqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use HistoryBundle\Entity\personne;
@@ -131,17 +133,24 @@ class HistoryController extends Controller{
                              ->getManager()
                              ->getRepository("HistoryBundle:eventType");
 
+        /* @var thematiqueRepository $repositoryT */
+        $repositoryT = $this->getDoctrine()
+                             ->getManager()
+                             ->getRepository("HistoryBundle:thematique");
+
         $from = 1000;
         $to = date("Y");
 
         $genders = array("Femmes" => "female", "Hommes" => "male");
         $eventTypes = $repositoryET->findBy(array(), array("nom" => "ASC"));
+        $thematiques = $repositoryT->buildArrayThematiques();
 
         return $this->render('HistoryBundle:History:front/index.html.twig', array(
             "from" => $from,
             "to" => $to,
             "genders" => $genders,
-            "eventTypes" => $eventTypes
+            "eventTypes" => $eventTypes,
+            "thematiques" => $thematiques
         ));
     }
 
@@ -489,6 +498,10 @@ class HistoryController extends Controller{
         $repositoryP = $this->getDoctrine()
                             ->getManager()
                             ->getRepository("HistoryBundle:personne");
+
+        $repositoryTC = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:thematiqueCategory");
         
         if($request->isMethod('POST')){
             $data = $_POST;
@@ -497,6 +510,7 @@ class HistoryController extends Controller{
                 $thematique = new thematique();
                 
                 $thematique->setNom($data["thematique-name"]);
+                $thematique->setThematiqueCategory($repositoryTC->findOneById($data["thematique-category"]));
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($thematique);
@@ -516,10 +530,51 @@ class HistoryController extends Controller{
         $personnes = $repositoryP->findBy(array(), array("nom" => "ASC"));
         
         $thematiques = $repositoryT->findBy(array(), array("nom" => "ASC"));
+
+        $thematiquesCategories = $repositoryTC->findBy(array(), array("name" => "ASC"));
         
         return $this->render('HistoryBundle:History:admin/thematiques.html.twig', array("data" => $data,
                                                                                   "thematiques" => $thematiques,
+                                                                                  "thematiquesCategories" => $thematiquesCategories,
                                                                                   "personnes" => $personnes));
+    }
+
+    /**
+     * @Route("/admin/thematiques-categories", name="history_thematiques_categories")
+     */
+    public function thematiquesCategoriesAction(Request $request){
+        $session = $request->getSession();
+        $session->start();
+
+        if($session->get("logged") == null){
+            return $this->redirect($this->generateUrl('history_login'));
+        }
+
+        $data = array();
+
+        $repositoryTC = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:thematiqueCategory");
+
+        if($request->isMethod('POST')){
+            $data = $_POST;
+
+            if($data["thematique-category-action"] == "new-thematique-category"){
+                $thematiqueCategory = new thematiqueCategory();
+
+                $thematiqueCategory->setName($data["thematique-category-name"]);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($thematiqueCategory);
+                $em->flush();
+            }
+        }
+
+        $thematiquesCategories = $repositoryTC->findBy(array(), array("name" => "ASC"));
+
+        return $this->render('HistoryBundle:History:admin/thematiquesCategories.html.twig', array("data" => $data,
+                                                                                  "thematiquesCategories" => $thematiquesCategories,
+        ));
     }
 
     /**
