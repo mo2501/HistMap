@@ -1,0 +1,37 @@
+{% extends "HistoryBundle:History:admin/admin-base.html.twig" %}
+
+{% block content %}
+<div class="wrapper-new-person">
+    <form method="post">
+        <h4>
+            Créer une catégories de thématiques
+        </h4>
+        Nom <input type="text" name="thematique-category-name">
+        <input type="hidden" name="thematique-category-action" value="new-thematique-category">
+        <input type="submit" class="btn btn-success">
+    </form>
+
+    <hr>
+
+    <table class="table table-bordered table-hover table-dashed">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nom
+            </th>
+        </tr>
+        {% for key, thematiqueCategory in thematiquesCategories %}
+            <tr>
+                <td>
+                    {{ thematiqueCategory.id }}
+                </td>
+                <td>
+                    {{ thematiqueCategory.name }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

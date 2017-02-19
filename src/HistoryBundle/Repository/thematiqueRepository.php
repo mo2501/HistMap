@@ -1,6 +1,7 @@
 <?php
 
 namespace HistoryBundle\Repository;
+use HistoryBundle\Entity\thematiquePersonne;
 
 /**
  * thematiqueRepository
@@ -49,16 +50,15 @@ class thematiqueRepository extends \Doctrine\ORM\EntityRepository{
     }
     
     public function addToThematique($personne, $thematique){
-        
+
         if(!$this->isAssociate($personne, $thematique)){
-            $thema = $this->findOneByIdCustom($thematique->getId());
-            if(empty($thema)){
-                $thema = $thematique;
-            }
-            $thema->addPersonne($personne);
+            $thematiquePersonne = new thematiquePersonne();
+
+            $thematiquePersonne->setPersonne($personne);
+            $thematiquePersonne->setThematique($thematique);
             
             $em = $this->getEntityManager();
-            $em->persist($thema);
+            $em->persist($thematiquePersonne);
             $em->flush();
         }
     }
@@ -78,7 +78,20 @@ class thematiqueRepository extends \Doctrine\ORM\EntityRepository{
     }
     
     public function isAssociate($personne, $thema){
-        $thematique = $this->findOneByIdCustom($thema->getId());
+
+        $repositorTP = $this->getEntityManager()
+            ->getRepository("HistoryBundle:thematiquePersonne");
+
+        $themaPersonne = $repositorTP->findBy(array("personne" => $personne, "thematique" => $thema));
+
+        if(!empty($themaPersonne)){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+        /*$thematique = $this->findOneByIdCustom($thema->getId());
         if($thematique == null){
             return false;
         }
@@ -89,10 +102,42 @@ class thematiqueRepository extends \Doctrine\ORM\EntityRepository{
             }
         }
         
-        return false;
+        return false;*/
     }
     
     public function getThematiqueTous(){
         return $this->findOneById(1);
+    }
+
+    public function buildChosenThematiquesArray($data){
+
+        $thematiques = array();
+
+        foreach($data as $key => $idThematique){
+            $thema = $this->findOneById($idThematique);
+
+            if(empty($thema)){
+                return null;
+            }
+
+            $thematiques[] = $thema;
+        }
+
+        return $thematiques;
+    }
+
+    public function buildArrayThematiques(){
+
+        $thematiquesCategories = [];
+
+        /* @var thematique[] $thematiques */
+        $thematiques = $this->findBy(array(), array("nom" => "ASC"));
+
+        foreach($thematiques as $key => $thematique){
+            $thematiquesCategories[$thematique->getThematiqueCategory()->getName()][0] = $thematique->getThematiqueCategory();
+            $thematiquesCategories[$thematique->getThematiqueCategory()->getName()][] = $thematique;
+        }
+
+        return $thematiquesCategories;
     }
 }

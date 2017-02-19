@@ -65,3 +65,29 @@
     border-radius: 3px;
     padding: 3px 5px;
 }
+
+.list-persons{
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #eee;
+    height: 480px;
+    overflow: scroll;
+    padding: 20px;
+    position: absolute;
+    right: 90px;
+    top: 168px;
+    width: 70%;
+    resize: both;
+}
+
+.list-persons img{
+    width: 75px;
+}
+
+.list-persons li{
+    list-style: none;
+    display: inline-block;
+    background: #fefefe;
+    border: 1px solid #eee;
+    margin-right: 20px;
+    padding: 10px;
+}

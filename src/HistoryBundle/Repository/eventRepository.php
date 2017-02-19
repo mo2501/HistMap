@@ -162,8 +162,13 @@ class eventRepository extends \Doctrine\ORM\EntityRepository{
         $repositoryPl = $this->getEntityManager()
             ->getRepository('HistoryBundle:place');
 
+        /* @var thematiqueRepository $repositoryTh */
         $repositoryTh = $this->getEntityManager()
             ->getRepository('HistoryBundle:thematique');
+
+        /* @var thematiquePersonneRepository $repositoryThP */
+        $repositoryThP = $this->getEntityManager()
+            ->getRepository('HistoryBundle:thematiquePersonne');
 
         if(empty($data)){
             return $data;
@@ -185,6 +190,23 @@ class eventRepository extends \Doctrine\ORM\EntityRepository{
                        ->setParameter("nom", "%".$data["nom"]."%")
                        ->getQuery()
                        ->getResult();
+
+        $nbThematiques = count($data["thematique"]);
+        $thematiques = count($repositoryTh->findAll());
+
+        if($nbThematiques != $thematiques){
+            $chosenThematiques = $repositoryTh->buildChosenThematiquesArray($data["thematique"]);
+
+            foreach($events as $key => $event){
+                $thematiquePersonne = $repositoryThP->findBy(array("personne" => $event->getPersonne(), "thematique" => $chosenThematiques));
+
+                if(empty($thematiquePersonne)){
+                    unset($events[$key]);
+                }
+            }
+        }
+
+        $events = array_values($events);
 
         $events_response = array();
 

@@ -33,7 +33,6 @@ class thematique
 
     /**
      * @ORM\ManyToOne(targetEntity="HistoryBundle\Entity\thematiqueCategory")
-     * @ORM\JoinColumn(name="thematique_category_id", referencedColumnName="id", nullable=true)
      */
     private $thematiqueCategory;
 
@@ -71,28 +70,4 @@ class thematique
         return $this->nom;
     }
 
-
-    /**
-     * Set thematiqueCategory
-     *
-     * @param \HistoryBundle\Entity\thematiqueCategory $thematiqueCategory
-     *
-     * @return thematique
-     */
-    public function setThematiqueCategory(\HistoryBundle\Entity\thematiqueCategory $thematiqueCategory = null)
-    {
-        $this->thematiqueCategory = $thematiqueCategory;
-
-        return $this;
-    }
-
-    /**
-     * Get thematiqueCategory
-     *
-     * @return \HistoryBundle\Entity\thematiqueCategory
-     */
-    public function getThematiqueCategory()
-    {
-        return $this->thematiqueCategory;
-    }
 }

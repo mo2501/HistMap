@@ -94,9 +94,55 @@ $(document).ready(function(){
         }, 1500);
     }
 
+    $(document).keypress(function(e) {
+        if(e.which == 13 && $("#person-name").is(":focus")) {
+            $(".div-submit-search button").trigger("click");
+        }
+    });
+
+    var options = [];
+
     $('.dropdown-menu').click(function(event){
         $(event.target).blur();
         return false;
+    });
+
+    $('.dropdown-menu label').click(function(event){
+        var $target = $(event.currentTarget),
+            val = $target.attr('data-value'),
+            $inp = $target.find('input'),
+            idx;
+
+        if ((idx = options.indexOf(val)) > -1) {
+            options.splice(idx, 1);
+            setTimeout(function() { $inp.prop('checked', true) }, 0);
+        } else {
+            options.push(val);
+            setTimeout(function() { $inp.prop('checked', false) }, 0);
+        }
+
+        $(event.target).blur();
+        return false;
+    });
+
+    $(".dropdown-menu-thema > li > span").click(function(){
+
+        $(".dropdown-submenu").each(function(){
+            $(this).slideUp();
+        });
+
+        if($(this).parent().next().css("display") == "none"){
+            $(this).parent().next().slideDown();
+        }
+    });
+
+    $(".dropdown-menu-thema > li > label > input").click(function(){
+
+        checked = $(this).is(":checked");
+
+        $(this).parent().parent().next().find("ul > li > label > input").each(function(){
+            $(this).prop("checked", checked).triggerHandler('click');
+        });
     });
 });
 
@@ -189,7 +235,7 @@ function sendDataAjax(data) {
 }
 
 function gatherData(){
-    var data = {"gender": [], "eventType": [], "from": "1000", "to": "2000", "nom": ""};
+    var data = {"gender": [], "eventType": [], "thematique": [], "from": "1000", "to": "2000", "nom": ""};
 
     if($(".div-gender-filter #female").is(":checked")){
         data["gender"].push(2);
@@ -202,6 +248,13 @@ function gatherData(){
         var value = $(this).val();
         if($(this).is(":checked")){
             data["eventType"].push(parseInt(value));
+        }
+    });
+
+    $(".thematique-input").each(function(e){
+        var value = $(this).val();
+        if($(this).is(":checked")){
+            data["thematique"].push(parseInt(value));
         }
     });
 
