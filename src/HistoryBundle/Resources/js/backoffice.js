@@ -64,4 +64,13 @@ $(document).ready(function(){
             }
         });
     });
+
+    if(position != ""){
+        $('.list-persons').scrollTo(position);
+    }
 });
+
+jQuery.fn.scrollTo = function(elem) {
+    $(this).scrollTop($(this).scrollTop() - $(this).offset().top + $(elem).offset().top - 100);
+    return this;
+};

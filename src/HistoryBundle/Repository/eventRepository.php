@@ -191,22 +191,24 @@ class eventRepository extends \Doctrine\ORM\EntityRepository{
                        ->getQuery()
                        ->getResult();
 
-        $nbThematiques = count($data["thematique"]);
-        $thematiques = count($repositoryTh->findAll());
+        if(isset($data["thematique"])) {
+            $nbThematiques = count($data["thematique"]);
+            $thematiques = count($repositoryTh->findAll());
 
-        if($nbThematiques != $thematiques){
-            $chosenThematiques = $repositoryTh->buildChosenThematiquesArray($data["thematique"]);
+            if ($nbThematiques != $thematiques) {
+                $chosenThematiques = $repositoryTh->buildChosenThematiquesArray($data["thematique"]);
 
-            foreach($events as $key => $event){
-                $thematiquePersonne = $repositoryThP->findBy(array("personne" => $event->getPersonne(), "thematique" => $chosenThematiques));
+                foreach ($events as $key => $event) {
+                    $thematiquePersonne = $repositoryThP->findBy(array("personne" => $event->getPersonne(), "thematique" => $chosenThematiques));
 
-                if(empty($thematiquePersonne)){
-                    unset($events[$key]);
+                    if (empty($thematiquePersonne)) {
+                        unset($events[$key]);
+                    }
                 }
             }
-        }
 
-        $events = array_values($events);
+            $events = array_values($events);
+        }
 
         $events_response = array();
 
@@ -221,6 +223,17 @@ class eventRepository extends \Doctrine\ORM\EntityRepository{
             $events_response[$key]["place"]["lat"] = $event->getPlace()->getLat();
             $events_response[$key]["place"]["lng"] = $event->getPlace()->getLng();
             $events_response[$key]["eventType"]["nom"] = $event->getEventType()->getNom();
+
+            $thematiquesPersonne = $repositoryThP->findByPersonne($event->getPersonne());
+
+            foreach($thematiquesPersonne as $cle => $thematiquePersonne){
+                $events_response[$key]["thematiques"][] = $thematiquePersonne->getThematique()->getNom();
+            }
+
+            if(isset($events_response[$key]["thematiques"])){
+                $events_response[$key]["thematiques"] = array_unique($events_response[$key]["thematiques"]);
+            }
+
         }
 
         return $events_response;

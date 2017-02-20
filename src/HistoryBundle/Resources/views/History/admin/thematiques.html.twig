@@ -22,29 +22,43 @@
         <h4>
             Ajouter personnes
         </h4>
+        <input type="submit" class="btn btn-success" id="submit-thematique">
         <ul>
-            {% for key, thematique in thematiques %}
+            {% for cle, thematiques in thematiquesA %}
                 <li>
-                    <input type="radio" name="thematique-id" id="{{ thematique.id }}-thematique" value="{{ thematique.getId() }}" {% if key == 0 %}checked="checked"{% endif %}>
-                    <label for="{{ thematique.id }}-thematique">
-                        {{ thematique.getNom() }}
-                    </label>
+                    <b>{{ cle }}</b>
                 </li>
+                <ul>
+                    {% for key, thematique in thematiques %}
+                        {% if key != 0 %}
+                            <li>
+                                <input type="checkbox" name="thematique-id[]" id="{{ thematique.id }}-thematique" value="{{ thematique.getId() }}" {% if key == 0 %}checked="checked"{% endif %}>
+                                <label for="{{ thematique.id }}-thematique">
+                                    {{ thematique.getNom() }}
+                                </label>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
             {% endfor %}
         </ul>
-        <div class="list-persons">
+        <div class="list-persons" id="list-persons">
             {% for key, personne in personnes %}
                 <li>
-                    <input type="checkbox" name="personnes-id[]" id="{{ personne.id }}-personne" value="{{ personne.getId() }}">
+                    <input type="radio" name="personnes-id" id="{{ personne.id }}-personne" value="{{ personne.id }}">
                     <label for="{{ personne.id }}-personne">
                         <img src="/public/personne/{{ personne.ref }}.jpg">
-                        {{ personne.getNom() }}
+                        {{ personne.nom }}
                     </label>
+                    <a href="{{ personne.wiki }}" class="btn btn-info btn-xs" target="_blank">Wiki</a>
                 </li>
             {% endfor %}
         </div>
         <input type="hidden" name="thematique-action" value="add-persons">
-        <input type="submit" class="btn btn-success">
     </form>
 </div>
+
+    <script>
+        position = '{{ position }}';
+    </script>
 {% endblock %}

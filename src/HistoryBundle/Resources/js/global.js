@@ -103,26 +103,11 @@ $(document).ready(function(){
     var options = [];
 
     $('.dropdown-menu').click(function(event){
-        $(event.target).blur();
-        return false;
-    });
+        element = $(this);
 
-    $('.dropdown-menu label').click(function(event){
-        var $target = $(event.currentTarget),
-            val = $target.attr('data-value'),
-            $inp = $target.find('input'),
-            idx;
-
-        if ((idx = options.indexOf(val)) > -1) {
-            options.splice(idx, 1);
-            setTimeout(function() { $inp.prop('checked', true) }, 0);
-        } else {
-            options.push(val);
-            setTimeout(function() { $inp.prop('checked', false) }, 0);
-        }
-
-        $(event.target).blur();
-        return false;
+        setTimeout(function(){
+            element.parent().addClass("open");
+        }, 0);
     });
 
     $(".dropdown-menu-thema > li > span").click(function(){
@@ -141,8 +126,14 @@ $(document).ready(function(){
         checked = $(this).is(":checked");
 
         $(this).parent().parent().next().find("ul > li > label > input").each(function(){
-            $(this).prop("checked", checked).triggerHandler('click');
+            $(this).prop("checked", checked);
         });
+    });
+
+    $("#check-all").click(function(){
+        $(".dropdown-menu-thema > li > label > input").each(function(){
+            $(this).trigger("click");
+        })
     });
 });
 
@@ -153,8 +144,6 @@ function sendDataAjax(data) {
         cache: false,
         data: data,
         success: function (data) {
-            //console.log(data["events"]);
-
             contentString = [];
             setMapOnAll(null);
             if (typeof markerCluster !== 'undefined') {
@@ -163,23 +152,38 @@ function sendDataAjax(data) {
             marker = [];
             infowindow = [];
 
-            for (var i = 0; i < data["events"].length; i++) {
+            for(var i = 0; i < data["events"].length; i++) {
                 contentString[i] = "<div class='marker'>\n\
-                                                <a target='_blank' href='" + data["events"][i]["personne"]["wiki"] + "'>\n\
-                                                    <img width='100px' src='/public/personne/" + data["events"][i]["personne"]["ref"] + ".jpg'>\n\
+                                        <a target='_blank' href='" + data["events"][i]["personne"]["wiki"].replace(/'/g, "%27") + "'>\n\
+                                            <img width='100px' src='/public/personne/" + data["events"][i]["personne"]["ref"] + ".jpg'>\n\
+                                        </a>\n\
+                                        <div>\n\
+                                            <h4>\n\
+                                                <a target='_blank' href='" + data["events"][i]["personne"]["wiki"].replace(/'/g, "%27") + "'>\n\
+                                                    " + data["events"][i]["personne"]["nom"] + "\n\
+                                                    <img class='small-wiki' src='/public/images/wiki_small.png'>\n\
                                                 </a>\n\
-                                                <div>\n\
-                                                    <h4>\n\
-                                                        <a target='_blank' href='" + data["events"][i]["personne"]["wiki"] + "'>\n\
-                                                            " + data["events"][i]["personne"]["nom"] + "\n\
-                                                            <img class='small-wiki' src='/public/images/wiki_small.png'>\n\
-                                                        </a>\n\
-                                                    </h4>\n\
-                                                    <div>Événement : " + data["events"][i]["intitule"] + "</div>\n\
-                                                    <div>Lieu : " + data["events"][i]["place"]["nom"] + "</div>\n\
-                                                    <div>Année : " + data["events"][i]["year"] + "</div>\n\
-                                                </div>\n\
-                                            </div>";
+                                            </h4>\n\
+                                            <div>Événement : " + data["events"][i]["intitule"] + "</div>\n\
+                                            <div>Lieu : " + data["events"][i]["place"]["nom"] + "</div>\n\
+                                            <div>Année : " + data["events"][i]["year"] + "</div>\n\
+                                            <div>Titres : ";
+
+                if(typeof data["events"][i]["thematiques"] !== "undefined") {
+                    for (var j = 0; j < data["events"][i]["thematiques"].length; j++) {
+                        contentString[i] += data["events"][i]["thematiques"][j];
+
+                        if (j != (data["events"][i]["thematiques"].length - 1)) {
+                            contentString[i] += ", ";
+                        }
+                    }
+                }
+                else{
+                    contentString[i] += "Aucun";
+                }
+
+                contentString[i] += "   </div></div>\n\
+                                     </div>";
 
                 infowindow = new google.maps.InfoWindow({
                     content: contentString[i]

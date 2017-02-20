@@ -138,6 +138,8 @@ class thematiqueRepository extends \Doctrine\ORM\EntityRepository{
             $thematiquesCategories[$thematique->getThematiqueCategory()->getName()][] = $thematique;
         }
 
+        ksort($thematiquesCategories);
+
         return $thematiquesCategories;
     }
 }

@@ -138,7 +138,6 @@ ul{
     position: absolute;
     top: 50px;
     width: 500px;
-    display: none;
 }
 
 .div-event-type-filter .checkbox, .div-thematique-filter .checkbox{
@@ -705,6 +704,11 @@ ul{
     top: -3px;
     cursor: pointer;
     vertical-align: top;
+}
+
+.dropdown-menu-thema{
+    max-height: 490px;
+    overflow-y: scroll;
 }
 
 .dropdown-menu-thema > li > span{

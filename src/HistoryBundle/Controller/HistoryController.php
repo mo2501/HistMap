@@ -502,7 +502,9 @@ class HistoryController extends Controller{
         $repositoryTC = $this->getDoctrine()
                             ->getManager()
                             ->getRepository("HistoryBundle:thematiqueCategory");
-        
+
+        $position = "";
+
         if($request->isMethod('POST')){
             $data = $_POST;
             
@@ -517,24 +519,27 @@ class HistoryController extends Controller{
                 $em->flush();
             }
             elseif($data["thematique-action"] == "add-persons"){
-                $thematique = $repositoryT->findOneById($data["thematique-id"]);
+                $personne = $repositoryP->findOneById($data["personnes-id"]);
                 
-                foreach($data["personnes-id"] as $cle => $personne_id){
-                    $personne = $repositoryP->findOneById($personne_id);
+                foreach($data["thematique-id"] as $cle => $thematique_id){
+                    $thematique = $repositoryT->findOneById($thematique_id);
                     $repositoryT->addToThematique($personne, $thematique);
                 }
+
+                $position = "#" . $personne->getId() . "-personne";
             }
             
         }
         
         $personnes = $repositoryP->findBy(array(), array("nom" => "ASC"));
-        
-        $thematiques = $repositoryT->findBy(array(), array("nom" => "ASC"));
+
+        $thematiquesA = $repositoryT->buildArrayThematiques();
 
         $thematiquesCategories = $repositoryTC->findBy(array(), array("name" => "ASC"));
         
         return $this->render('HistoryBundle:History:admin/thematiques.html.twig', array("data" => $data,
-                                                                                  "thematiques" => $thematiques,
+                                                                                  "thematiquesA" => $thematiquesA,
+                                                                                  "position" => $position,
                                                                                   "thematiquesCategories" => $thematiquesCategories,
                                                                                   "personnes" => $personnes));
     }
