@@ -1,13 +1,14 @@
 $(document).ready(function(){
     $("#thematique-select").val(1);
 
-    var icon = "public/images/marker-icon.png";
+    var icon = "/public/images/marker-icon-";
+    var icon_ext = ".png";
 
     $("#slider-range").slider({
         range: true,
         min: - 3000,
         max: new Date().getFullYear(),
-        values: [ 1000, new Date().getFullYear() ],
+        values: [ 1500, new Date().getFullYear() ],
         animate: "fast",
         slide: function(event, ui){
             $("#input-from").val(ui.values[0]);
@@ -197,43 +198,18 @@ function sendDataAjax(data) {
                     position: latlng,
                     map: map,
                     title: title,
-                    icon: icon
+                    icon: icon + data["events"][i]["eventType"]["id"] + icon_ext
                 });
                 marker[i].id = i;
 
                 var thisMarker = marker[i];
                 oms.addMarker(marker[i]);
-            }
 
-            var clusterStyles = [
-                {
-                    textColor: 'white',
-                    url: '/markerclusterer/images/m1.png',
-                    height: 40,
-                    width: 42
-                },
-                {
-                    textColor: '#111',
-                    url: '/markerclusterer/images/m2.png',
-                    height: 50,
-                    width: 50
-                },
-                {
-                    textColor: 'white',
-                    url: '/markerclusterer/images/m3.png',
-                    height: 60,
-                    width: 60
+                if(i == (data["events"].length - 1)){
+                    $(".showbox").slideUp("fast", "linear");
+                    $(".circular").slideUp("fast", "linear");
                 }
-            ];
-
-            var options = {
-                imagePath: 'markerclusterer/images/m',
-                textColor: "#fff",
-                styles: clusterStyles
-            };
-
-            $(".showbox").slideUp("fast", "linear");
-            $(".circular").slideUp("fast", "linear");
+            }
         }
     });
 }
