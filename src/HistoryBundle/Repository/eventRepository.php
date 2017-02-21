@@ -223,6 +223,7 @@ class eventRepository extends \Doctrine\ORM\EntityRepository{
             $events_response[$key]["place"]["lat"] = $event->getPlace()->getLat();
             $events_response[$key]["place"]["lng"] = $event->getPlace()->getLng();
             $events_response[$key]["eventType"]["nom"] = $event->getEventType()->getNom();
+            $events_response[$key]["eventType"]["id"] = $event->getEventType()->getId();
 
             $thematiquesPersonne = $repositoryThP->findByPersonne($event->getPersonne());
 

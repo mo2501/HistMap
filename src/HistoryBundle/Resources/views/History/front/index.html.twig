@@ -78,7 +78,7 @@
                                             <li>
                                                 <label class="small" data-value="option{{ key + 1 }}">
                                                     <input type="checkbox" checked="checked"
-                                                           class="filter-activator eventType"
+                                                           class="filter-activator"
                                                            name="{{ thematique.name }}"
                                                            tabIndex="-1" value="{{ thematique.id }}"
                                                            id="{{ thematique.name }}">
@@ -94,7 +94,7 @@
                                                     <li>
                                                         <label class="small" data-value="option{{ key + 1 }}">
                                                             <input type="checkbox" checked="checked"
-                                                                   class="filter-activator eventType thematique-input"
+                                                                   class="filter-activator thematique-input"
                                                                    name="{{ thematique.nom }}"
                                                                    tabIndex="-1" value="{{ thematique.id }}"
                                                                    id="{{ thematique.nom }}">
@@ -132,7 +132,8 @@
     <script type="text/javascript">
         var from = {{ from }};
         var to = {{ to }};
-        var icon = "/public/images/marker-icon.png";
+        var icon = "/public/images/marker-icon-";
+        var icon_ext = ".png";
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
