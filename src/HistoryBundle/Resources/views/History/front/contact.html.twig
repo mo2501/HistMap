@@ -1,0 +1,44 @@
+{% extends "HistoryBundle:History:front/base.html.twig" %}
+
+{% block content %}
+
+    <div method="post" class="suggestion-form">
+
+        <div class="suggestion-subwrapper">
+
+            <div class="suggestion-title">
+                Nous contacter
+            </div>
+                {% if not success %}
+                    {{ form_start(form) }}
+                        <div class="form-field">
+                            {{ form_label(form.subject, null, {'label_attr': {'class': 'label-field'}}) }}
+                            {{ form_widget(form.subject, {'attr': {'style': 'width: 400px'}}) }}
+                        </div>
+                        <div class="form-field">
+                            {{ form_label(form.name, null, {'label_attr': {'class': 'label-field'}}) }}
+                            {{ form_widget(form.name) }}
+                        </div>
+                        <div class="form-field">
+                            {{ form_label(form.email, null, {'label_attr': {'class': 'label-field'}}) }}
+                            {{ form_widget(form.email) }}
+                        </div>
+                        <div class="form-field">
+                            {{ form_label(form.message, null, {'label_attr': {'class': 'label-field'}}) }}
+                            {{ form_widget(form.message) }}
+                        </div>
+                        <div class="form-field form-field-submit">
+                            {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+                        </div>
+                    {{ form_end(form) }}
+                {% else %}
+                    <div class="alert alert-success" role="alert">
+                        Votre message a bien été envoyé. Merci !
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+
+    {% include 'HistoryBundle:History:front/about.html.twig' %}
+
+{% endblock %}
