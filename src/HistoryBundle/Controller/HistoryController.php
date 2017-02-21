@@ -34,6 +34,7 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use HistoryBundle\Form\Type\ContactType;
 
 class HistoryController extends Controller{
 
@@ -861,6 +862,46 @@ class HistoryController extends Controller{
         
         return $this->redirect($this->generateUrl('history_login'));
 
+    }
+
+    /**
+     * @Route("/contact", name="history_contact")
+     */
+    public function contactAction(Request $request){
+        $form = $this->createForm(ContactType::class);
+
+        $form->handleRequest($request);
+
+        $success = false;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message = \Swift_Message::newInstance()
+                ->setSubject($form->get('subject')->getData())
+                ->setFrom('histmaplb@gmail.com')
+                ->setTo('berkani.lyes@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'HistoryBundle:History:mails/contact.html.twig',
+                        array(
+                            'ip' => $request->getClientIp(),
+                            'name' => $form->get('name')->getData(),
+                            'email' => $form->get('email')->getData(),
+                            'subject' => $form->get('subject')->getData(),
+                            'message' => $form->get('message')->getData()
+                        )
+                    )
+                );
+
+            $this->get('mailer')->send($message);
+
+            $success = true;
+        }
+
+
+        return $this->render('HistoryBundle:History:front/contact.html.twig', array(
+            "success" => $success,
+            "form" => $form->createView())
+        );
     }
 }
 

@@ -164,10 +164,10 @@ function sendDataAjax(data) {
                                                     <img class='small-wiki' src='/public/images/wiki_small.png'>\n\
                                                 </a>\n\
                                             </h4>\n\
-                                            <div>Événement : " + data["events"][i]["intitule"] + "</div>\n\
-                                            <div>Lieu : " + data["events"][i]["place"]["nom"] + "</div>\n\
-                                            <div>Année : " + data["events"][i]["year"] + "</div>\n\
-                                            <div>Titres : ";
+                                            <div><b>Événement :</b> " + data["events"][i]["intitule"] + "</div>\n\
+                                            <div><b>Lieu :</b> " + data["events"][i]["place"]["nom"] + "</div>\n\
+                                            <div><b>Année :</b> " + data["events"][i]["year"] + "</div>\n\
+                                            <div style='max-width: 200px;'><b>Titres :</b><br> ";
 
                 if(typeof data["events"][i]["thematiques"] !== "undefined") {
                     for (var j = 0; j < data["events"][i]["thematiques"].length; j++) {
