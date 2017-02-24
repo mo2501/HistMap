@@ -69,7 +69,7 @@ class suggestion
      * @ORM\Column(name="event_name", type="string", length=255)
      * @Assert\NotBlank(message="Le nom de l'événement ne doit pas être vide")
      * @Assert\Regex(
-     *     pattern="/^[a-zA-Z0-9 '\-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
+     *     pattern="/^[a-zA-Z0-9 \-ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]*$/",
      *     match=true,
      *     message="Le nom de l'événement est incorrect."
      * )
@@ -226,29 +226,5 @@ class suggestion
     public function getWiki()
     {
         return $this->wiki;
-    }
-
-    /**
-     * Set personne
-     *
-     * @param \HistoryBundle\Entity\personne $personne
-     *
-     * @return suggestion
-     */
-    public function setPersonne(\HistoryBundle\Entity\personne $personne = null)
-    {
-        $this->personne = $personne;
-
-        return $this;
-    }
-
-    /**
-     * Get personne
-     *
-     * @return \HistoryBundle\Entity\personne
-     */
-    public function getPersonne()
-    {
-        return $this->personne;
     }
 }

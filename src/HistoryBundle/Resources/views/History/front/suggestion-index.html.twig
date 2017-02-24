@@ -1,0 +1,43 @@
+{% extends "HistoryBundle:History:front/base.html.twig" %}
+
+{% block content %}
+
+    <form method="post" class="suggestion-form form-horizontal">
+        <div class="suggestion-subwrapper suggestion-index">
+            <div class="suggestion-title">
+                Suggérer une personnalité
+            </div>
+            <hr>
+
+            {{ form_start(form) }}
+                <h4>
+                    Rechercher si la personnalité est présente dans notre base de données
+                </h4>
+                <br>
+                <div class="form-group">
+                    {{ form_label(form.person_name, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                    {{ form_widget(form.person_name, {'attr': {'placeholder': 'Ex : Napoléon Bonaparte', 'class': 'form-control col-sm-9'}}) }}
+                </div>
+            {{ form_end(form) }}
+
+            <div class="suggestion-search-result">
+
+            </div>
+
+            <hr>
+            <h4>
+                <b>
+                    Ou
+                </b>
+            </h4>
+            <hr>
+
+            <a href="{{ path("history_suggestions") }}" class="btn btn-info">
+                Suggérer une nouvelle personnalité
+            </a>
+        </div>
+    </form>
+
+    {% include 'HistoryBundle:History:front/about.html.twig' %}
+
+{% endblock %}

@@ -15,8 +15,10 @@ use HistoryBundle\Repository\eventRepository;
 use HistoryBundle\Repository\linkHighlightRepository;
 use HistoryBundle\Repository\linkRepository;
 use HistoryBundle\Repository\personneRepository;
+use HistoryBundle\Repository\thematiquePersonneRepository;
 use HistoryBundle\Repository\thematiqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\HttpFoundation\Request;
 use HistoryBundle\Entity\personne;
 use HistoryBundle\Entity\place;
@@ -244,7 +246,145 @@ class HistoryController extends Controller{
     }
 
     /**
-     * @Route("/suggestion-evenement", name="history_suggestions")
+     * @Route("/get-person-route/{id}", name="history_get_persons_route", options = { "expose" = true })
+     * @ParamConverter("personne", class="HistoryBundle:personne")
+     */
+    public function getPersonRouteAjaxAction(personne $personne, Request $request){
+        /* @var eventRepository $repositoryE */
+        $repositoryE = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:event");
+
+        $events = $repositoryE->getEventsRoute($personne);
+
+        $response = new \Symfony\Component\HttpFoundation\JsonResponse();
+        return $response->setData(array("events" => $events));
+    }
+
+    /**
+     * @Route("/infos-personnalite/{id}", name="history_infos_personnalite")
+     * @ParamConverter("personne", class="HistoryBundle:personne")
+     */
+    public function infoPersonAction(personne $personne, Request $request){
+
+        $data = array();
+        $errors = array();
+        $success = array();
+
+        /* @var eventRepository $repositoryE */
+        $repositoryE = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("HistoryBundle:event");
+
+        /* @var personneRepository $repositoryP */
+        $repositoryP = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("HistoryBundle:personne");
+
+        /* @var thematiquePersonneRepository $repositoryTP */
+        $repositoryTP = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("HistoryBundle:thematiquePersonne");
+
+        $events = $repositoryE->findBy(array('personne' => $personne), array('year' => 'ASC'));
+        $thematiquesPersonnes = $repositoryTP->findByPersonne($personne);
+
+        return $this->render('HistoryBundle:History:front/personne.html.twig', array(
+            "personne" => $personne,
+            "thematiquesPersonnes" => $thematiquesPersonnes,
+            "errors" => $errors,
+            "success" => $success,
+            "events" => $events,
+            "data" => $data));
+    }
+
+    /**
+     * @Route("/suggestion-accueil", name="history_suggestions_index")
+     */
+    public function suggestionsIndexAction(Request $request){
+
+        $data = array();
+        $errors = array();
+        $success = array();
+
+        $suggestion = new suggestion();
+
+        $form = $this->createFormBuilder($suggestion)
+            ->add("person_name", TextType::class, array('mapped' => false, 'label' => 'Nom de la personnalité'))
+            ->getForm();
+
+        return $this->render('HistoryBundle:History:front/suggestion-index.html.twig', array(
+            "errors" => $errors,
+            "success" => $success,
+            "form" => $form->createView(),
+            "data" => $data));
+    }
+
+    /**
+     * @Route("/suggestion-personnalite/{id}", name="history_suggestions_personnalite_existante")
+     * @ParamConverter("personne", class="HistoryBundle:personne")
+     */
+    public function suggestionsExistingPersonAction(personne $personne, Request $request){
+
+        $data = array();
+        $errors = array();
+        $success = array();
+
+        /* @var eventRepository $repositoryE */
+        $repositoryE = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:event");
+
+        /* @var personneRepository $repositoryP */
+        $repositoryP = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository("HistoryBundle:personne");
+
+        $form = $this->createFormBuilder(new suggestion())
+            ->add("person_name", TextType::class, array('label' => 'Nom', 'attr' => array('value' => $personne->getNom(), 'readonly' => true)))
+            ->add("place_name", TextType::class, array('label' => 'Lieu'))
+            ->add("date", TextType::class, array('label' => 'Année'))
+            ->add("event_name", TextType::class, array('label' => 'Événement'))
+            ->add("wiki", UrlType::class, array('label' => 'Wikipédia', 'attr' => array('value' => $personne->getWiki(), 'readonly' => true)))
+            ->add("person_id", HiddenType::class, array('mapped' => false, 'attr' => array('value' => $personne->getId())))
+            ->add("save", SubmitType::class, array('label' => 'Envoyer'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                /* @var suggestion $suggestion */
+                $suggestion = $form->getData();
+
+                $data = $form->getData();
+
+                $suggestion->setPersonne($repositoryP->findOneById($form->get("person_id")->getData()));
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($suggestion);
+                $em->flush();
+
+                $success = array(true);
+            }
+            else{
+                $errors = $this->getErrorMessages($form);
+            }
+        }
+
+        $events = $repositoryE->findBy(array('personne' => $personne), array('year' => 'ASC'));
+
+        return $this->render('HistoryBundle:History:front/suggestion-personne.html.twig', array(
+            "personne" => $personne,
+            "errors" => $errors,
+            "success" => $success,
+            "form" => $form->createView(),
+            "events" => $events,
+            "data" => $data));
+    }
+
+    /**
+     * @Route("/suggestion-personnalite", name="history_suggestions")
      */
     public function suggestionsAction(Request $request){
 

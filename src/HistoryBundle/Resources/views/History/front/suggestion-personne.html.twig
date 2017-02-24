@@ -1,0 +1,90 @@
+{% extends "HistoryBundle:History:front/base.html.twig" %}
+
+{% block content %}
+
+    <form method="post" class="suggestion-form form-horizontal">
+        <div class="suggestion-subwrapper suggestion-personne">
+            <div class="suggestion-title">
+                Suggérer un événement pour <b>{{ personne.nom }}</b>
+            </div>
+            <div class="suggestion-personne-form">
+                {% if errors is not empty %}
+                    <ul class="error-div">
+                        {% for error in errors %}
+                            <li> <i class="fa fa-exclamation-circle"></i>
+                                {{ error[0] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <script>
+                        error = true;
+                    </script>
+                {% endif %}
+
+                {% if success is not empty %}
+                    <div class="success-div">
+                        <i class="fa fa-check-circle"></i> Votre suggestion a bien été prise en compte et sera étudiée.
+                    </div>
+                    <script>
+                        success = true;
+                    </script>
+                {% endif %}
+                <br>
+                <div class="img-container">
+                    <img src="/public/personne/{{ personne.ref }}.jpg">
+                </div>
+
+                {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.person_name, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                        {{ form_widget(form.person_name, {'attr': {'placeholder': 'Ex : Napoléon Bonaparte', 'class': 'form-control col-sm-9'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.wiki, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                        {{ form_widget(form.wiki, {'attr': {'placeholder': 'Ex : https://fr.wikipedia.org/wiki/Napol%C3%A9on_Ier', 'required': false, 'class': 'form-control col-sm-9'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.place_name, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                        {{ form_widget(form.place_name, {'attr': {'placeholder': 'Ex : Ajaccio, France', 'class': 'form-control col-sm-9'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.date, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                        {{ form_widget(form.date, {'attr': {'placeholder': 'Ex : 1769', 'class': 'form-control col-sm-9'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.event_name, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                        {{ form_widget(form.event_name, {'attr': {'placeholder': 'Ex : Naissance', 'class': 'form-control col-sm-9'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.person_id) }}
+                    </div>
+                    <div class="form-group form-field-submit">
+                        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+                    </div>
+                {{ form_end(form) }}
+            </div>
+            <a href="{{ path("history_suggestions_index") }}" class="btn btn-info">
+                <i class="fa fa-arrow-left"></i>
+                Retour
+            </a>
+            <div class="current-events-suggestion">
+                <h4>
+                    Evenements dans notre base de données
+                </h4>
+                {% for key, event in events %}
+                    {% if key != 0 %}
+                        <i class="fa fa-arrow-right arrow-timeline"></i>
+                    {% endif %}
+                    <div class="current-event-suggestion">
+                        <img src="/public/images/marker-icon-{{ event.eventType.id }}.png"><br>
+                        {{ event.intitule }}<br>
+                        {{ event.year }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+
+    {% include 'HistoryBundle:History:front/about.html.twig' %}
+
+{% endblock %}

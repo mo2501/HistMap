@@ -239,6 +239,47 @@ class eventRepository extends \Doctrine\ORM\EntityRepository{
 
         return $events_response;
     }
+
+    public function getEventsRoute($personne){
+        $repositoryE = $this->getEntityManager()
+            ->getRepository('HistoryBundle:event');
+
+        /* @var thematiquePersonneRepository $repositoryThP */
+        $repositoryThP = $this->getEntityManager()
+            ->getRepository('HistoryBundle:thematiquePersonne');
+
+        /* @var event[] $events */
+        $events = $repositoryE->findBy(array("personne" => $personne), array("year" => "ASC"));
+
+        $events_response = array();
+
+        foreach($events as $key => $event){
+            $events_response[$key]["intitule"] = $event->getIntitule();
+            $events_response[$key]["year"] = $event->getYear();
+            $events_response[$key]["personne"]["nom"] = $event->getPersonne()->getNom();
+            $events_response[$key]["personne"]["wiki"] = $event->getPersonne()->getWiki();
+            $events_response[$key]["personne"]["gender"] = $event->getPersonne()->getGender();
+            $events_response[$key]["personne"]["ref"] = $event->getPersonne()->getRef();
+            $events_response[$key]["place"]["nom"] = $event->getPlace()->getNom();
+            $events_response[$key]["place"]["lat"] = $event->getPlace()->getLat();
+            $events_response[$key]["place"]["lng"] = $event->getPlace()->getLng();
+            $events_response[$key]["eventType"]["nom"] = $event->getEventType()->getNom();
+            $events_response[$key]["eventType"]["id"] = $event->getEventType()->getId();
+
+            $thematiquesPersonne = $repositoryThP->findByPersonne($event->getPersonne());
+
+            foreach($thematiquesPersonne as $cle => $thematiquePersonne){
+                $events_response[$key]["thematiques"][] = $thematiquePersonne->getThematique()->getNom();
+            }
+
+            if(isset($events_response[$key]["thematiques"])){
+                $events_response[$key]["thematiques"] = array_unique($events_response[$key]["thematiques"]);
+            }
+
+        }
+
+        return $events_response;
+    }
     
     public function sortEventsObjects($a, $b){
         return strcmp($a->getPlace()->getNom(), $b->getPlace()->getNom());

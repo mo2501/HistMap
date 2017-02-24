@@ -41,6 +41,7 @@ class personneRepository extends \Doctrine\ORM\EntityRepository{
             $personnes_response[$key]["nom"] = $personne->getNom();
             $personnes_response[$key]["ref"] = $personne->getRef();
             $personnes_response[$key]["link"] = $container->get('router')->generate("history_histlink_personne", array("id" => $personne->getId()));
+            $personnes_response[$key]["suggestionLink"] = $container->get('router')->generate("history_suggestions_personnalite_existante", array("id" => $personne->getId()));
         }
 
         return $personnes_response;
