@@ -50,7 +50,8 @@
                         Correction
                     </h3>
                     <b>Personne :</b> <input type="text" name="person_name" value="{{ suggestion.getPersonName() }}">
-                    - <label for="new_person" class="label-highlight"><input type="radio" name="new_person" checked="checked" value="true" id="new_person">Nouvelle personne</label>
+                    - <label for="new_person" class="label-highlight">
+                    <input type="radio" name="new_person" {% if suggestion.personne is null %}checked="checked"{% endif %} value="true" id="new_person">Nouvelle personne</label>
                     <br>
                     <br>
                     <b>Sexe :</b> <input type="radio" id="homme" name="gender" value="1" checked="checked"><label for="homme">Homme</label> <input type="radio" id="femme" name="gender" value="2"><label for="femme">Femme</label><br>
@@ -61,11 +62,13 @@
                     <hr>
                     <select name="person_id">
                         {% for personne in personnes %}
-                            <option value="{{ personne.getId() }}">
+                            <option value="{{ personne.getId() }}" {% if suggestion.personne is not null and personne.id == suggestion.personne.id %}selected{% endif %}>
                                 {{ personne.getNom() }}
                             </option>
                         {% endfor %}
-                    </select> - <label for="old_person" class="label-highlight"><input type="radio" name="new_person" value="false" id="old_person">Personne existante</label><br>
+                    </select>
+                    - <label for="old_person" class="label-highlight">
+                    <input type="radio" name="new_person" value="false" id="old_person" {% if suggestion.personne is not null %}checked="checked"{% endif %}>Personne existante</label><br>
                     <hr>
                     <b>Lieu :</b> <input type="text" name="place_name" class="place-name" value="{{ suggestion.getPlaceName() }}">
                     <input type="button" class="localize-place-suggestions" value="Localiser">
@@ -76,7 +79,7 @@
 
                     <hr>
                     <select name="place_id">
-                        {% for place in places %}
+                        {% for place in places %}g
                             <option value="{{ place.getId() }}">
                                 {{ place.getNom() }}
                             </option>

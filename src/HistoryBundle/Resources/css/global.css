@@ -5,10 +5,14 @@ html, body {
 }
 
 .wrapper{
+    min-height: 100%;
+}
+
+.map-wrapper{
     height: 100%;
     min-width: 1360px;
     overflow: hidden;
-    position: relative;
+    position: absolute;
     width: 100%;
     min-height: 650px;
 }
@@ -25,6 +29,7 @@ ul{
     right: 0;
     left: 0;
     margin-top: 100px;
+    height: 100%;
 }
 
 .small-wiki{
@@ -263,8 +268,8 @@ ul{
     padding: 5px;
     box-shadow: 0px 0px 2px 0px #9b9b9b;
     background: #F6F6F6;
-    width: 160px;
-    margin: 0px 10px;
+    width: 140px;
+    margin: 0px 5px;
     display: inline-block;
 }
 
@@ -316,8 +321,12 @@ ul{
     height: 100%;
     background: #f5f5f5;
     box-shadow: 0px 0px 5px 0px #9b9b9b;
-    padding: 140px 40px 10px 40px;
+    padding: 20px 40px;
     margin: 20px auto;
+}
+
+.suggestion-index{
+    text-align: center;
 }
 
 .suggestion-form .suggestion-title{
@@ -361,8 +370,85 @@ ul{
     margin-right: 10px;
 }
 
+.suggestion-search-result{
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin: 20px;
+    width: 100%;
+    position: relative;
+    display: none;
+}
+
+.suggestion-search-result .result{
+    border: 1px solid #fefefe;
+    position: relative;
+    color: #555;
+    text-decoration: none;
+    -webkit-transition: all ease 0.1s;
+    -moz-transition: all ease 0.1s;
+    -ms-transition: all ease 0.1s;
+    -o-transition: all ease 0.1s;
+    transition: all ease 0.1s;
+    padding-top: 110px;
+    display: inline-block;
+    height: 140px;
+    margin: 10px 20px;
+}
+
+.suggestion-search-result .result:hover{
+    color: #999;
+}
+
+.suggestion-search-result .result .img-container{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+    left: calc(50% - 50px);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;;
+    border: 2px solid #fff;
+}
+
+.suggestion-search-result .result img{
+    width: 100%;
+}
+
+.suggestion-personne .suggestion-personne-form{
+    position: relative;
+    padding-left: 170px;
+}
+
+.suggestion-personne .suggestion-personne-form .img-container{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;;
+    border: 2px solid #fff;
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(221,221,221,1);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(221,221,221,1);
+    box-shadow: 0px 0px 5px 3px rgba(221,221,221,1);
+}
+
+.suggestion-personne .suggestion-personne-form img{
+    width: 100%;
+}
+
 .form-field{
     padding-left: 24%;
+}
+
+.form-control{
+    width: 75%;
+    display: inline-block;
 }
 
 .form-field .label-field{
@@ -715,6 +801,145 @@ ul{
 
 .dropdown-menu-thema > li > span{
     cursor: pointer;
+}
+
+.current-events-suggestion .current-event-suggestion{
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 10px;
+    min-width: 150px;
+    text-align: center;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+.current-events-suggestion .fa.fa-arrow-right{
+    display: inline-block;
+    vertical-align: middle;
+    color: #265BB2;
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.route-people{
+    left: -245px;
+    top: 0;
+    background: #fefefe;
+    position: absolute;
+    padding: 100px 10px 10px 10px;
+    width: 250px;
+    height: 100%;
+    box-shadow: 0 0 2px 0 #9b9b9b;
+    -webkit-transition: left ease 0.2s;
+    -moz-transition: left ease 0.2s;
+    -ms-transition: left ease 0.2s;
+    -o-transition: left ease 0.2s;
+    transition: left ease 0.2s;
+}
+
+.route-people.display{
+    left: 0;
+}
+
+.route-people #display-route-panel{
+    position: absolute;
+    top: 50%;
+    left: 175px;
+    background: #fff;
+    height: 75px;
+    cursor: pointer;
+}
+
+.route-people #display-route-panel img{
+    width: 100%;
+}
+
+.route-people .form-control{
+    width: 100%;
+}
+
+.route-people .search-result{
+    padding: 20px 10px 10px 10px;
+}
+
+.route-people .person-search-result{
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 3px 5px;
+    display: block;
+    text-decoration: none;
+    color: #555;
+    background: #fefefe;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-transition: all ease 0.2s;
+    -moz-transition: all ease 0.2s;
+    -ms-transition: all ease 0.2s;
+    -o-transition: all ease 0.2s;
+    transition: all ease 0.2s;
+    width: 100%;
+}
+
+.route-people .person-name-route{
+    max-width: 130px;
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+}
+
+.route-people .person-name-route span{
+    width: 500px;
+    position: absolute;
+}
+
+.route-people .person-search-result:hover{
+    text-decoration: none;
+    color: #193969;
+    background: #fff;
+}
+
+.route-people .person-search-result button{
+    position: absolute;
+    top: 3px;
+}
+
+.route-people .person-search-result button.info-button{
+    right: 24px;
+}
+
+.route-people .person-search-result button.route-button{
+    right: 3px;
+}
+
+.route-people .person-search-result .img-container{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: -7px;
+    left: -13px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+}
+
+.route-people .person-search-result img{
+    width: 100%;
+}
+
+@media screen and (max-width: 500px)
+{
+    .suggestion-subwrapper{
+        width: 100%;
+    }
+
+    .current-events-suggestion .fa.fa-arrow-right.arrow-timeline{
+        display: none;
+    }
 }
 
 @keyframes rotate{

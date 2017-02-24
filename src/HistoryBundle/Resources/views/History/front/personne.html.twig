@@ -1,0 +1,76 @@
+{% extends "HistoryBundle:History:front/base.html.twig" %}
+
+{% block content %}
+
+    <form method="post" class="suggestion-form form-horizontal">
+        <div class="suggestion-subwrapper suggestion-personne">
+            <div class="suggestion-title">
+                <b>{{ personne.nom }}</b>
+            </div>
+            <div class="suggestion-personne-form">
+                <br>
+                <div class="img-container">
+                    <img src="/public/personne/{{ personne.ref }}.jpg">
+                </div>
+                <p>
+                    <b>Nom :</b>
+                    {{ personne.nom }}
+                </p>
+                <p>
+                    <b>Wikipédia :</b>
+                    <a href="{{ personne.wiki }}" class="btn btn-default" target="_blank">
+                        Lien fiche
+                    </a>
+                </p>
+                <p>
+                    <b>Sexe :</b>
+                    {% if personne.gender == 1 %}
+                        Homme
+                    {% else %}
+                        Femme
+                    {% endif %}
+                </p>
+                <p>
+                    <b>Titres :</b>
+                    {% for key, thematiquePersonne in thematiquesPersonnes %}
+                        {% if key != 0 %}
+                            ,
+                        {% endif %}
+                        {{ thematiquePersonne.thematique.nom }}
+                    {% endfor %}
+                    {% if thematiquesPersonnes is empty %}
+                        Aucun
+                    {% endif %}
+                </p>
+
+            </div>
+            <hr>
+            <a href="{{ path("history_homepage") }}" class="btn btn-info">
+                <i class="fa fa-arrow-left"></i>
+                Retour
+            </a>
+            <a href="{{ path("history_suggestions_personnalite_existante", {id: personne.id}) }}" class="btn btn-info">
+                <i class="fa fa-plus"></i>
+                Suggérer un événement
+            </a>
+            <div class="current-events-suggestion">
+                <h4>
+                    Ses événements
+                </h4>
+                {% for key, event in events %}
+                    {% if key != 0 %}
+                        <i class="fa fa-arrow-right arrow-timeline"></i>
+                    {% endif %}
+                    <div class="current-event-suggestion">
+                        <img src="/public/images/marker-icon-{{ event.eventType.id }}.png"><br>
+                        {{ event.intitule }}<br>
+                        {{ event.year }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+
+    {% include 'HistoryBundle:History:front/about.html.twig' %}
+
+{% endblock %}

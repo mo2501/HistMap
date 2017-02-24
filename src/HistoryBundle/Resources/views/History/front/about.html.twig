@@ -2,22 +2,25 @@
     <a href="{{ path('history_homepage') }}">
         <i class="fa fa-home"></i> Accueil
     </a>
-    <a href="{{ path('history_contact') }}">
-        <i class="fa fa-envelope-o"></i> Nous contacter
+    <a id="display-route-panel" style="display: none;">
+        <i class="fa fa-map-marker"></i> Personnalités
     </a>
-    <a href="{{ path('history_suggestions') }}">
+    <a href="{{ path('history_suggestions_index') }}" style="display: none;">
         <i class="fa fa-pencil"></i> Suggérer
-    </a>
-    <a href="{{ path('history_about') }}">
-        <i class="fa fa-address-book-o"></i> À propos
     </a>
     <a href="{{ path('history_histlink') }}">
         <i class="fa fa-users"></i> Hist Link
+    </a>
+    <a href="{{ path('history_contact') }}">
+        <i class="fa fa-envelope-o"></i> Contact
+    </a>
+    <a href="{{ path('history_about') }}">
+        <i class="fa fa-address-book-o"></i> À propos
     </a>
     <a target="_blank" href="https://www.facebook.com/HistMap">
         <i class="fa fa-facebook"></i> Facebook
     </a>
     <a target="_blank" href="http://lyesberkani.com">
-        <i class="fa fa-address-card-o"></i> Lyesberkani.com
+        <i class="fa fa-address-card-o"></i> L'auteur
     </a>
 </div>

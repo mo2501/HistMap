@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form method="post" class="suggestion-form">
+    <form method="post" class="suggestion-form form-horizontal">
         <div class="suggestion-subwrapper">
             {% if errors is not empty %}
                 <ul class="error-div">
@@ -31,30 +31,36 @@
             </div>
 
             {{ form_start(form) }}
-                <div class="form-field">
-                    {{ form_label(form.person_name, null, {'label_attr': {'class': 'label-field'}}) }}
-                    {{ form_widget(form.person_name, {'attr': {'placeholder': 'Ex : Napoléon Bonaparte'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.person_name, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                    {{ form_widget(form.person_name, {'attr': {'placeholder': 'Ex : Napoléon Bonaparte', 'class': 'form-control col-sm-9'}}) }}
                 </div>
-                <div class="form-field">
-                    {{ form_label(form.wiki, null, {'label_attr': {'class': 'label-field'}}) }}
-                    {{ form_widget(form.wiki, {'attr': {'placeholder': 'Ex : https://fr.wikipedia.org/wiki/Napol%C3%A9on_Ier', 'required': false}}) }}
+                <div class="form-group">
+                    {{ form_label(form.wiki, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                    {{ form_widget(form.wiki, {'attr': {'placeholder': 'Ex : https://fr.wikipedia.org/wiki/Napol%C3%A9on_Ier', 'required': false, 'class': 'form-control col-sm-9'}}) }}
                 </div>
-                <div class="form-field">
-                    {{ form_label(form.place_name, null, {'label_attr': {'class': 'label-field'}}) }}
-                    {{ form_widget(form.place_name, {'attr': {'placeholder': 'Ex : Ajaccio, France'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.place_name, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                    {{ form_widget(form.place_name, {'attr': {'placeholder': 'Ex : Ajaccio, France', 'class': 'form-control col-sm-9'}}) }}
                 </div>
-                <div class="form-field">
-                    {{ form_label(form.date, null, {'label_attr': {'class': 'label-field'}}) }}
-                    {{ form_widget(form.date, {'attr': {'placeholder': 'Ex : 1769'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.date, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                    {{ form_widget(form.date, {'attr': {'placeholder': 'Ex : 1769', 'class': 'form-control col-sm-9'}}) }}
                 </div>
-                <div class="form-field">
-                    {{ form_label(form.event_name, null, {'label_attr': {'class': 'label-field'}}) }}
-                    {{ form_widget(form.event_name, {'attr': {'placeholder': 'Ex : Naissance'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.event_name, null, {'label_attr': {'class': 'label-field col-sm-3'}}) }}
+                    {{ form_widget(form.event_name, {'attr': {'placeholder': 'Ex : Naissance', 'class': 'form-control col-sm-9'}}) }}
                 </div>
-                <div class="form-field form-field-submit">
+                <div class="form-group form-field-submit">
                     {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
                 </div>
             {{ form_end(form) }}
+
+            <br>
+            <a href="{{ path("history_suggestions_index") }}" class="btn btn-info">
+                <i class="fa fa-arrow-left"></i>
+                Retour
+            </a>
         </div>
     </form>
 
